@@ -30,7 +30,7 @@ const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
 const HomeScreen = () => {
-  const Navigation = useNavigation();
+  const Navigation: any = useNavigation();
 
   return (
     <ScrollView style={styles.parentContainer}>
@@ -178,7 +178,17 @@ const MainScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="React Native" component={RNScreen} />
+      <Stack.Screen
+        name="React Native"
+        component={RNScreen}
+        options={{
+          headerShown: true,
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: '#61DAFB',
+          },
+        }}
+      />
       <Stack.Screen name="ReactJS" component={RJSScreen} />
       <Stack.Screen name="JS Screen" component={JSScreen} />
       <Stack.Screen name="TS Screen" component={TSScreen} />
