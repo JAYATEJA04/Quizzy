@@ -16,7 +16,7 @@ import {
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Quest from '../Components/Questions';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import RNScreen from './RNScreen';
+import RNScreen from './RNScreens/RNScreen';
 import {useNavigation} from '@react-navigation/native';
 import RJSScreen from './ReactJSScreen';
 import JSScreen from './JavaScriptScreen';
@@ -25,6 +25,7 @@ import JAVAScreen from './JAVAScreen';
 import RESTAPIScreen from './APIScreen';
 import NODEJSScreen from './NODEScreen';
 import GolangScreen from './GolangScreen';
+import AllRNScreens from './RNScreens/AllRNScreens';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -180,7 +181,7 @@ const MainScreen = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
         name="React Native"
-        component={RNScreen}
+        component={AllRNScreens}
         options={{
           headerShown: true,
           headerTitleAlign: 'center',

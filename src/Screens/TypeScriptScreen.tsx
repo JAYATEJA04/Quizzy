@@ -16,7 +16,7 @@ import {
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Quest from '../Components/Questions';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import RNScreen from './RNScreen';
+import RNScreen from './RNScreens/RNScreen';
 import {useNavigation} from '@react-navigation/native';
 
 const TSScreen = () => {

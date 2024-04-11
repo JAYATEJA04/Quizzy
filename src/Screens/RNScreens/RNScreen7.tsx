@@ -12,13 +12,17 @@ import {
   Dimensions,
   View,
   Alert,
+  Platform,
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
-const RNScreen = () => {
+const RNScreen7 = () => {
+  const Navigation = useNavigation();
+
   return (
     <View style={RN_SCREEN_Styles.container}>
       {/* This is for the progress bar */}
@@ -31,7 +35,8 @@ const RNScreen = () => {
         {/* question view */}
         <View style={RN_SCREEN_Styles.questions_View}>
           <Text style={RN_SCREEN_Styles.questions_text_style}>
-            Q{'.)'} If I want to write a sentence, which component should I use.
+            Q{'.)'} Which of the following is used to make sure that your input
+            fields don't hide behind the keyboard?
           </Text>
         </View>
         {/* options view */}
@@ -42,14 +47,14 @@ const RNScreen = () => {
             <View style={RN_SCREEN_Styles.individual_option_view}>
               <TouchableOpacity
                 style={RN_SCREEN_Styles.individual_option_button}>
-                <Text>Hi</Text>
+                <Text style={{color: 'black'}}>KeyboardAvoidingView</Text>
               </TouchableOpacity>
             </View>
             {/* option 2nd */}
             <View style={RN_SCREEN_Styles.individual_option_view}>
               <TouchableOpacity
                 style={RN_SCREEN_Styles.individual_option_button}>
-                <Text>Hi</Text>
+                <Text style={{color: 'black'}}>KeyboardView</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -60,13 +65,13 @@ const RNScreen = () => {
             <View style={RN_SCREEN_Styles.individual_option_view}>
               <TouchableOpacity
                 style={RN_SCREEN_Styles.individual_option_button}>
-                <Text>Hi</Text>
+                <Text style={{color: 'black'}}>View</Text>
               </TouchableOpacity>
             </View>
             <View style={RN_SCREEN_Styles.individual_option_view}>
               <TouchableOpacity
                 style={RN_SCREEN_Styles.individual_option_button}>
-                <Text>Hi</Text>
+                <Text style={{color: 'black'}}>Scrollview</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -78,13 +83,17 @@ const RNScreen = () => {
         <View style={RN_SCREEN_Styles.previous_forward_button_view}>
           {/* previous button view */}
           <View style={RN_SCREEN_Styles.previous_button_view}>
-            <TouchableOpacity style={RN_SCREEN_Styles.previous_button_style}>
+            <TouchableOpacity
+              style={RN_SCREEN_Styles.previous_button_style}
+              onPress={() => Navigation.navigate('Screen 6')}>
               <Text style={RN_SCREEN_Styles.previous_button_text}>{'<-'}</Text>
             </TouchableOpacity>
           </View>
           {/* forward button view */}
           <View style={RN_SCREEN_Styles.forward_button_view}>
-            <TouchableOpacity style={RN_SCREEN_Styles.forward_button_style}>
+            <TouchableOpacity
+              style={RN_SCREEN_Styles.forward_button_style}
+              onPress={() => Navigation.navigate('Screen 8')}>
               <Text style={RN_SCREEN_Styles.forward_button_text}>{'->'}</Text>
             </TouchableOpacity>
           </View>
@@ -116,6 +125,7 @@ const RN_SCREEN_Styles = StyleSheet.create({
     alignSelf: 'auto',
     fontFamily: 'AlbertSans-Black',
     fontSize: 16,
+    color: 'black',
   },
   options_view: {
     height: SCREEN_HEIGHT / 2,
@@ -124,7 +134,7 @@ const RN_SCREEN_Styles = StyleSheet.create({
   individual_option_view: {
     height: SCREEN_HEIGHT / 4,
     width: '50%',
-    borderWidth: 1,
+    // borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -158,12 +168,14 @@ const RN_SCREEN_Styles = StyleSheet.create({
   previous_button_text: {
     fontWeight: 'bold',
     fontSize: 25,
+    color: 'black',
   },
   forward_button_view: {
     flex: 1,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'flex-end',
+    marginVertical: 10,
   },
   forward_button_style: {
     height: 50,
@@ -176,7 +188,8 @@ const RN_SCREEN_Styles = StyleSheet.create({
   forward_button_text: {
     fontWeight: 'bold',
     fontSize: 25,
+    color: 'black',
   },
 });
 
-export default RNScreen;
+export default RNScreen7;
