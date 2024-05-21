@@ -16,19 +16,43 @@ import {
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import ProgressBar from '../../Components/ProgressBar';
+import {
+  currentProgress,
+  decrement,
+  increment,
+} from '../../../redux store/features/progressBarSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
 const RNScreen10 = () => {
   const Navigation = useNavigation();
+  const currentprogress = useSelector(currentProgress);
+  const dispatch = useDispatch();
+
+  const [progress, setProgress] = useState(0);
+
+  const handleForwardProgressBar = () => {
+    if (progress < 100) {
+      dispatch(increment());
+      Alert.alert('The end');
+    }
+  };
+
+  const handleBackwardProgressBar = () => {
+    dispatch(decrement());
+    Navigation.navigate('Screen 9');
+  };
 
   return (
     <View style={RN_SCREEN_Styles.container}>
       {/* This is for the progress bar */}
-      <View style={RN_SCREEN_Styles.progressBarView}>
+      {/* <View style={RN_SCREEN_Styles.progressBarView}>
         <View style={RN_SCREEN_Styles.progressBarStyle} />
-      </View>
+      </View> */}
+      <ProgressBar progress={currentprogress} />
 
       {/* The question and its options in the current screen */}
       <View style={{}}>
@@ -85,13 +109,15 @@ const RNScreen10 = () => {
           <View style={RN_SCREEN_Styles.previous_button_view}>
             <TouchableOpacity
               style={RN_SCREEN_Styles.previous_button_style}
-              onPress={() => Navigation.navigate('Screen 9')}>
+              onPress={() => handleBackwardProgressBar()}>
               <Text style={RN_SCREEN_Styles.previous_button_text}>{'<-'}</Text>
             </TouchableOpacity>
           </View>
           {/* forward button view */}
           <View style={RN_SCREEN_Styles.forward_button_view}>
-            <TouchableOpacity style={RN_SCREEN_Styles.forward_button_style}>
+            <TouchableOpacity
+              style={RN_SCREEN_Styles.forward_button_style}
+              onPress={() => handleForwardProgressBar()}>
               <Text style={RN_SCREEN_Styles.forward_button_text}>{'->'}</Text>
             </TouchableOpacity>
           </View>

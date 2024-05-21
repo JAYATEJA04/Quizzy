@@ -1,6 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
