@@ -1,28 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   TouchableOpacity,
   Dimensions,
   View,
-  Alert,
-  Platform,
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import ProgressBar from '../../Components/ProgressBar';
 import {
   increment,
   decrement,
   currentProgress,
 } from '../../../redux store/features/progressBarSlice';
 import {useDispatch, useSelector} from 'react-redux';
+import { QuizzyStyles } from '../../Components/QuizzyStyles';
+import SampleQuestion from '../../Components/SampleQ';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -48,11 +42,11 @@ const RNScreen = () => {
 
   return (
     <View style={RN_SCREEN_Styles.container}>
-      {/* This is for the progress bar */}
-      {/* <View style={RN_SCREEN_Styles.progressBarView}>
+      {/* This is for the progress bar
+      <View style={RN_SCREEN_Styles.progressBarView}>
         <View style={RN_SCREEN_Styles.progressBarStyle} />
-      </View> */}
-      <ProgressBar progress={currentprogress} />
+      </View>
+      <ProgressBar progress={currentprogress} /> */}
 
       {/* The question and its options in the current screen */}
       <View style={{}}>
@@ -63,53 +57,9 @@ const RNScreen = () => {
           </Text>
         </View>
         {/* options view */}
-        <View style={RN_SCREEN_Styles.options_view}>
-          {/* 1st row of options */}
-          <View style={{flexDirection: 'row'}}>
-            {/* option 1st */}
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>
-                  {'<p>'}
-                  {'</p>'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            {/* option 2nd */}
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>
-                  {'<b>'} {'</b>'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* end of 1st row of options */}
-
-          {/* 2nd row of options */}
-          <View style={{flexDirection: 'row'}}>
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>
-                  {'<i>'} {'</i>'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>
-                  {'<Text>'} {'</Text>'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* end of 2nd row of options */}
-        </View>
+        <SampleQuestion />
         {/* end of options view */}
+
         {/* forward and previous button */}
         <View style={RN_SCREEN_Styles.previous_forward_button_view}>
           {/* previous button view */}
@@ -123,7 +73,6 @@ const RNScreen = () => {
           <View style={RN_SCREEN_Styles.forward_button_view}>
             <TouchableOpacity
               style={RN_SCREEN_Styles.forward_button_style}
-              // onPress={() => Navigation.navigate('Screen 2')}
               onPress={() => handleForwardProgressBar()}>
               <Text style={RN_SCREEN_Styles.forward_button_text}>{'->'}</Text>
             </TouchableOpacity>
@@ -154,9 +103,9 @@ const RN_SCREEN_Styles = StyleSheet.create({
   },
   questions_text_style: {
     alignSelf: 'auto',
-    fontFamily: 'AlbertSans-Black',
-    fontSize: 16,
-    color: 'black',
+    fontFamily: 'Poppins-Bold',
+    fontSize: 18,
+    color: '#040D12',
   },
   options_view: {
     height: SCREEN_HEIGHT / 2,
@@ -178,23 +127,29 @@ const RN_SCREEN_Styles = StyleSheet.create({
     borderRadius: 10,
   },
   previous_forward_button_view: {
-    height: SCREEN_HEIGHT / 8,
+    top: SCREEN_HEIGHT / 2,
     width: '100%',
+    padding: 20,
+    // borderWidth: 1,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   previous_button_view: {
-    flex: 1,
+    // borderWidth: 1,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
   previous_button_style: {
     height: 50,
-    width: 100,
-    borderWidth: 1,
+    width: 80,
+    // borderWidth: 1,
+    elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    backgroundColor: '#D5D5D5',
   },
   previous_button_text: {
     fontWeight: 'bold',
@@ -202,7 +157,6 @@ const RN_SCREEN_Styles = StyleSheet.create({
     color: 'black',
   },
   forward_button_view: {
-    flex: 1,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -210,11 +164,13 @@ const RN_SCREEN_Styles = StyleSheet.create({
   },
   forward_button_style: {
     height: 50,
-    width: 100,
-    borderWidth: 1,
+    width: 80,
+    // borderWidth: 1,
+    elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    backgroundColor: '#D5D5D5',
   },
   forward_button_text: {
     fontWeight: 'bold',

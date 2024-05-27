@@ -49,7 +49,7 @@ const RNScreen7 = () => {
         <View style={RN_SCREEN_Styles.progressBarStyle} />
       </View> */}
 
-      <ProgressBar progress={currentprogress} />
+      {/* <ProgressBar progress={currentprogress} /> */}
 
       {/* The question and its options in the current screen */}
       <View style={{}}>

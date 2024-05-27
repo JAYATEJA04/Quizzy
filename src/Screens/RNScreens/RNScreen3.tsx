@@ -35,7 +35,7 @@ const RNScreen3 = () => {
   const [progress, setProgress] = useState(0);
 
   const handleForwardProgressBar = () => {
-    if(progress < 100) {
+    if (progress < 100) {
       dispatch(increment());
       Navigation.navigate('Screen 4');
     }
@@ -53,7 +53,7 @@ const RNScreen3 = () => {
         <View style={RN_SCREEN_Styles.progressBarStyle} />
       </View> */}
 
-      <ProgressBar progress={currentprogress} />
+      {/* <ProgressBar progress={currentprogress} /> */}
 
       {/* The question and its options in the current screen */}
       <View style={{}}>
