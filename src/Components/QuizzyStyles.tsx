@@ -28,8 +28,10 @@ export const QuizzyStyles = StyleSheet.create({
     color: 'black',
   },
   options_view: {
-    height: SCREEN_HEIGHT / 2,
+    // height: SCREEN_HEIGHT / 2,
+    height: 4 * (SCREEN_HEIGHT / 10),
     width: '100%',
+    // borderWidth: 1,
   },
   individual_option_view: {
     height: SCREEN_HEIGHT / 10,
@@ -58,23 +60,28 @@ export const QuizzyStyles = StyleSheet.create({
     backgroundColor: '#FF0000',
   },
   previous_forward_button_view: {
-    height: SCREEN_HEIGHT / 8,
+    top: SCREEN_HEIGHT / 2.5,
     width: '100%',
+    padding: 20,
+    // borderWidth: 1,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   previous_button_view: {
-    flex: 1,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
   previous_button_style: {
     height: 50,
-    width: 100,
-    borderWidth: 1,
+    width: 80,
+    // borderWidth: 1,
+    elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    backgroundColor: '#D5D5D5',
   },
   previous_button_text: {
     fontWeight: 'bold',
@@ -82,7 +89,6 @@ export const QuizzyStyles = StyleSheet.create({
     color: 'black',
   },
   forward_button_view: {
-    flex: 1,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -90,11 +96,13 @@ export const QuizzyStyles = StyleSheet.create({
   },
   forward_button_style: {
     height: 50,
-    width: 100,
-    borderWidth: 1,
+    width: 80,
+    // borderWidth: 1,
+    elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    backgroundColor: '#D5D5D5',
   },
   forward_button_text: {
     fontWeight: 'bold',

@@ -1,87 +1,50 @@
 import React, {useState} from 'react';
 import {ScrollView, Text, View, TouchableOpacity, Alert} from 'react-native';
 import {QuizzyStyles} from './QuizzyStyles';
+import Questions from './Content';
 
 const SampleQuestion = () => {
   const [checkOption, setCheckOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleOptionSelected = index => {
-    setCheckOption(index);
+  const handleOptionSelected = option => {
+    if (option.isItTrue) {
+      Alert.alert('True');
+    } else {
+      Alert.alert('False');
+    }
   };
 
-  const getButtonStyle = index => {
+  const getButtonStyle = (verify, index) => {
     if (index === checkOption) {
-      return index === 3
+      return verify
         ? QuizzyStyles.pressed_correct_option_button
         : QuizzyStyles.pressed_wrong_option_button;
     }
   };
 
+  const options = [
+    {option: 'a', text: '<p> p tag </p>', isItTrue: false},
+    {option: 'b', text: '<b> b tag </b>', isItTrue: false},
+    {option: 'c', text: '<i> i tag </i>', isItTrue: false},
+    {option: 'd', text: '<Text> Text tag </Text>', isItTrue: true},
+  ];
+
   return (
     <View style={QuizzyStyles.container}>
       <View style={QuizzyStyles.options_view}>
         <View style={{flexDirection: 'column'}}>
-          {/* <View style={QuizzyStyles.individual_option_view}>
-            <Text style={{fontSize: 18}}>a.</Text>
-            <TouchableOpacity
-              style={[
-                QuizzyStyles.individual_option_button,
-                correctOption && QuizzyStyles.pressed_correct_option_button,
-              ]}
-              onPress={() => handleOptionSelected('a')}>
-              <Text style={{color: 'black'}}>
-                {'<p>'} p tag {'</p>'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={QuizzyStyles.individual_option_view}>
-            <Text style={{fontSize: 18}}>b.</Text>
-            <TouchableOpacity
-              style={[
-                QuizzyStyles.individual_option_button,
-                wrongOption && QuizzyStyles.pressed_wrong_option_button,
-              ]}
-              onPress={() => handleOptionSelected('b')}>
-              <Text style={{color: 'black'}}>
-                {'<b>'} b tag {'</b>'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={QuizzyStyles.individual_option_view}>
-            <Text style={{fontSize: 18}}>c.</Text>
-            <TouchableOpacity
-              style={[
-                QuizzyStyles.individual_option_button,
-                wrongOption && QuizzyStyles.pressed_wrong_option_button,
-              ]}
-              onPress={() => handleOptionSelected('c')}>
-              <Text style={{color: 'black'}}>
-                {'<i>'} i tag {'</i>'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={QuizzyStyles.individual_option_view}>
-            <Text style={{fontSize: 18}}>d.</Text>
-            <TouchableOpacity style={QuizzyStyles.individual_option_button}>
-              <Text style={{color: 'black'}}>
-                {'<Text>'} Text tag {'</Text>'}
-              </Text>
-            </TouchableOpacity>
-          </View> */}
-          {[
-            '<p> p tag </p>',
-            '<b> b tag </b',
-            '<i> i tag </i>',
-            '<Text> Text tag </Text>',
-          ].map((option, index) => (
+          {Questions[0].options.map((question, index) => (
             <View style={QuizzyStyles.individual_option_view} key={index}>
               <TouchableOpacity
                 style={[
                   QuizzyStyles.individual_option_button,
-                  getButtonStyle(index),
+                  selectedOption === question && {backgroundColor: 'gray'},
                 ]}
-                onPress={() => handleOptionSelected(index)}>
-                <Text style={{color: 'black'}}>{option}</Text>
+                onPress={() => handleOptionSelected(question)}>
+                <Text style={{color: 'black'}}>
+                  {Object.values(question)[0]}
+                </Text>
               </TouchableOpacity>
             </View>
           ))}

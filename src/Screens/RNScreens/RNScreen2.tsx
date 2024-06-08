@@ -16,6 +16,7 @@ import {
   increment,
 } from '../../../redux store/features/progressBarSlice';
 import {useDispatch, useSelector} from 'react-redux';
+import { QuizzyStyles } from '../../Components/QuizzyStyles';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -40,7 +41,7 @@ const RNScreen2 = () => {
   };
 
   return (
-    <View style={RN_SCREEN_Styles.container}>
+    <View style={QuizzyStyles.container}>
       {/* This is for the progress bar */}
       {/* <View style={RN_SCREEN_Styles.progressBarView}>
         <View style={RN_SCREEN_Styles.progressBarStyle} />
