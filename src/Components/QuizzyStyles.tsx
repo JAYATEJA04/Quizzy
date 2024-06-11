@@ -28,8 +28,9 @@ export const QuizzyStyles = StyleSheet.create({
     color: 'black',
   },
   options_view: {
-    // height: SCREEN_HEIGHT / 2,
-    height: 4 * (SCREEN_HEIGHT / 10),
+    // height: SCREEN_HEIGHT / 
+    // height: 4 * (SCREEN_HEIGHT / 10),
+    height: 'auto',
     width: '100%',
     // borderWidth: 1,
   },
