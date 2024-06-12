@@ -27,17 +27,22 @@ const RNScreen = () => {
   const currentprogress = useSelector(currentProgress);
   const dispatch = useDispatch();
 
-  const [progress, setProgress] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(false);
+  const [pressed, setPressed] = useState(false);
+  const [checkOption, setCheckOption] = useState(false);
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
+  const [showContinueButton, setShowContinueButton] = useState(false);
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
-      setSelectedOption(true);
       setIndexOfTheOption(index);
+      setShowContinueButton(true);
+      setPressed(true);
+      setCheckOption(true);
     } else {
-      setSelectedOption(false);
       setIndexOfTheOption(index);
+      setShowContinueButton(true);
+      setPressed(true);
+      setCheckOption(false);
     }
   };
 
@@ -49,13 +54,33 @@ const RNScreen = () => {
     }
   };
 
+  const continueButton = verify => {
+    if (verify) {
+      return {
+        backgroundColor: 'green',
+        borderColor: 'darkgreen',
+      };
+    }
+    return {
+      backgroundColor: '#E72929',
+      borderColor: 'darkred',
+    };
+  };
+
+  const explanationStyle = verify => {
+    return verify
+      ? styles.correctAnswerExplanationStyle
+      : styles.wrongAnswerExplanation;
+  };
+
   return (
     <View style={QuizzyStyles.container}>
       {/* This is for the progress bar
       <ProgressBar progress={currentprogress} /> */}
 
       {/* The question and its options in the current screen */}
-      <View style={{}}>
+      <View
+        style={{justifyContent: 'center', alignItems: 'flex-start', flex: 2}}>
         {/* question view */}
         <View style={QuizzyStyles.questions_View}>
           <Text style={QuizzyStyles.questions_text_style}>
@@ -73,7 +98,8 @@ const RNScreen = () => {
                       QuizzyStyles.individual_option_button,
                       styleSelectedOption(question, index),
                     ]}
-                    onPress={() => handleOptionSelected(question, index)}>
+                    onPress={() => handleOptionSelected(question, index)}
+                    disabled={pressed}>
                     <Text style={{color: 'black'}}>
                       {Object.values(question)}
                     </Text>
@@ -84,8 +110,51 @@ const RNScreen = () => {
           </View>
         </View>
       </View>
+      <View style={{justifyContent: 'flex-end', flex: 2}}>
+        <View style={{flex: 1, padding: 10}}>
+          {showContinueButton && (
+            <View style={{flex: 1}}>
+              <View style={explanationStyle(checkOption)} />
+              <View style={{justifyContent: 'flex-end', padding: 5}}>
+                <TouchableOpacity
+                  style={[
+                    styles.continueButtonStyle,
+                    continueButton(checkOption),
+                  ]}
+                  onPress={() => Navigation.navigate('Screen 2')}>
+                  <Text style={{color: 'white'}}>Continue</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        </View>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  continueButtonStyle: {
+    backgroundColor: 'grey',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  correctAnswerExplanationStyle: {
+    flex: 1,
+    borderColor: 'green',
+    borderWidth: 1,
+    backgroundColor: '#BFF6C3',
+    borderRadius: 10,
+  },
+  wrongAnswerExplanation: {
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 1,
+    backgroundColor: '#FF6969',
+    borderRadius: 10,
+  },
+});
 
 export default RNScreen;

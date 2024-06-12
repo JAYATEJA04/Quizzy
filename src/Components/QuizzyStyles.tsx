@@ -57,8 +57,8 @@ export const QuizzyStyles = StyleSheet.create({
     backgroundColor: '#9DDE8B',
   },
   pressed_wrong_option_button: {
-    borderColor: '#C40C0C',
-    backgroundColor: '#FF0000',
+    borderColor: '#FF204E',
+    backgroundColor: '#FC4100',
   },
   previous_forward_button_view: {
     top: SCREEN_HEIGHT / 2.5,
