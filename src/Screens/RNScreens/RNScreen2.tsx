@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   View,
+  ScrollView,
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
@@ -16,7 +17,8 @@ import {
   increment,
 } from '../../../redux store/features/progressBarSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import { QuizzyStyles } from '../../Components/QuizzyStyles';
+import {QuizzyStyles} from '../../Components/QuizzyStyles';
+import Questions from '../../Components/Content';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -26,187 +28,170 @@ const RNScreen2 = () => {
   const currentprogress = useSelector(currentProgress);
   const dispatch = useDispatch();
 
-  const [progress, setProgress] = useState(0);
+  const [pressed, setPressed] = useState(false);
+  const [checkOption, setCheckOption] = useState(false);
+  const [indexOfTheOption, setIndexOfTheOption] = useState(null);
+  const [showContinueButton, setShowContinueButton] = useState(false);
+  const [selectedExplanation, setSelectedExplanation] = useState('');
 
-  const handleForwardProgressBar = () => {
-    if (progress < 100) {
-      dispatch(increment());
-      Navigation.navigate('Screen 3');
+  const handleOptionSelected = (option, index) => {
+    if (option.isItTrue) {
+      setIndexOfTheOption(index);
+      setShowContinueButton(true);
+      setPressed(true);
+      setCheckOption(true);
+      setSelectedExplanation(option.explanation);
+    } else {
+      setIndexOfTheOption(index);
+      setShowContinueButton(true);
+      setPressed(true);
+      setCheckOption(false);
+      setSelectedExplanation(option.explanation);
     }
   };
 
-  const handleBackwardProgressBar = () => {
-    dispatch(decrement());
-    Navigation.navigate('Screen 1');
+  const styleSelectedOption = (question, index) => {
+    if (indexOfTheOption === index) {
+      return question.isItTrue
+        ? QuizzyStyles.pressed_correct_option_button
+        : QuizzyStyles.pressed_wrong_option_button;
+    }
+  };
+
+  const continueButton = verify => {
+    if (verify) {
+      return {
+        backgroundColor: 'green',
+        borderColor: 'darkgreen',
+      };
+    }
+    return {
+      backgroundColor: '#E72929',
+      borderColor: 'darkred',
+    };
+  };
+
+  const explanationStyle = verify => {
+    return verify
+      ? QuizzyStyles.correctAnswerExplanationStyle
+      : QuizzyStyles.wrongAnswerExplanation;
   };
 
   return (
-    <View style={QuizzyStyles.container}>
-      {/* This is for the progress bar */}
-      {/* <View style={RN_SCREEN_Styles.progressBarView}>
-        <View style={RN_SCREEN_Styles.progressBarStyle} />
-      </View> */}
-      {/* <ProgressBar progress={currentprogress} /> */}
+    <ScrollView style={QuizzyStyles.container}>
+      {/* This is for the progress bar
+      <ProgressBar progress={currentprogress} /> */}
 
       {/* The question and its options in the current screen */}
-      <View style={{}}>
+      <View
+        style={{justifyContent: 'center', alignItems: 'flex-start', flex: 2}}>
         {/* question view */}
-        <View style={RN_SCREEN_Styles.questions_View}>
-          <Text style={RN_SCREEN_Styles.questions_text_style}>
-            Q{'.)'} Which of the following components is the optimized way to
-            show a long list of data?
+        <View style={QuizzyStyles.questions_View}>
+          <Text style={QuizzyStyles.questions_text_style}>
+            {Questions[1].number}.{')'} {Questions[1].question}
           </Text>
         </View>
         {/* options view */}
-        <View style={RN_SCREEN_Styles.options_view}>
-          {/* 1st row of options */}
-          <View style={{flexDirection: 'row'}}>
-            {/* option 1st */}
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>View</Text>
-              </TouchableOpacity>
+        <View style={QuizzyStyles.container}>
+          <View style={QuizzyStyles.options_view}>
+            <View style={{flexDirection: 'column'}}>
+              {Questions[1].options.map((question, index) => (
+                <View style={QuizzyStyles.individual_option_view} key={index}>
+                  <TouchableOpacity
+                    style={[
+                      QuizzyStyles.individual_option_button,
+                      styleSelectedOption(question, index),
+                    ]}
+                    onPress={() => handleOptionSelected(question, index)}
+                    disabled={pressed}>
+                    <Text
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Notosans-Regular',
+                        fontSize: 15,
+                      }}>
+                      {question.option}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              ))}
             </View>
-            {/* option 2nd */}
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>Scrollview</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* end of 1st row of options */}
-
-          {/* 2nd row of options */}
-          <View style={{flexDirection: 'row'}}>
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>SafeAreaView</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={RN_SCREEN_Styles.individual_option_view}>
-              <TouchableOpacity
-                style={RN_SCREEN_Styles.individual_option_button}>
-                <Text style={{color: 'black'}}>Flatlist</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* end of 2nd row of options */}
-        </View>
-        {/* end of options view */}
-
-        {/* forward and previous button */}
-        <View style={RN_SCREEN_Styles.previous_forward_button_view}>
-          {/* previous button view */}
-          <View style={RN_SCREEN_Styles.previous_button_view}>
-            <TouchableOpacity
-              style={RN_SCREEN_Styles.previous_button_style}
-              onPress={() => handleBackwardProgressBar()}>
-              <Text style={RN_SCREEN_Styles.previous_button_text}>{'<-'}</Text>
-            </TouchableOpacity>
-          </View>
-          {/* forward button view */}
-          <View style={RN_SCREEN_Styles.forward_button_view}>
-            <TouchableOpacity
-              style={RN_SCREEN_Styles.forward_button_style}
-              onPress={() => handleForwardProgressBar()}>
-              <Text style={RN_SCREEN_Styles.forward_button_text}>{'->'}</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </View>
-    </View>
+      <View style={{justifyContent: 'flex-end', flex: 2, borderWidth: 1}}>
+        <View style={{flex: 1, padding: 10}}>
+          {showContinueButton && (
+            <View style={{flex: 1}}>
+              <View style={{flex: 2, justifyContent: 'flex-end'}}>
+                <View
+                  style={{
+                    justifyContent: 'flex-end',
+                  }}>
+                  <ScrollView
+                    contentContainerStyle={explanationStyle(checkOption)}>
+                    <Text
+                      style={{
+                        color: '#0079FF',
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                      }}>
+                      {checkOption
+                        ? 'Yes! you got it.'
+                        : "No! you didn't get it!"}
+                    </Text>
+                    <Text style={QuizzyStyles.explanationTextStyle}>
+                      {'\n'}
+                      {selectedExplanation}
+                    </Text>
+                  </ScrollView>
+                </View>
+              </View>
+              <View
+                style={{
+                  justifyContent: 'flex-end',
+                  padding: 5,
+                  borderWidth: 1,
+                }}>
+                <TouchableOpacity
+                  style={[
+                    QuizzyStyles.continueButtonStyle,
+                    continueButton(checkOption),
+                  ]}
+                  onPress={() => Navigation.navigate('Screen 3')}>
+                  <Text style={{color: 'white'}}>Continue</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
-const RN_SCREEN_Styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-  progressBarView: {
-    padding: 10,
-  },
-  progressBarStyle: {
-    height: 20,
-    width: '100%',
-    borderWidth: 1,
-    borderRadius: 20,
-    backgroundColor: '#4FE936',
-  },
-  questions_View: {
-    paddingLeft: 5,
-  },
-  questions_text_style: {
-    alignSelf: 'auto',
-    fontFamily: 'AlbertSans-Black',
-    fontSize: 16,
-    color: 'black',
-  },
-  options_view: {
-    height: SCREEN_HEIGHT / 2,
-    width: '100%',
-  },
-  individual_option_view: {
-    height: SCREEN_HEIGHT / 4,
-    width: '50%',
-    // borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  individual_option_button: {
-    height: SCREEN_HEIGHT / 7,
-    width: '70%',
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  previous_forward_button_view: {
-    height: SCREEN_HEIGHT / 8,
-    width: '100%',
-    flexDirection: 'row',
-  },
-  previous_button_view: {
-    flex: 1,
-    width: '50%',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  previous_button_style: {
+const styles = StyleSheet.create({
+  continueButtonStyle: {
+    backgroundColor: 'grey',
     height: 50,
-    width: 100,
-    borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
   },
-  previous_button_text: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: 'black',
-  },
-  forward_button_view: {
+  correctAnswerExplanationStyle: {
     flex: 1,
-    width: '50%',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginVertical: 10,
-  },
-  forward_button_style: {
-    height: 50,
-    width: 100,
+    borderColor: 'green',
     borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#BFF6C3',
     borderRadius: 10,
+    height: 'auto',
   },
-  forward_button_text: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: 'black',
+  wrongAnswerExplanation: {
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 1,
+    backgroundColor: '#FF6969',
+    borderRadius: 10,
   },
 });
 

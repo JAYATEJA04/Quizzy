@@ -7,6 +7,7 @@ export const QuizzyStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: 'white',
   },
   progressBarView: {
     padding: 10,
@@ -23,19 +24,18 @@ export const QuizzyStyles = StyleSheet.create({
   },
   questions_text_style: {
     alignSelf: 'auto',
-    fontFamily: 'AlbertSans-Black',
+    fontFamily: 'Roboto-Medium',
     fontSize: 16,
     color: 'black',
   },
   options_view: {
-    // height: SCREEN_HEIGHT / 
-    // height: 4 * (SCREEN_HEIGHT / 10),
-    height: 'auto',
+    height: 4 * (SCREEN_HEIGHT / 12),
+    // height: 'auto',
     width: '100%',
     // borderWidth: 1,
   },
   individual_option_view: {
-    height: SCREEN_HEIGHT / 10,
+    height: SCREEN_HEIGHT / 12,
     width: '100%',
     // borderWidth: 1,
     justifyContent: 'space-between',
@@ -51,6 +51,7 @@ export const QuizzyStyles = StyleSheet.create({
     alignItems: 'flex-start',
     borderRadius: 10,
     backgroundColor: '#D5D5D5',
+    // borderWidth: 1,
   },
   pressed_correct_option_button: {
     borderColor: '#006769',
@@ -58,7 +59,7 @@ export const QuizzyStyles = StyleSheet.create({
   },
   pressed_wrong_option_button: {
     borderColor: '#FF204E',
-    backgroundColor: '#FC4100',
+    backgroundColor: '#FF6969',
   },
   previous_forward_button_view: {
     top: SCREEN_HEIGHT / 2.5,
@@ -109,5 +110,36 @@ export const QuizzyStyles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 25,
     color: 'black',
+  },
+  continueButtonStyle: {
+    backgroundColor: 'grey',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  correctAnswerExplanationStyle: {
+    // flex: 1,
+    padding: 10,
+    borderColor: 'green',
+    borderWidth: 1,
+    backgroundColor: '#BFF6C3',
+    borderRadius: 10,
+    height: 'auto',
+  },
+  wrongAnswerExplanation: {
+    // flex: 1,
+    padding: 10,
+    borderColor: 'red',
+    borderWidth: 1,
+    // backgroundColor: '#FF6969',
+    backgroundColor: '#FF9B9B',
+    borderRadius: 10,
+  },
+  explanationTextStyle: {
+    color: 'black',
+    fontSize: 14,
+    fontStyle: 'italic',
+    fontWeight: '300',
   },
 });

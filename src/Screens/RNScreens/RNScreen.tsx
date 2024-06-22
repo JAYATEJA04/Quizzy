@@ -7,6 +7,7 @@ import {
   Dimensions,
   View,
   Alert,
+  ScrollView,
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
@@ -31,6 +32,7 @@ const RNScreen = () => {
   const [checkOption, setCheckOption] = useState(false);
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
   const [showContinueButton, setShowContinueButton] = useState(false);
+  const [selectedExplanation, setSelectedExplanation] = useState('');
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
@@ -38,11 +40,13 @@ const RNScreen = () => {
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(true);
+      setSelectedExplanation(option.explanation);
     } else {
       setIndexOfTheOption(index);
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(false);
+      setSelectedExplanation(option.explanation);
     }
   };
 
@@ -69,8 +73,8 @@ const RNScreen = () => {
 
   const explanationStyle = verify => {
     return verify
-      ? styles.correctAnswerExplanationStyle
-      : styles.wrongAnswerExplanation;
+      ? QuizzyStyles.correctAnswerExplanationStyle
+      : QuizzyStyles.wrongAnswerExplanation;
   };
 
   return (
@@ -100,8 +104,13 @@ const RNScreen = () => {
                     ]}
                     onPress={() => handleOptionSelected(question, index)}
                     disabled={pressed}>
-                    <Text style={{color: 'black'}}>
-                      {Object.values(question)}
+                    <Text
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Notosans-Regular',
+                        fontSize: 15,
+                      }}>
+                      {question.option}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -114,11 +123,44 @@ const RNScreen = () => {
         <View style={{flex: 1, padding: 10}}>
           {showContinueButton && (
             <View style={{flex: 1}}>
-              <View style={explanationStyle(checkOption)} />
-              <View style={{justifyContent: 'flex-end', padding: 5}}>
+              <View
+                style={{
+                  flex: 2,
+                  // bottom: 20,
+                  // paddingBottom: 10,
+                  // marginBottom: 20,
+                  justifyContent: 'flex-end',
+                }}>
+                <View style={{justifyContent: 'flex-end'}}>
+                  <ScrollView
+                    contentContainerStyle={explanationStyle(checkOption)}>
+                    <Text
+                      style={{
+                        // color: checkOption ? '#3DC2EC' : '#1A2130',
+                        color: '#0079FF',
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                      }}>
+                      {checkOption
+                        ? 'Yes! you got it.'
+                        : "No! you didn't get it!"}
+                    </Text>
+                    <Text style={QuizzyStyles.explanationTextStyle}>
+                      {'\n'}
+                      {selectedExplanation}
+                    </Text>
+                  </ScrollView>
+                </View>
+              </View>
+              <View
+                style={{
+                  justifyContent: 'flex-end',
+                  // flex: 1,
+                  padding: 5,
+                }}>
                 <TouchableOpacity
                   style={[
-                    styles.continueButtonStyle,
+                    QuizzyStyles.continueButtonStyle,
                     continueButton(checkOption),
                   ]}
                   onPress={() => Navigation.navigate('Screen 2')}>
@@ -126,35 +168,35 @@ const RNScreen = () => {
                 </TouchableOpacity>
               </View>
             </View>
+            // <View style={{flex: 1, borderWidth: 1}}>
+            //   <View style={{flex: 2, justifyContent: 'flex-end'}}>
+            //     <View style={{justifyContent: 'flex-end'}}>
+            //       <ScrollView
+            //         contentContainerStyle={{
+            //           // flex: 1,
+            //           padding: 10,
+            //           borderColor: 'green',
+            //           borderWidth: 1,
+            //           backgroundColor: '#BFF6C3',
+            //           borderRadius: 10,
+            //           height: 'auto',
+            //         }}>
+            //         <Text style={{color: 'black'}}>Hi</Text>
+            //       </ScrollView>
+            //     </View>
+            //   </View>
+            //   <View
+            //     style={{flex: 1, justifyContent: 'flex-end', borderWidth: 1}}>
+            //     <TouchableOpacity style={{borderWidth: 1}}>
+            //       <Text style={{color: 'black'}}>button</Text>
+            //     </TouchableOpacity>
+            //   </View>
+            // </View>
           )}
         </View>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  continueButtonStyle: {
-    backgroundColor: 'grey',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  correctAnswerExplanationStyle: {
-    flex: 1,
-    borderColor: 'green',
-    borderWidth: 1,
-    backgroundColor: '#BFF6C3',
-    borderRadius: 10,
-  },
-  wrongAnswerExplanation: {
-    flex: 1,
-    borderColor: 'red',
-    borderWidth: 1,
-    backgroundColor: '#FF6969',
-    borderRadius: 10,
-  },
-});
 
 export default RNScreen;
