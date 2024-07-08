@@ -13,6 +13,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainScreen from './src/Screens/MainScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {CountAnswers} from './src/Components/CountContext';
+import {ReactJSCountAnswers} from './src/Components/ReactJS_components/ReactJS_CountContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,11 +35,15 @@ const RNScreen = () => {
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Mainscreen" component={MainScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <CountAnswers>
+        <ReactJSCountAnswers>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+              <Stack.Screen name="Mainscreen" component={MainScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ReactJSCountAnswers>
+      </CountAnswers>
     </GestureHandlerRootView>
   );
 };

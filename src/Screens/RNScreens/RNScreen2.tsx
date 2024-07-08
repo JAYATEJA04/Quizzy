@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,6 +19,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {QuizzyStyles} from '../../Components/QuizzyStyles';
 import Questions from '../../Components/Content';
+import {CountContext} from '../../Components/CountContext';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -33,6 +34,12 @@ const RNScreen2 = () => {
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [selectedExplanation, setSelectedExplanation] = useState('');
+  const {
+    countCorrectOptions,
+    setCountCorrectOptions,
+    countWrongOptions,
+    setCountWrongOptions,
+  }: any = useContext(CountContext);
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
@@ -41,12 +48,14 @@ const RNScreen2 = () => {
       setPressed(true);
       setCheckOption(true);
       setSelectedExplanation(option.explanation);
+      setCountCorrectOptions(countCorrectOptions + 1);
     } else {
       setIndexOfTheOption(index);
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(false);
       setSelectedExplanation(option.explanation);
+      setCountWrongOptions(countWrongOptions + 1);
     }
   };
 
@@ -78,7 +87,7 @@ const RNScreen2 = () => {
   };
 
   return (
-    <ScrollView style={QuizzyStyles.container}>
+    <View style={QuizzyStyles.container}>
       {/* This is for the progress bar
       <ProgressBar progress={currentprogress} /> */}
 
@@ -92,7 +101,7 @@ const RNScreen2 = () => {
           </Text>
         </View>
         {/* options view */}
-        <View style={QuizzyStyles.container}>
+        <View style={QuizzyStyles.optionsContainer}>
           <View style={QuizzyStyles.options_view}>
             <View style={{flexDirection: 'column'}}>
               {Questions[1].options.map((question, index) => (
@@ -119,7 +128,7 @@ const RNScreen2 = () => {
           </View>
         </View>
       </View>
-      <View style={{justifyContent: 'flex-end', flex: 2, borderWidth: 1}}>
+      <View style={QuizzyStyles.explanation_continue_button_container}>
         <View style={{flex: 1, padding: 10}}>
           {showContinueButton && (
             <View style={{flex: 1}}>
@@ -151,7 +160,7 @@ const RNScreen2 = () => {
                 style={{
                   justifyContent: 'flex-end',
                   padding: 5,
-                  borderWidth: 1,
+                  // borderWidth: 1,
                 }}>
                 <TouchableOpacity
                   style={[
@@ -166,7 +175,7 @@ const RNScreen2 = () => {
           )}
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

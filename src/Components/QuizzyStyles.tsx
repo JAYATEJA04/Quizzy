@@ -7,6 +7,7 @@ export const QuizzyStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    top: 55,
     backgroundColor: 'white',
   },
   progressBarView: {
@@ -28,6 +29,10 @@ export const QuizzyStyles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
   },
+  optionsContainer: {
+    flex: 1,
+    padding: 10,
+  },
   options_view: {
     height: 4 * (SCREEN_HEIGHT / 12),
     // height: 'auto',
@@ -43,7 +48,8 @@ export const QuizzyStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   individual_option_button: {
-    height: SCREEN_HEIGHT / 16,
+    // height: SCREEN_HEIGHT / 16,
+    height: 'auto',
     padding: 10,
     width: '100%',
     elevation: 5,
@@ -110,6 +116,12 @@ export const QuizzyStyles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 25,
     color: 'black',
+  },
+  explanation_continue_button_container: {
+    justifyContent: 'flex-end',
+    flex: 2,
+    bottom: 55,
+    // borderWidth: 1,
   },
   continueButtonStyle: {
     backgroundColor: 'grey',

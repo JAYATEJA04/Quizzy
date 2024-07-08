@@ -1,18 +1,4 @@
-import React, {useState} from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  TouchableOpacity,
-  Dimensions,
-  View,
-  Alert,
-  Platform,
-} from 'react-native';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import RNScreen from './RNScreen';
 import RNScreen2 from './RNScreen2';
@@ -24,6 +10,7 @@ import RNScreen7 from './RNScreen7';
 import RNScreen8 from './RNScreen8';
 import RNScreen9 from './RNScreen9';
 import RNScreen10 from './RNScreen10';
+import Dashboard from '../../Components/DashBoard';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +27,7 @@ const AllRNScreens = () => {
       <Stack.Screen name="Screen 8" component={RNScreen8} />
       <Stack.Screen name="Screen 9" component={RNScreen9} />
       <Stack.Screen name="Screen 10" component={RNScreen10} />
+      <Stack.Screen name="Dashboard" component={Dashboard} />
     </Stack.Navigator>
   );
 };

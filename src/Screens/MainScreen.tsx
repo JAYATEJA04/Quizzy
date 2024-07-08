@@ -25,6 +25,7 @@ import RESTAPIScreen from './APIScreen';
 import NODEJSScreen from './NODEScreen';
 import GolangScreen from './GolangScreen';
 import AllRNScreens from './RNScreens/AllRNScreens';
+import All_ReactJS_Screens from './ReactJS_Screens/All_ReactJS_Screens';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -187,9 +188,25 @@ const MainScreen = () => {
           headerTitleStyle: {
             color: '#61DAFB',
           },
+          headerTransparent: true,
         }}
       />
-      <Stack.Screen name="ReactJS" component={RJSScreen} />
+      <Stack.Screen
+        name="ReactJS"
+        component={All_ReactJS_Screens}
+        options={{
+          headerShown: true,
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: '#61DAFB',
+          },
+          headerStyle: {
+            backgroundColor: 'beige',
+          },
+          headerShadowVisible: true,
+          headerTransparent: true,
+        }}
+      />
       <Stack.Screen name="JS Screen" component={JSScreen} />
       <Stack.Screen name="TS Screen" component={TSScreen} />
       <Stack.Screen name="JAVA Screen" component={JAVAScreen} />

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,6 +25,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {QuizzyStyles} from '../../Components/QuizzyStyles';
 import Questions from '../../Components/Content';
+import { CountContext } from '../../Components/CountContext';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -39,6 +40,12 @@ const RNScreen7 = () => {
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [selectedExplanation, setSelectedExplanation] = useState('');
+  const {
+    countCorrectOptions,
+    setCountCorrectOptions,
+    countWrongOptions,
+    setCountWrongOptions,
+  }: any = useContext(CountContext);
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
@@ -47,12 +54,14 @@ const RNScreen7 = () => {
       setPressed(true);
       setCheckOption(true);
       setSelectedExplanation(option.explanation);
+      setCountCorrectOptions(countCorrectOptions + 1);
     } else {
       setIndexOfTheOption(index);
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(false);
       setSelectedExplanation(option.explanation);
+      setCountWrongOptions(countWrongOptions + 1);
     }
   };
 

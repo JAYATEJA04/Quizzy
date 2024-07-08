@@ -1,51 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useContext, useState} from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  TouchableOpacity,
-  Dimensions,
   View,
-  Alert,
-  Platform,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import ProgressBar from '../../Components/ProgressBar';
-import {
-  currentProgress,
-  decrement,
-  increment,
-} from '../../../redux store/features/progressBarSlice';
-import {useDispatch, useSelector} from 'react-redux';
 import {QuizzyStyles} from '../../Components/QuizzyStyles';
-import Questions from '../../Components/Content';
-import { CountContext } from '../../Components/CountContext';
+import ReactJS_Questions from '../../Components/ReactJS_components/ReactJS_Content';
+import {ReactJSCountContext} from '../../Components/ReactJS_components/ReactJS_CountContext';
 
-const Stack = createNativeStackNavigator();
-const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
-
-const RNScreen3 = () => {
+const RJS_screen8 = () => {
   const Navigation = useNavigation();
-  const currentprogress = useSelector(currentProgress);
-  const dispatch = useDispatch();
-
   const [pressed, setPressed] = useState(false);
   const [checkOption, setCheckOption] = useState(false);
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [selectedExplanation, setSelectedExplanation] = useState('');
   const {
-    countCorrectOptions,
-    setCountCorrectOptions,
-    countWrongOptions,
-    setCountWrongOptions,
-  }: any = useContext(CountContext);
+    countRJSCorrectOptions,
+    setCountRJSCorrectOptions,
+    countRJSWrongOptions,
+    setCountRJSWrongOptions,
+  }: any = useContext(ReactJSCountContext);
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
@@ -54,14 +35,14 @@ const RNScreen3 = () => {
       setPressed(true);
       setCheckOption(true);
       setSelectedExplanation(option.explanation);
-      setCountCorrectOptions(countCorrectOptions + 1);
+      setCountRJSCorrectOptions(countRJSCorrectOptions + 1);
     } else {
       setIndexOfTheOption(index);
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(false);
       setSelectedExplanation(option.explanation);
-      setCountWrongOptions(countWrongOptions + 1);
+      setCountRJSWrongOptions(countRJSWrongOptions + 1);
     }
   };
 
@@ -103,14 +84,14 @@ const RNScreen3 = () => {
         {/* question view */}
         <View style={QuizzyStyles.questions_View}>
           <Text style={QuizzyStyles.questions_text_style}>
-            {Questions[2].number}.{')'} {Questions[2].question}
+            {ReactJS_Questions[7].number}.{')'} {ReactJS_Questions[7].question}
           </Text>
         </View>
         {/* options view */}
-        <View style={QuizzyStyles.container}>
+        <View style={QuizzyStyles.optionsContainer}>
           <View style={QuizzyStyles.options_view}>
             <View style={{flexDirection: 'column'}}>
-              {Questions[2].options.map((question, index) => (
+              {ReactJS_Questions[7].options.map((question, index) => (
                 <View style={QuizzyStyles.individual_option_view} key={index}>
                   <TouchableOpacity
                     style={[
@@ -134,7 +115,7 @@ const RNScreen3 = () => {
           </View>
         </View>
       </View>
-      <View style={{justifyContent: 'flex-end', flex: 2}}>
+      <View style={QuizzyStyles.explanation_continue_button_container}>
         <View style={{flex: 1, padding: 10}}>
           {showContinueButton && (
             <View style={{flex: 1}}>
@@ -178,35 +159,11 @@ const RNScreen3 = () => {
                     QuizzyStyles.continueButtonStyle,
                     continueButton(checkOption),
                   ]}
-                  onPress={() => Navigation.navigate('Screen 4')}>
+                  onPress={() => Navigation.navigate('RJS screen 9')}>
                   <Text style={{color: 'white'}}>Continue</Text>
                 </TouchableOpacity>
               </View>
             </View>
-            // <View style={{flex: 1, borderWidth: 1}}>
-            //   <View style={{flex: 2, justifyContent: 'flex-end'}}>
-            //     <View style={{justifyContent: 'flex-end'}}>
-            //       <ScrollView
-            //         contentContainerStyle={{
-            //           // flex: 1,
-            //           padding: 10,
-            //           borderColor: 'green',
-            //           borderWidth: 1,
-            //           backgroundColor: '#BFF6C3',
-            //           borderRadius: 10,
-            //           height: 'auto',
-            //         }}>
-            //         <Text style={{color: 'black'}}>Hi</Text>
-            //       </ScrollView>
-            //     </View>
-            //   </View>
-            //   <View
-            //     style={{flex: 1, justifyContent: 'flex-end', borderWidth: 1}}>
-            //     <TouchableOpacity style={{borderWidth: 1}}>
-            //       <Text style={{color: 'black'}}>button</Text>
-            //     </TouchableOpacity>
-            //   </View>
-            // </View>
           )}
         </View>
       </View>
@@ -214,4 +171,4 @@ const RNScreen3 = () => {
   );
 };
 
-export default RNScreen3;
+export default RJS_screen8;

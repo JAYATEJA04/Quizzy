@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,6 +19,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {QuizzyStyles} from '../../Components/QuizzyStyles';
 import Questions from '../../Components/Content';
+import {CountContext} from '../../Components/CountContext';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -33,6 +34,12 @@ const RNScreen = () => {
   const [indexOfTheOption, setIndexOfTheOption] = useState(null);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [selectedExplanation, setSelectedExplanation] = useState('');
+  const {
+    countCorrectOptions,
+    setCountCorrectOptions,
+    countWrongOptions,
+    setCountWrongOptions,
+  }: any = useContext(CountContext);
 
   const handleOptionSelected = (option, index) => {
     if (option.isItTrue) {
@@ -41,12 +48,14 @@ const RNScreen = () => {
       setPressed(true);
       setCheckOption(true);
       setSelectedExplanation(option.explanation);
+      setCountCorrectOptions(countCorrectOptions + 1);
     } else {
       setIndexOfTheOption(index);
       setShowContinueButton(true);
       setPressed(true);
       setCheckOption(false);
       setSelectedExplanation(option.explanation);
+      setCountWrongOptions(countWrongOptions + 1);
     }
   };
 
@@ -92,7 +101,7 @@ const RNScreen = () => {
           </Text>
         </View>
         {/* options view */}
-        <View style={QuizzyStyles.container}>
+        <View style={QuizzyStyles.optionsContainer}>
           <View style={QuizzyStyles.options_view}>
             <View style={{flexDirection: 'column'}}>
               {Questions[0].options.map((question, index) => (
@@ -119,7 +128,7 @@ const RNScreen = () => {
           </View>
         </View>
       </View>
-      <View style={{justifyContent: 'flex-end', flex: 2}}>
+      <View style={QuizzyStyles.explanation_continue_button_container}>
         <View style={{flex: 1, padding: 10}}>
           {showContinueButton && (
             <View style={{flex: 1}}>
@@ -156,6 +165,7 @@ const RNScreen = () => {
                 style={{
                   justifyContent: 'flex-end',
                   // flex: 1,
+                  // bottom: 50,
                   padding: 5,
                 }}>
                 <TouchableOpacity
