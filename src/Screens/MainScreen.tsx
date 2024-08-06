@@ -11,6 +11,7 @@ import {
   Dimensions,
   View,
   Alert,
+  Image,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Quest from '../Components/Questions';
@@ -46,129 +47,217 @@ const HomeScreen = () => {
       <View
         style={{
           justifyContent: 'space-evenly',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('React Native')}>
-          <Text style={{color: 'black'}}>React Native</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            React Native
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('ReactJS')}>
-          <Text style={{color: 'black'}}>ReactJS</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            ReactJS
+          </Text>
         </TouchableOpacity>
       </View>
       <View
         style={{
           justifyContent: 'space-evenly',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('JS Screen')}>
-          <Text style={{color: 'black'}}>JavaScript</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            JavaScript
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('TS Screen')}>
-          <Text style={{color: 'black'}}>TypeScript</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            TypeScript
+          </Text>
         </TouchableOpacity>
       </View>
       <View
         style={{
           justifyContent: 'space-evenly',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('JAVA Screen')}>
-          <Text style={{color: 'black'}}>JAVA</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            JAVA
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('API Screen')}>
-          <Text style={{color: 'black'}}>REST APIs</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            REST APIs
+          </Text>
         </TouchableOpacity>
       </View>
       <View
         style={{
           justifyContent: 'space-evenly',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('NODE Screen')}>
-          <Text style={{color: 'black'}}>NodeJS</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            NodeJS
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             margin: 10,
-            height: SCREEN_HEIGHT / 6,
-            width: SCREEN_WIDTH / 2.5,
-            borderWidth: 1,
-            borderRadius: 10,
+            height: SCREEN_HEIGHT / 8,
+            // width: SCREEN_WIDTH / 2.5,
+            // width: '100%',
+            // borderWidth: 1,
+            elevation: 3,
+            padding: 10,
+            borderRadius: 5,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
+            backgroundColor: '#ffffff',
           }}
           onPress={() => Navigation.navigate('GO Screen')}>
-          <Text style={{color: 'black'}}>Golang</Text>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'AlbertSans-Black',
+            }}>
+            Golang
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
