@@ -296,7 +296,26 @@ const MainScreen = () => {
           headerTransparent: true,
         }}
       />
-      <Stack.Screen name="JS Screen" component={JSScreen} />
+      <Stack.Screen
+        name="JS Screen"
+        component={JSScreen}
+        options={
+          {
+            // headerShown: false,
+            // headerTitleAlign: 'center',
+            // headerTitle: 'JavaScript',
+            // headerTitleStyle: {
+            //   color: '#ECDA1D',
+            //   fontSize: 25,
+            // },
+            // headerStyle: {
+            //   backgroundColor: 'orange',
+            // },
+            // headerShadowVisible: true,
+            // headerTransparent: true,
+          }
+        }
+      />
       <Stack.Screen name="TS Screen" component={TSScreen} />
       <Stack.Screen name="JAVA Screen" component={JAVAScreen} />
       <Stack.Screen name="API Screen" component={RESTAPIScreen} />
