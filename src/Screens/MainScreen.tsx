@@ -19,7 +19,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import RNScreen from './RNScreens/RNScreen';
 import {useNavigation} from '@react-navigation/native';
 import RJSScreen from './ReactJSScreen';
-import JSScreen from './JavaScriptScreen';
+import JSScreen from './JS_Screens/ALL_JS_Screens';
 import TSScreen from './TypeScriptScreen';
 import JAVAScreen from './JAVAScreen';
 import RESTAPIScreen from './APIScreen';
@@ -27,6 +27,7 @@ import NODEJSScreen from './NODEScreen';
 import GolangScreen from './GolangScreen';
 import AllRNScreens from './RNScreens/AllRNScreens';
 import All_ReactJS_Screens from './ReactJS_Screens/All_ReactJS_Screens';
+import All_JS_Screens from './JS_Screens/ALL_JS_Screens';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -298,7 +299,7 @@ const MainScreen = () => {
       />
       <Stack.Screen
         name="JS Screen"
-        component={JSScreen}
+        component={All_JS_Screens}
         options={
           {
             // headerShown: false,
