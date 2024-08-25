@@ -9,12 +9,15 @@ import {
   View,
 } from 'react-native';
 import JS_Fundamentals_Questions from '../../Components/JS_Components/JS_Fundamentals_questions';
+import {useNavigation} from '@react-navigation/native';
 
 const JS_Fundamentals_Quiz_Screen = ({route}) => {
-  const {question, options, correctAnswer, nextScreen} = route.params;
+  const {id, question, options, correctAnswer, nextScreen} = route.params;
 
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
+
+  const Navigation = useNavigation();
 
   const handleOptionSelected = option => {
     setOptionSelected(option);
@@ -56,7 +59,11 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
         <View style={{paddingTop: 45}} />
         <View style={{flex: 1}}>
           {/* question */}
-          <View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{color: 'black', fontSize: 20}}>
+              {id}
+              {'.) '}
+            </Text>
             <Text
               style={{
                 color: 'black',
@@ -84,82 +91,11 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
                     : null,
                 ]}
                 onPress={() => handleOptionSelected(option)}
-                // disabled={result}
-              >
+                disabled={result}>
                 <Text style={{fontSize: 16, color: 'black'}}>{option}</Text>
               </TouchableOpacity>
             </View>
           ))}
-          {/* <View style={{}}>
-            <View
-              style={{
-                paddingLeft: 20,
-                paddingTop: 10,
-              }}>
-              <TouchableOpacity
-                style={{
-                  paddingLeft: 10,
-                  height: 60,
-                  width: '100%',
-                  borderWidth: 1,
-                  borderColor: 'rgba(0, 0, 0, 0.2)',
-                  elevation: 3,
-                  backgroundColor: 'white',
-                  justifyContent: 'center',
-                  borderRadius: 8,
-                }}>
-                <Text style={{fontSize: 16, color: 'black'}}>String()</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{paddingLeft: 20, paddingTop: 10}}>
-              <TouchableOpacity
-                style={{
-                  paddingLeft: 10,
-                  height: 60,
-                  width: '100%',
-                  borderWidth: 1,
-                  borderColor: 'rgba(0, 0, 0, 0.2)',
-                  elevation: 3,
-                  backgroundColor: 'white',
-                  justifyContent: 'center',
-                  borderRadius: 8,
-                }}>
-                <Text style={{fontSize: 16, color: 'black'}}>String()</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{paddingLeft: 20, paddingTop: 10}}>
-              <TouchableOpacity
-                style={{
-                  paddingLeft: 10,
-                  height: 60,
-                  width: '100%',
-                  borderWidth: 1,
-                  borderColor: 'rgba(0, 0, 0, 0.2)',
-                  elevation: 3,
-                  backgroundColor: 'white',
-                  justifyContent: 'center',
-                  borderRadius: 8,
-                }}>
-                <Text style={{fontSize: 16, color: 'black'}}>String()</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{paddingLeft: 20, paddingTop: 10}}>
-              <TouchableOpacity
-                style={{
-                  paddingLeft: 10,
-                  height: 60,
-                  width: '100%',
-                  borderWidth: 1,
-                  borderColor: 'rgba(0, 0, 0, 0.2)',
-                  elevation: 3,
-                  backgroundColor: 'white',
-                  justifyContent: 'center',
-                  borderRadius: 8,
-                }}>
-                <Text style={{fontSize: 16, color: 'black'}}>String()</Text>
-              </TouchableOpacity>
-            </View>
-          </View> */}
           {/* Explanation view and continue button */}
           {result && (
             <View style={{flex: 1, paddingTop: 20}}>
@@ -171,41 +107,22 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
                 }
               />
               <View style={{flex: 1, paddingTop: 20}}>
-                <TouchableOpacity
-                  style={
-                    optionSelected === correctAnswer
-                      ? styles.continueButtonIfCorrect_Style
-                      : styles.continueButtonIfWrong_Style
-                  }>
-                  <Text style={{color: 'black', fontSize: 24}}>Continue</Text>
-                </TouchableOpacity>
+                {nextScreen ? (
+                  <TouchableOpacity
+                    style={
+                      optionSelected === correctAnswer
+                        ? styles.continueButtonIfCorrect_Style
+                        : styles.continueButtonIfWrong_Style
+                    }
+                    onPress={() => Navigation.navigate(nextScreen)}>
+                    <Text style={{color: 'black', fontSize: 24}}>Continue</Text>
+                  </TouchableOpacity>
+                ) : (
+                  <Text style={{color: 'black'}}>THE END!</Text>
+                )}
               </View>
             </View>
           )}
-          {/* <View style={{flex: 1, paddingTop: 20}}>
-            <View
-              style={{
-                height: 300,
-                width: '100%',
-                // paddingTop: 28,
-                backgroundColor: '#C7FFB7',
-                borderRadius: 8,
-                borderWidth: 1,
-                borderColor: 'rgba(0, 0, 0, 0.2)',
-              }}
-            />
-            <View style={{flex: 1, paddingTop: 20}}>
-              <TouchableOpacity
-                style={{
-                  height: 70,
-                  elevation: 3,
-                  backgroundColor: '#6FE427',
-                  borderRadius: 8,
-                  borderColor: 'rgba(111, 228, 39, 0.2)',
-                }}
-              />
-            </View>
-          </View> */}
         </View>
       </View>
     </View>

@@ -43,12 +43,13 @@ const All_JS_Screens = () => {
           name={`Question${index}`}
           component={JS_Fundamentals_Quiz_Screen}
           initialParams={{
+            id: question.id,
             question: question.question,
             options: question.options,
             correctAnswer: question.correctAnswer,
             nextScreen:
               index + 1 < JS_Fundamentals_Questions.length
-                ? `Question${index + 2}`
+                ? `Question${index + 1}`
                 : null,
           }}
         />

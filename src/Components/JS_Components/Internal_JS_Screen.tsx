@@ -38,18 +38,6 @@ const JS_Main_Screen = () => {
     Navigation.navigate(firstQuestionScreen);
   };
 
-  const handleLinkPress = url => {
-    Linking.canOpenURL(url)
-      .then(supported => {
-        if (supported) {
-          Linking.openURL(url);
-        } else {
-          console.log("Don't know how to open URI: " + url);
-        }
-      })
-      .catch(err => console.error('An error occurred', err));
-  };
-
   return (
     <View
       style={{
