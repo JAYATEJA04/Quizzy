@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   ScrollView,
@@ -23,7 +22,11 @@ const ReactNative_Main_Screen = () => {
       <View style={RN_Main_Screen_Styles.screenTitleView}>
         <Text style={RN_Main_Screen_Styles.screenTitleText}>ReactNative</Text>
       </View>
-      <ScrollView style={{flex: 1}} contentContainerStyle={{paddingTop: 20}}>
+      <ScrollView
+        style={RN_Main_Screen_Styles.scroll_view}
+        contentContainerStyle={
+          RN_Main_Screen_Styles.scroll_view_contentcontainer
+        }>
         <Text style={RN_Main_Screen_Styles.Introduction_Text_Style}>
           Imagine creating mobile apps using the JavaScript skills you already
           have. That's the power of React Native. It's not just another
@@ -61,37 +64,21 @@ const ReactNative_Main_Screen = () => {
           Doing one thing at a time is extremely important so its better to
           start with fundamentals.
         </Text>
-        <View style={{flex: 1}}>
+        <View style={RN_Main_Screen_Styles.Overall_View}>
           {/* First Fundamentals */}
-          <View style={{flex: 1, padding: 5}}>
+          <View style={RN_Main_Screen_Styles.SubTopic_View}>
             {/* First Fundamentals title */}
-            <View style={{}}>
-              <Text
-                style={{
-                  fontSize: 24,
-                  color: 'black',
-                  fontFamily: 'Montserrat-SemiBold',
-                }}>
+            <View>
+              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
                 First Fundamentals
               </Text>
             </View>
-            <View
-              style={{
-                padding: 10,
-                backgroundColor: '#E7FCFF',
-                borderWidth: 1,
-                borderRadius: 8,
-                borderColor: 'lightblue',
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    flex: 1,
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   These are the building blocks of React Native. Without
                   mastering the basics, as a developers you will struggle to
                   understand or implement more complex features. This category
@@ -99,138 +86,96 @@ const ReactNative_Main_Screen = () => {
                   layout, and basic user interaction.
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Topics you will be quizzed:
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Core Components and APIs
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginLeft: 20,
-                  alignItems: 'flex-start',
-                }}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Basic components (View, Text, Image, TextInput, ScrollView,
                   Button)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Handling text input
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Using a ScrollView
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Using List Views (FlatList, SectionList)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Styling and Layout (Flexbox)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Handling Touches (Buttons, Touchable components)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Using State and Props
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Platform Specific Code
                 </Text>
               </View>
-              <View style={{}}>
+              <View>
                 <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}
-                  onPress={() => Alert.alert("Let's gear up!")}>
+                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
+                  onPress={() => handle_RN_FundmentalsQuizButton()}>
                   <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}>
-                    Let’s gear up!{' '}
+                    style={
+                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
+                    }>
+                    Let’s get started!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
                 </TouchableOpacity>
@@ -238,196 +183,127 @@ const ReactNative_Main_Screen = () => {
             </View>
           </View>
           {/* Gearing up things! */}
-          <View style={{flex: 1, padding: 5}}>
+          <View style={RN_Main_Screen_Styles.SubTopic_View}>
             {/* Gear up title */}
-            <View style={{}}>
-              <Text
-                style={{
-                  fontSize: 24,
-                  color: 'black',
-                  fontFamily: 'Montserrat-SemiBold',
-                }}>
-                Gear up!
+            <View>
+              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
+                Gear up
               </Text>
             </View>
-            <View
-              style={{
-                padding: 10,
-                backgroundColor: '#E7FCFF',
-                borderWidth: 1,
-                borderRadius: 8,
-                borderColor: 'lightblue',
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text style={{color: 'black', fontSize: 14, fontWeight: '300'}}>
-                  Ready to level up? In the Gear Up section, we'll dive deeper
-                  into React Native's capabilities
+            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
+                  Ready to level up? In the gear up section, we'll dive deep
+                  into ReactNative's capabilities.
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Topics you will be quizzed:
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Navigation (React Navigation basics)
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginLeft: 20,
-                  alignItems: 'flex-start',
-                }}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Networking (using Fetch API)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
+                  Handling text input
+                </Text>
+              </View>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Images (handling and caching)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Animations (Animated API basics)
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Accessibility
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Timers
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Colors
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Device Information
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Transforms
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Handling App State changes
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
-                  Using Hermes Engine
-                </Text>
-              </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
-                  Performance Overview
-                </Text>
-              </View>
-              <View style={{}}>
+              <View>
                 <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}
-                  onPress={() => Alert.alert("Let's gear up!")}>
+                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
+                  onPress={() => Alert.alert('lets gear up!')}>
                   <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}>
+                    style={
+                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
+                    }>
                     Let’s gear up!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
@@ -436,181 +312,120 @@ const ReactNative_Main_Screen = () => {
             </View>
           </View>
           {/* Advance Topics */}
-          <View style={{flex: 1, padding: 5}}>
+          <View style={RN_Main_Screen_Styles.SubTopic_View}>
             {/* Advance topics title */}
-            <View style={{}}>
-              <Text
-                style={{
-                  fontSize: 24,
-                  color: 'black',
-                  fontFamily: 'Montserrat-SemiBold',
-                }}>
+            <View>
+              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
                 Advance topics
               </Text>
             </View>
-            <View
-              style={{
-                padding: 10,
-                backgroundColor: '#E7FCFF',
-                borderWidth: 1,
-                borderRadius: 8,
-                borderColor: 'lightblue',
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    flex: 1,
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Now we're talking! In this section, you'll explore the
-                  powerful features that make React Native shine
+                  powerful features that make ReactNative shine.
                 </Text>
               </View>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Topics you will be quizzed:
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Deep Linking
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginLeft: 20,
-                  alignItems: 'flex-start',
-                }}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
-                  Running On Device
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
+                  Running on device
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Debugging
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Testing
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Performance Optimization
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Security
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
-                  Native Components
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
                 </Text>
-              </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Native Modules
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
+                  Native Components
+                </Text>
+              </View>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Headless JS
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', marginLeft: 20}}>
-                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontWeight: '300',
-                  }}>
+              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
+                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
+                  {'\u2022'}{' '}
+                </Text>
+                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
                   Integration with Existing Apps
                 </Text>
               </View>
-              <View style={{}}>
+              <View>
                 <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}
-                  onPress={() => Alert.alert("Let's gear up!")}>
+                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
+                  onPress={() => Alert.alert('lets advance up!')}>
                   <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}>
-                    Let’s gear up!{' '}
+                    style={
+                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
+                    }>
+                    Let’s go!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
                 </TouchableOpacity>
@@ -641,12 +456,65 @@ const RN_Main_Screen_Styles = StyleSheet.create({
     color: 'lightblue',
     fontFamily: 'Poppins-Bold',
   },
+  scroll_view: {
+    flex: 1,
+  },
+  scroll_view_contentcontainer: {
+    paddingTop: 20,
+  },
   Introduction_Text_Style: {
     color: 'black',
     fontSize: 15,
     textAlign: 'justify',
   },
   Highlight_In_Introduction_Text_Style: {fontWeight: 'bold'},
+  Overall_View: {
+    flex: 1,
+  },
+  SubTopic_View: {
+    flex: 1,
+    padding: 5,
+  },
+  SubTopic_Title_Text: {
+    fontSize: 24,
+    color: 'black',
+    fontFamily: 'Montserrat-SemiBold',
+  },
+  sub_topic_container_view: {
+    padding: 10,
+    backgroundColor: '#E7FCFF',
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: 'lightblue',
+  },
+  Each_bullet_pointView: {
+    flexDirection: 'row',
+  },
+  bullet_point_style: {
+    color: 'black',
+    fontSize: 20,
+  },
+  bullet_point_text_style: {
+    flex: 1,
+    color: 'black',
+    fontSize: 14,
+    fontWeight: '300',
+  },
+  sub_bullet_point_view: {
+    flexDirection: 'row',
+    marginLeft: 20,
+  },
+  start_the_quiz_button_style: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  start_the_quiz_button_text_style: {
+    color: '#3C879C',
+    fontSize: 24,
+    textDecorationLine: 'underline',
+    fontFamily: 'Montserrat-Medium',
+  },
 });
 
 export default ReactNative_Main_Screen;
