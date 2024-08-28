@@ -62,7 +62,9 @@ const ReactNative_Main_Screen = () => {
           start with fundamentals.
         </Text>
         <View style={{flex: 1}}>
-          <View style={{}}>
+          {/* First Fundamentals */}
+          <View style={{flex: 1, padding: 5}}>
+            {/* First Fundamentals title */}
             <View style={{}}>
               <Text
                 style={{
@@ -75,36 +77,20 @@ const ReactNative_Main_Screen = () => {
             </View>
             <View
               style={{
-                flex: 1,
-                borderWidth: 1,
-                height: 'auto',
-                borderRadius: 8,
                 padding: 10,
                 backgroundColor: '#E7FCFF',
+                borderWidth: 1,
+                borderRadius: 8,
                 borderColor: 'lightblue',
               }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'flex-start',
-                  marginVertical: 5,
-                }}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
                 <Text
                   style={{
-                    fontSize: 20,
-                    color: 'black',
-                    fontWeight: '300',
-                    marginRight: 10,
-                  }}>
-                  {'\u2022'}
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
                     flex: 1,
                     color: 'black',
+                    fontSize: 14,
                     fontWeight: '300',
-                    // borderWidth: 1,
                   }}>
                   These are the building blocks of React Native. Without
                   mastering the basics, as a developers you will struggle to
@@ -113,272 +99,130 @@ const ReactNative_Main_Screen = () => {
                   layout, and basic user interaction.
                 </Text>
               </View>
-              <View style={{}}>
-                <View
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
                   style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginVertical: 5,
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
                   }}>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      color: 'black',
-                      fontWeight: '300',
-                      marginRight: 10,
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      flex: 1,
-                      color: 'black',
-                      fontWeight: '300',
-                    }}>
-                    Topics you will be quizzed:
-                  </Text>
-                </View>
-                <View
+                  Topics you will be quizzed:
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
                   style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
                   }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Core components and UI
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Basic components (View, Text, Image, TextInput, ScrollView,
-                    Button)
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Handling text input
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Using a ScrollView
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Using List Views (FlatList, SectionList)Using a ScrollView
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Styling and Layout (Flexbox)
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Handling Touches (Buttons, Touchable components)
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Using State and Props
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                  }}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontWeight: '300',
-                      paddingRight: 5,
-                      fontSize: 20,
-                      textAlign: 'center',
-                    }}>
-                    {'\u2022'}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 16,
-                      fontWeight: '300',
-                    }}>
-                    Platform Specific Code
-                  </Text>
-                </View>
+                  Core Components and APIs
+                </Text>
               </View>
               <View
                 style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
+                  flexDirection: 'row',
+                  marginLeft: 20,
+                  alignItems: 'flex-start',
                 }}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Basic components (View, Text, Image, TextInput, ScrollView,
+                  Button)
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Handling text input
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Using a ScrollView
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Using List Views (FlatList, SectionList)
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Styling and Layout (Flexbox)
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Handling Touches (Buttons, Touchable components)
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Using State and Props
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Platform Specific Code
+                </Text>
+              </View>
+              <View style={{}}>
                 <TouchableOpacity
                   style={{
-                    padding: 10,
+                    justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'row',
                   }}
-                  onPress={() => handle_RN_FundmentalsQuizButton()}>
+                  onPress={() => Alert.alert("Let's gear up!")}>
                   <Text
                     style={{
                       color: '#3C879C',
@@ -386,7 +230,7 @@ const ReactNative_Main_Screen = () => {
                       textDecorationLine: 'underline',
                       fontFamily: 'Montserrat-Medium',
                     }}>
-                    Let’s start the quiz!{' '}
+                    Let’s gear up!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
                 </TouchableOpacity>
@@ -394,7 +238,7 @@ const ReactNative_Main_Screen = () => {
             </View>
           </View>
           {/* Gearing up things! */}
-          <View style={{flex: 1, padding: 10, borderWidth: 1}}>
+          <View style={{flex: 1, padding: 5}}>
             {/* Gear up title */}
             <View style={{}}>
               <Text
@@ -591,6 +435,188 @@ const ReactNative_Main_Screen = () => {
               </View>
             </View>
           </View>
+          {/* Advance Topics */}
+          <View style={{flex: 1, padding: 5}}>
+            {/* Advance topics title */}
+            <View style={{}}>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: 'black',
+                  fontFamily: 'Montserrat-SemiBold',
+                }}>
+                Advance topics
+              </Text>
+            </View>
+            <View
+              style={{
+                padding: 10,
+                backgroundColor: '#E7FCFF',
+                borderWidth: 1,
+                borderRadius: 8,
+                borderColor: 'lightblue',
+              }}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    flex: 1,
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Now we're talking! In this section, you'll explore the
+                  powerful features that make React Native shine
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Topics you will be quizzed:
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Deep Linking
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginLeft: 20,
+                  alignItems: 'flex-start',
+                }}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Running On Device
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Debugging
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Testing
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Performance Optimization
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Security
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Native Components
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Native Modules
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Headless JS
+                </Text>
+              </View>
+              <View style={{flexDirection: 'row', marginLeft: 20}}>
+                <Text style={{color: 'black', fontSize: 20}}>{'\u2022'} </Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontWeight: '300',
+                  }}>
+                  Integration with Existing Apps
+                </Text>
+              </View>
+              <View style={{}}>
+                <TouchableOpacity
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                  }}
+                  onPress={() => Alert.alert("Let's gear up!")}>
+                  <Text
+                    style={{
+                      color: '#3C879C',
+                      fontSize: 24,
+                      textDecorationLine: 'underline',
+                      fontFamily: 'Montserrat-Medium',
+                    }}>
+                    Let’s gear up!{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -601,7 +627,7 @@ const RN_Main_Screen_Styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 15,
+    padding: 10,
   },
   screenTitleView: {
     height: 60,
