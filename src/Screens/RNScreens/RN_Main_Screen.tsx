@@ -482,7 +482,7 @@ const RN_Main_Screen_Styles = StyleSheet.create({
   },
   sub_topic_container_view: {
     padding: 10,
-    backgroundColor: '#E7FCFF',
+    backgroundColor: '#EEFDFF',
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'lightblue',
