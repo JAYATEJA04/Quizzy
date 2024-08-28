@@ -272,14 +272,16 @@ const MainScreen = () => {
       <Stack.Screen
         name="React Native"
         component={AllRNScreens}
-        options={{
-          headerShown: true,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: '#61DAFB',
-          },
-          headerTransparent: true,
-        }}
+        options={
+          {
+            // headerShown: true,
+            // headerTitleAlign: 'center',
+            // headerTitleStyle: {
+            //   color: '#61DAFB',
+            // },
+            // headerTransparent: true,
+          }
+        }
       />
       <Stack.Screen
         name="ReactJS"

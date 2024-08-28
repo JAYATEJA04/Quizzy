@@ -1,19 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
-  Alert,
+  ScrollView,
   StyleSheet,
   Text,
-  Touchable,
-  TouchableOpacity,
   View,
+  TouchableOpacity,
 } from 'react-native';
-import JS_Fundamentals_Questions from '../../Components/JS_Components/JS_Fundamentals_questions';
 import {useNavigation} from '@react-navigation/native';
+import {Alert} from 'react-native';
 
-const JS_Fundamentals_Quiz_Screen = ({route}) => {
-  const {id, question, options, correctAnswer, nextScreen} = route.params;
-
+const RN_FundamentalsQuizScreen = ({route}) => {
+  const {
+    id,
+    question,
+    options,
+    correctAnswer,
+    explanation,
+    referenceLink,
+    nextScreen,
+  } = route.params;
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
 
@@ -25,14 +31,7 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        padding: 10,
-        backgroundColor: 'white',
-      }}>
+    <View style={{flex: 1, padding: 10, backgroundColor: 'white'}}>
       <View
         style={{
           height: 60,
@@ -41,20 +40,18 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
           alignItems: 'center',
           borderBottomWidth: 1,
           borderBottomColor: '#e0e0e0',
-          // borderWidth: 1,
         }}>
         <Text
           style={{
             fontSize: 30,
-            color: '#FFD35A',
+            color: 'lightblue',
             // fontWeight: '500',
             fontFamily: 'Poppins-Bold',
           }}>
-          JavaScript
+          ReactNative
         </Text>
       </View>
-      {/* Question, Options, Explanation and next button */}
-      <View style={{padding: 10, flex: 1}}>
+      <ScrollView style={{flex: 1, padding: 10}}>
         {/* bar */}
         <View style={{paddingTop: 45}} />
         <View style={{flex: 1}}>
@@ -96,15 +93,69 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
           ))}
           {/* Explanation view and continue button */}
           {result && (
-            <View style={{flex: 1, paddingTop: 20}}>
+            <View
+              style={{
+                flex: 1,
+                marginTop: 20,
+                justifyContent: 'space-between',
+              }}>
               <View
                 style={
                   optionSelected === correctAnswer
                     ? styles.correctAnswerExplanationView
                     : styles.wrongAnswerExplanationView
-                }
-              />
-              <View style={{flex: 1, paddingTop: 20}}>
+                }>
+                <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'black',
+                      fontWeight: '300',
+                      textAlign: 'center',
+                    }}>
+                    {'\u2022'}{' '}
+                  </Text>
+                  <Text
+                    style={{
+                      color: 'black',
+                      fontSize: 14,
+                      fontWeight: '300',
+                      // borderWidth: 1,
+                    }}>
+                    {explanation}
+                  </Text>
+                </View>
+                <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'black',
+                      fontWeight: '300',
+                      textAlign: 'center',
+                    }}>
+                    {'\u2022'}{' '}
+                  </Text>
+                  <Text
+                    style={{
+                      color: 'black',
+                      fontSize: 14,
+                      fontWeight: '300',
+                    }}>
+                    For reference:{' '}
+                    <Text
+                      onPress={() => Alert.alert('you pressed a weblink')}
+                      style={{color: 'blue', textDecorationLine: 'underline'}}>
+                      {referenceLink}
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  marginTop: 20,
+                  justifyContent: 'flex-end',
+                }}>
                 {nextScreen ? (
                   <TouchableOpacity
                     style={
@@ -122,7 +173,7 @@ const JS_Fundamentals_Quiz_Screen = ({route}) => {
             </View>
           )}
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -162,18 +213,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   correctAnswerExplanationView: {
-    height: 300,
+    padding: 10,
+    height: 'auto',
     width: '100%',
-    // paddingTop: 28,
     backgroundColor: '#C7FFB7',
     borderRadius: 8,
     borderWidth: 1,
     borderColor: 'rgba(147, 250, 165, 0.8)',
   },
   wrongAnswerExplanationView: {
-    height: 300,
+    padding: 10,
+    height: 'auto',
     width: '100%',
-    // paddingTop: 28,
     backgroundColor: '#FFC5B2',
     borderRadius: 8,
     borderWidth: 1,
@@ -199,4 +250,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default JS_Fundamentals_Quiz_Screen;
+export default RN_FundamentalsQuizScreen;

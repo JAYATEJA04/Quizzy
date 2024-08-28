@@ -1,33 +1,37 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import RNScreen from './RNScreen';
-import RNScreen2 from './RNScreen2';
-import RNScreen3 from './RNScreen3';
-import RNScreen4 from './RNScreen4';
-import RNScreen5 from './RNScreen5';
-import RNScreen6 from './RNScreen6';
-import RNScreen7 from './RNScreen7';
-import RNScreen8 from './RNScreen8';
-import RNScreen9 from './RNScreen9';
-import RNScreen10 from './RNScreen10';
-import Dashboard from '../../Components/DashBoard';
+import ReactNative_Main_Screen from './RN_Main_Screen';
+import ReactNative_Fundamentals_Questions from '../../Components/ReactNative_Components/ReactNative_Fundamentals_Questions';
+import RN_FundamentalsQuizScreen from './RN_Fundamentals_Quiz_Screen';
 
 const Stack = createNativeStackNavigator();
 
 const AllRNScreens = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Screen 1" component={RNScreen} />
-      <Stack.Screen name="Screen 2" component={RNScreen2} />
-      <Stack.Screen name="Screen 3" component={RNScreen3} />
-      <Stack.Screen name="Screen 4" component={RNScreen4} />
-      <Stack.Screen name="Screen 5" component={RNScreen5} />
-      <Stack.Screen name="Screen 6" component={RNScreen6} />
-      <Stack.Screen name="Screen 7" component={RNScreen7} />
-      <Stack.Screen name="Screen 8" component={RNScreen8} />
-      <Stack.Screen name="Screen 9" component={RNScreen9} />
-      <Stack.Screen name="Screen 10" component={RNScreen10} />
-      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen
+        name="ReactNative Main Screen"
+        component={ReactNative_Main_Screen}
+      />
+      {ReactNative_Fundamentals_Questions.map((question, index) => (
+        <Stack.Screen
+          key={question.id}
+          name={`Question${index}`}
+          component={RN_FundamentalsQuizScreen}
+          initialParams={{
+            id: question.id,
+            question: question.question,
+            options: question.options,
+            correctAnswer: question.correctAnswer,
+            explanation: question.explanation,
+            referenceLink: question.referenceLink,
+            nextScreen:
+              index + 1 < ReactNative_Fundamentals_Questions.length
+                ? `Question${index + 1}`
+                : null,
+          }}
+        />
+      ))}
     </Stack.Navigator>
   );
 };

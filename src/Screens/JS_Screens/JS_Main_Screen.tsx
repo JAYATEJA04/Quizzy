@@ -27,7 +27,7 @@ import {
 } from '@react-navigation/native';
 import {QuizzyStyles} from '../Components/QuizzyStyles';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import JS_Fundamentals_Questions from './JS_Fundamentals_questions';
+import JS_Fundamentals_Questions from '../../Components/JS_Components/JS_Fundamentals_questions';
 const Stack = createNativeStackNavigator();
 
 const JS_Main_Screen = () => {

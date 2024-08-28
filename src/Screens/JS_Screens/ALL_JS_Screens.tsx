@@ -26,7 +26,7 @@ import {
 } from '@react-navigation/native';
 import {QuizzyStyles} from '../../Components/QuizzyStyles';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import JS_Main_Screen from '../../Components/JS_Components/Internal_JS_Screen';
+import JS_Main_Screen from './JS_Main_Screen';
 import JS_Fundamentals_Questions from '../../Components/JS_Components/JS_Fundamentals_questions';
 import JS_Fundamentals_Quiz_Screen from './JS_Fundamentals_Quiz_Screen';
 
