@@ -1,25 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   TouchableOpacity,
   Dimensions,
   View,
-  Alert,
-  Image,
 } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import Quest from '../Components/Questions';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import RNScreen from './RNScreens/RNScreen';
 import {useNavigation} from '@react-navigation/native';
-import RJSScreen from './ReactJSScreen';
-import JSScreen from './JS_Screens/ALL_JS_Screens';
 import TSScreen from './TypeScriptScreen';
 import JAVAScreen from './JAVAScreen';
 import RESTAPIScreen from './APIScreen';
@@ -54,9 +44,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -78,9 +65,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -108,9 +92,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -132,9 +113,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -269,20 +247,7 @@ const MainScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen
-        name="React Native"
-        component={AllRNScreens}
-        options={
-          {
-            // headerShown: true,
-            // headerTitleAlign: 'center',
-            // headerTitleStyle: {
-            //   color: '#61DAFB',
-            // },
-            // headerTransparent: true,
-          }
-        }
-      />
+      <Stack.Screen name="React Native" component={AllRNScreens} />
       <Stack.Screen
         name="ReactJS"
         component={All_ReactJS_Screens}
@@ -299,26 +264,7 @@ const MainScreen = () => {
           headerTransparent: true,
         }}
       />
-      <Stack.Screen
-        name="JS Screen"
-        component={All_JS_Screens}
-        options={
-          {
-            // headerShown: false,
-            // headerTitleAlign: 'center',
-            // headerTitle: 'JavaScript',
-            // headerTitleStyle: {
-            //   color: '#ECDA1D',
-            //   fontSize: 25,
-            // },
-            // headerStyle: {
-            //   backgroundColor: 'orange',
-            // },
-            // headerShadowVisible: true,
-            // headerTransparent: true,
-          }
-        }
-      />
+      <Stack.Screen name="JS Screen" component={All_JS_Screens} />
       <Stack.Screen name="TS Screen" component={TSScreen} />
       <Stack.Screen name="JAVA Screen" component={JAVAScreen} />
       <Stack.Screen name="API Screen" component={RESTAPIScreen} />
@@ -335,7 +281,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'F3F8FF',
   },
   TitleContainer1: {
-    // height: SCREEN_HEIGHT / 4,
     borderWidth: 1,
     height: 'auto',
     padding: 10,
@@ -343,7 +288,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   childContainer2: {
-    // height: SCREEN_HEIGHT / 4,
     margin: 5,
     height: 'auto',
   },
@@ -361,9 +305,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     margin: 5,
-  },
-  borderwidthOfAll: {
-    // borderWidth: 1,
   },
 });
 

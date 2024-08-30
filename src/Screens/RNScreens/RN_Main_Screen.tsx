@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   StyleSheet,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -19,6 +18,10 @@ const ReactNative_Main_Screen = () => {
 
   const handleRN_IntermediateTopics_quiz_button = () => {
     Navigation.navigate('Mid_Question0');
+  };
+
+  const handle_RN_AdvanceTopics_quiz_button = () => {
+    Navigation.navigate('AdvanceQuestion0');
   };
 
   return (
@@ -424,7 +427,7 @@ const ReactNative_Main_Screen = () => {
               <View>
                 <TouchableOpacity
                   style={RN_Main_Screen_Styles.start_the_quiz_button_style}
-                  onPress={() => Alert.alert('lets advance up!')}>
+                  onPress={() => handle_RN_AdvanceTopics_quiz_button()}>
                   <Text
                     style={
                       RN_Main_Screen_Styles.start_the_quiz_button_text_style
@@ -465,6 +468,7 @@ const RN_Main_Screen_Styles = StyleSheet.create({
   },
   scroll_view_contentcontainer: {
     paddingTop: 20,
+    padding: 5,
   },
   Introduction_Text_Style: {
     color: 'black',

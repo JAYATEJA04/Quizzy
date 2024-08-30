@@ -4,9 +4,9 @@ import ReactNative_Main_Screen from './RN_Main_Screen';
 import {
   ReactNative_Fundamentals_Quiz_Questions,
   ReactNative_Intermediate_Topics_Quiz_Questions,
+  ReactNative_Advance_Topics_Quiz_Questions,
 } from '../../Components/ReactNative_Components/ReactNative_Quiz_Questions';
-import RN_FundamentalsQuizScreen from './RN_Fundamentals_Quiz_Screen';
-import RN_MidLevel_quiz from './RN_IntermediateTopics_Quiz';
+import RN_Quiz_Screen from './RN_Quiz_Screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ const AllRNScreens = () => {
         <Stack.Screen
           key={question.id}
           name={`Question${index}`}
-          component={RN_FundamentalsQuizScreen}
+          component={RN_Quiz_Screen}
           initialParams={{
             id: question.id,
             question: question.question,
@@ -40,7 +40,7 @@ const AllRNScreens = () => {
         <Stack.Screen
           key={question.id}
           name={`Mid_Question${index}`}
-          component={RN_MidLevel_quiz}
+          component={RN_Quiz_Screen}
           initialParams={{
             id: question.id,
             question: question.question,
@@ -51,6 +51,25 @@ const AllRNScreens = () => {
             nextScreen:
               index + 1 < ReactNative_Intermediate_Topics_Quiz_Questions.length
                 ? `Mid_Question${index + 1}`
+                : null,
+          }}
+        />
+      ))}
+      {ReactNative_Advance_Topics_Quiz_Questions.map((question, index) => (
+        <Stack.Screen
+          key={question.id}
+          name={`AdvanceQuestion${index}`}
+          component={RN_Quiz_Screen}
+          initialParams={{
+            id: question.id,
+            question: question.question,
+            options: question.options,
+            correctAnswer: question.correctAnswer,
+            explanation: question.explanation,
+            referenceLink: question.referenceLink,
+            nextScreen:
+              index + 1 < ReactNative_Advance_Topics_Quiz_Questions.length
+                ? `AdvanceQuestion${index + 1}`
                 : null,
           }}
         />

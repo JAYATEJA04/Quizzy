@@ -381,3 +381,225 @@ export const ReactNative_Intermediate_Topics_Quiz_Questions = [
     referenceLink: 'https://reactnative.dev/docs/dimensions',
   },
 ];
+
+export const ReactNative_Advance_Topics_Quiz_Questions = [
+  {
+    id: 1,
+    question: 'What is the purpose of Hermes in React Native?',
+    options: [
+      'To improve app performance',
+      'To handle native module bridging',
+      'To manage app state',
+      'To handle deep linking',
+    ],
+    correctAnswer: 'To improve app performance',
+    explanation:
+      'Hermes is an open-source JavaScript engine optimized for running React Native on Android, helping to improve performance, particularly in terms of startup times.',
+    referenceLink: 'https://reactnative.dev/docs/profile-hermes',
+  },
+  {
+    id: 2,
+    question:
+      'Which of the following is NOT a valid method for debugging React Native apps?',
+    options: [
+      'Using Chrome Developer Tools',
+      'Using React Native Debugger',
+      'Using console.log statements',
+      'Using Visual Studio Debugger',
+    ],
+    correctAnswer: 'Using Visual Studio Debugger',
+    explanation:
+      'Visual Studio Debugger is generally used for .NET development, and not typically for React Native debugging.',
+    referenceLink: 'https://reactnative.dev/docs/debugging',
+  },
+  {
+    id: 3,
+    question:
+      'What is the primary purpose of the Metro bundler in React Native?',
+    options: [
+      'To bundle and serve the JavaScript code',
+      'To handle native module compilation',
+      'To manage app dependencies',
+      'To optimize images',
+    ],
+    correctAnswer: 'To bundle and serve the JavaScript code',
+    explanation:
+      'Metro is the JavaScript bundler used by React Native, responsible for bundling and serving the JavaScript code.',
+    referenceLink: 'https://reactnative.dev/docs/metro',
+  },
+  {
+    id: 4,
+    question:
+      'Which of the following is used to run JavaScript code in the background?',
+    options: ['BackgroundTask', 'Headless JS', 'Service Workers', 'AsyncTask'],
+    correctAnswer: 'Headless JS',
+    explanation:
+      'Headless JS allows running JavaScript code even when the app is in the background in React Native.',
+    referenceLink: 'https://reactnative.dev/docs/headless-js-android',
+  },
+  {
+    id: 5,
+    question: 'What is the purpose of the Systrace tool in React Native?',
+    options: [
+      'To analyze app performance',
+      'To handle system-level events',
+      'To manage system resources',
+      'To debug native code',
+    ],
+    correctAnswer: 'To analyze app performance',
+    explanation:
+      'Systrace is used for profiling and analyzing performance issues in React Native apps.',
+    referenceLink: 'https://reactnative.dev/docs/systrace',
+  },
+  {
+    id: 6,
+    question:
+      'Which of the following is NOT a valid way to optimize React Native app performance?',
+    options: [
+      'Using PureComponent',
+      'Implementing shouldComponentUpdate',
+      'Using FlatList instead of ScrollView for long lists',
+      'Always using Animated API for all animations',
+    ],
+    correctAnswer: 'Always using Animated API for all animations',
+    explanation:
+      'While the Animated API is useful, it may not always be necessary for all animations, and overuse can lead to performance issues.',
+    referenceLink: 'https://reactnative.dev/docs/animated',
+  },
+  {
+    id: 7,
+    question: 'What is the purpose of the react-native run-android command?',
+    options: [
+      'To start an Android emulator',
+      'To build and run the app on an Android device or emulator',
+      'To generate an Android APK',
+      'To start the Metro bundler for Android',
+    ],
+    correctAnswer: 'To build and run the app on an Android device or emulator',
+    explanation:
+      'The react-native run-android command builds and runs the React Native app on a connected Android device or emulator.',
+    referenceLink: 'https://reactnative.dev/docs/running-on-device',
+  },
+  {
+    id: 8,
+    question: 'How can you implement platform-specific code in React Native?',
+    options: [
+      'Using the Platform.select method',
+      'Using .ios.js and .android.js file extensions',
+      'Using the isPlatform prop',
+      'Both a and b are correct',
+    ],
+    correctAnswer: 'Both a and b are correct',
+    explanation:
+      'You can implement platform-specific code by using the Platform.select method or by using different file extensions like .ios.js and .android.js.',
+    referenceLink: 'https://reactnative.dev/docs/platform-specific-code',
+  },
+  {
+    id: 9,
+    question: 'What is the purpose of the Yoga layout engine in React Native?',
+    options: [
+      'To handle cross-platform layouts',
+      'To optimize JavaScript execution',
+      'To manage app state',
+      'To handle native module bridging',
+    ],
+    correctAnswer: 'To handle cross-platform layouts',
+    explanation:
+      'Yoga is a layout engine that enables cross-platform UI design by implementing a subset of Flexbox.',
+    referenceLink:
+      'https://reactnative.dev/blog/2024/08/12/release-0.75#yoga-31-and-layout-improvements',
+  },
+  {
+    id: 10,
+    question:
+      'Which of the following is NOT a valid method for integrating React Native into an existing native app?',
+    options: [
+      'Using a single React Native screen',
+      'Using multiple React Native components',
+      'Rewriting the entire app in React Native',
+      'Using React Native as a library',
+    ],
+    correctAnswer: 'Rewriting the entire app in React Native',
+    explanation:
+      'While you can integrate React Native into an existing native app, rewriting the entire app in React Native is not considered integration.',
+    referenceLink:
+      'https://reactnative.dev/docs/integration-with-existing-apps',
+  },
+  {
+    id: 11,
+    question:
+      'What is the purpose of the JSI (JavaScript Interface) in React Native?',
+    options: [
+      'To improve performance by allowing direct communication between JavaScript and native code',
+      'To provide a JavaScript-like interface for native modules',
+      'To handle JavaScript syntax in native code',
+      'To manage JavaScript dependencies',
+    ],
+    correctAnswer:
+      'To improve performance by allowing direct communication between JavaScript and native code',
+    explanation:
+      'The JSI (JavaScript Interface) allows for more efficient communication between JavaScript and native code, improving performance in React Native.',
+    referenceLink:
+      'https://reactnative.dev/architecture/glossary#javascript-interfaces-jsi',
+  },
+  {
+    id: 12,
+    question:
+      'Which of the following is used to handle memory leaks in React Native?',
+    options: [
+      'MemoryManager',
+      'LeakCanary',
+      'React Native Profiler',
+      'Instruments (for iOS)',
+    ],
+    correctAnswer: 'LeakCanary',
+    explanation:
+      'LeakCanary is an open-source tool used to detect memory leaks in Android applications, including those built with React Native.',
+    referenceLink: 'https://reactnative.dev/',
+  },
+  {
+    id: 13,
+    question: 'What is the purpose of the react-native-codegen package?',
+    options: [
+      'To generate native code from JavaScript',
+      'To generate JavaScript code from native modules',
+      'To optimize the build process',
+      'To handle code signing',
+    ],
+    correctAnswer: 'To generate JavaScript code from native modules',
+    explanation:
+      'The react-native-codegen package is used to generate JavaScript code from native modules, facilitating the integration of native code with JavaScript.',
+    referenceLink:
+      'https://reactnative.dev/blog/2022/11/22/react-native-core-contributor-summit-2022#react-native-codegen--typescript-support',
+  },
+  {
+    id: 14,
+    question: 'How can you implement custom native modules in React Native?',
+    options: [
+      'By creating a new npm package',
+      'By adding native code and bridging it to JavaScript',
+      'By using the CustomModule API',
+      'By extending the React Native core modules',
+    ],
+    correctAnswer: 'By adding native code and bridging it to JavaScript',
+    explanation:
+      'Custom native modules in React Native can be implemented by adding native code (Java/Objective-C) and creating a bridge to communicate with JavaScript.',
+    referenceLink: 'https://reactnative.dev/docs/native-modules-intro',
+  },
+  {
+    id: 15,
+    question:
+      'What is the purpose of the New Architecture (Fabric) in React Native?',
+    options: [
+      'To improve performance and reduce the bridge overhead',
+      'To provide a new set of core components',
+      'To handle state management more efficiently',
+      'To replace the existing JavaScript engine',
+    ],
+    correctAnswer: 'To improve performance and reduce the bridge overhead',
+    explanation:
+      "Fabric, part of React Native's New Architecture, aims to reduce the overhead caused by the bridge, improving performance.",
+    referenceLink:
+      'https://reactnative.dev/docs/the-new-architecture/landing-page',
+  },
+];
