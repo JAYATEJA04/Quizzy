@@ -1,4 +1,4 @@
-const ReactNative_Fundamentals_Questions = [
+export const ReactNative_Fundamentals_Quiz_Questions = [
   {
     id: 1,
     question: 'Which of the following is NOT a core component in React Native?',
@@ -188,4 +188,196 @@ const ReactNative_Fundamentals_Questions = [
   },
 ];
 
-export default ReactNative_Fundamentals_Questions;
+export const ReactNative_Intermediate_Topics_Quiz_Questions = [
+  {
+    id: 1,
+    question: 'Which library is commonly used for navigation in React Native?',
+    options: [
+      'React Navigation',
+      'React Router',
+      'React Native Router',
+      'Native Navigation',
+    ],
+    correctAnswer: 'React Navigation',
+    explanation:
+      'React Navigation provides a straightforward navigation solution, with the ability to present common stack navigation and tabbed navigation patterns on both Android and iOS.',
+    referenceLink: 'https://reactnavigation.org/',
+  },
+  {
+    id: 2,
+    question:
+      'What is the primary method used for making network requests in React Native?',
+    options: ['axios', 'fetch', 'request', 'ajax'],
+    correctAnswer: 'fetch',
+    explanation:
+      'React Native provides the Fetch API for your networking needs. Fetch will seem familiar if you have used XMLHttpRequest or other networking APIs before. ',
+    referenceLink: 'https://reactnative.dev/docs/network',
+  },
+  {
+    id: 3,
+    question:
+      'Which of the following is NOT a valid property of the Animated API?',
+    options: ['timing', 'spring', 'bounce', 'decay'],
+    correctAnswer: 'bounce',
+    explanation:
+      'The valid properties of the Animated API in React Native include timing, spring, and decay. However, bounce is not a valid property.',
+    referenceLink: 'https://reactnative.dev/docs/animations#animated-api',
+  },
+  {
+    id: 4,
+    question: 'How can you access device information in React Native?',
+    options: [
+      'Using the Device API',
+      'Using the Platform API',
+      'Using the DeviceInfo module from react-native-device-info',
+      'Using the SystemInfo API',
+    ],
+    correctAnswer: 'Using the DeviceInfo module from react-native-device-info',
+    explanation:
+      'The correct way to access device information in React Native is by using the DeviceInfo module from the "react-native-device-info" package.',
+    referenceLink:
+      'https://github.com/react-native-device-info/react-native-device-info',
+  },
+  {
+    id: 5,
+    question: 'What is the purpose of the AppState API in React Native?',
+    options: [
+      'To manage the overall state of the app',
+      'To detect when the app moves between foreground and background',
+      'To store app-wide data',
+      'To manage app settings',
+    ],
+    correctAnswer:
+      'To detect when the app moves between foreground and background',
+    explanation:
+      'The AppState API is used to detect when the app transitions between the foreground and background, allowing for handling such events.',
+    referenceLink: 'https://reactnative.dev/docs/appstate',
+  },
+  {
+    id: 6,
+    question:
+      'Which of the following is used to handle deep linking in React Native?',
+    options: ['DeepLink API', 'Linking API', 'URLScheme API', 'DeepRouter'],
+    correctAnswer: 'Linking API',
+    explanation:
+      'The Linking API in React Native is used to handle deep linking, allowing apps to respond to external URLs.',
+    referenceLink: 'https://reactnative.dev/docs/linking',
+  },
+  {
+    id: 7,
+    question: 'What is the purpose of the InteractionManager in React Native?',
+    options: [
+      'To manage user interactions',
+      'To schedule long-running tasks after interactions and animations have completed',
+      'To handle touch events',
+      'To manage component interactions',
+    ],
+    correctAnswer:
+      'To schedule long-running tasks after interactions and animations have completed',
+    explanation:
+      'InteractionManager allows you to schedule long-running tasks to run after animations and interactions have been completed.',
+    referenceLink: 'https://reactnative.dev/docs/interactionmanager',
+  },
+  {
+    id: 8,
+    question:
+      'Which of the following is NOT a valid transform property in React Native?',
+    options: ['scale', 'rotate', 'skew', 'move'],
+    correctAnswer: 'move',
+    explanation:
+      'In React Native, valid transform properties include "scale", "rotate", and "skew", but "move" is not a valid property.',
+    referenceLink: 'https://reactnative.dev/docs/transforms',
+  },
+  {
+    id: 9,
+    question: 'How can you implement a timer in React Native?',
+    options: [
+      'Using the Timer API',
+      'Using setTimeout and setInterval',
+      'Using the Clock component',
+      'Using the TimerMixin',
+    ],
+    correctAnswer: 'Using setTimeout and setInterval',
+    explanation:
+      'Timers in React Native can be implemented using the JavaScript functions setTimeout and setInterval.',
+    referenceLink: 'https://reactnative.dev/docs/timers',
+  },
+  {
+    id: 10,
+    question:
+      'What is the purpose of the AccessibilityInfo API in React Native?',
+    options: [
+      "To provide information about the device's accessibility settings",
+      'To make the app more accessible',
+      'To handle accessibility gestures',
+      'To add accessibility labels to components',
+    ],
+    correctAnswer:
+      "To provide information about the device's accessibility settings",
+    explanation:
+      "The AccessibilityInfo API provides information about the device's accessibility settings, such as whether the screen reader is enabled.",
+    referenceLink: 'https://reactnative.dev/docs/accessibilityinfo',
+  },
+  {
+    id: 11,
+    question: 'Which of the following is used to handle color in React Native?',
+    options: ['ColorPicker', 'PaletteManager', 'ColorValue type', 'ChromaAPI'],
+    correctAnswer: 'ColorValue type',
+    explanation:
+      'React Native uses the ColorValue type to handle color values in its components.',
+    referenceLink: 'https://reactnative.dev/docs/colors',
+  },
+  {
+    id: 12,
+    question: 'How can you persist data locally in a React Native app?',
+    options: [
+      'Using LocalStorage',
+      'Using AsyncStorage',
+      'Using SQLite',
+      'Both b and c are correct',
+    ],
+    correctAnswer: 'Both b and c are correct',
+    explanation:
+      'Data can be persisted locally in React Native using AsyncStorage for simple key-value storage and SQLite for relational database storage.',
+    referenceLink: 'https://reactnative.dev/docs/asyncstorage',
+  },
+  {
+    id: 13,
+    question: 'What is the purpose of the PixelRatio API in React Native?',
+    options: [
+      'To convert between device-independent pixels and physical pixels',
+      'To measure the screen size',
+      "To adjust the app's resolution",
+      'To handle image pixelation',
+    ],
+    correctAnswer:
+      'To convert between device-independent pixels and physical pixels',
+    explanation:
+      'The PixelRatio API in React Native is used to convert between device-independent pixels (dp) and physical pixels.',
+    referenceLink: 'https://reactnative.dev/docs/pixelratio',
+  },
+  {
+    id: 14,
+    question:
+      'Which of the following is NOT a valid method of the Animated API?',
+    options: ['start()', 'stop()', 'reset()', 'pause()'],
+    correctAnswer: 'pause()',
+    explanation:
+      'The Animated API includes methods like start(), stop(), and reset(), but pause() is not a valid method.',
+    referenceLink: 'https://reactnative.dev/docs/animations#animated-api',
+  },
+  {
+    id: 15,
+    question: 'How can you handle orientation changes in a React Native app?',
+    options: [
+      'Using the Orientation API',
+      'Using the Dimensions API',
+      'Using a third-party library like react-native-orientation',
+      'Both b and c are correct',
+    ],
+    correctAnswer: 'Both b and c are correct',
+    explanation:
+      'Orientation changes can be handled using the Dimensions API or third-party libraries like react-native-orientation.',
+    referenceLink: 'https://reactnative.dev/docs/dimensions',
+  },
+];

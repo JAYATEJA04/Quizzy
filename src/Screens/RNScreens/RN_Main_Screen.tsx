@@ -17,6 +17,10 @@ const ReactNative_Main_Screen = () => {
     Navigation.navigate('Question0');
   };
 
+  const handleRN_IntermediateTopics_quiz_button = () => {
+    Navigation.navigate('Mid_Question0');
+  };
+
   return (
     <View style={RN_Main_Screen_Styles.mainContainer}>
       <View style={RN_Main_Screen_Styles.screenTitleView}>
@@ -299,7 +303,7 @@ const ReactNative_Main_Screen = () => {
               <View>
                 <TouchableOpacity
                   style={RN_Main_Screen_Styles.start_the_quiz_button_style}
-                  onPress={() => Alert.alert('lets gear up!')}>
+                  onPress={() => handleRN_IntermediateTopics_quiz_button()}>
                   <Text
                     style={
                       RN_Main_Screen_Styles.start_the_quiz_button_text_style
