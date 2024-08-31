@@ -248,22 +248,7 @@ const MainScreen = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="React Native" component={AllRNScreens} />
-      <Stack.Screen
-        name="ReactJS"
-        component={All_ReactJS_Screens}
-        options={{
-          headerShown: true,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: '#61DAFB',
-          },
-          headerStyle: {
-            backgroundColor: 'beige',
-          },
-          headerShadowVisible: true,
-          headerTransparent: true,
-        }}
-      />
+      <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
       <Stack.Screen name="JS Screen" component={All_JS_Screens} />
       <Stack.Screen name="TS Screen" component={TSScreen} />
       <Stack.Screen name="JAVA Screen" component={JAVAScreen} />

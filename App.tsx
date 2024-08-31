@@ -7,8 +7,6 @@
  */
 
 import React from 'react';
-import {Text, View} from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainScreen from './src/Screens/MainScreen';
@@ -17,20 +15,6 @@ import {CountAnswers} from './src/Components/CountContext';
 import {ReactJSCountAnswers} from './src/Components/ReactJS_components/ReactJS_CountContext';
 
 const Stack = createNativeStackNavigator();
-
-const RNScreen = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#FF9800',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text style={{color: 'black'}}>Hello RN</Text>
-    </View>
-  );
-};
 
 const App = () => {
   return (
