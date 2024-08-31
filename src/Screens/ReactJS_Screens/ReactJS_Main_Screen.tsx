@@ -165,7 +165,10 @@ const ReactJS_MainScreen = () => {
                       fontSize: 24,
                       textDecorationLine: 'underline',
                       fontFamily: 'Montserrat-Medium',
-                    }}>
+                    }}
+                    onPress={() =>
+                      handle_RJS_Intermediate_Topics_Quiz_Button()
+                    }>
                     Let's gear up!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
@@ -205,7 +208,8 @@ const ReactJS_MainScreen = () => {
                       fontSize: 24,
                       textDecorationLine: 'underline',
                       fontFamily: 'Montserrat-Medium',
-                    }}>
+                    }}
+                    onPress={() => handle_RJS_Advance_Quiz_Button()}>
                     Let's go!{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
