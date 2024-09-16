@@ -17,8 +17,8 @@ import GolangScreen from './GolangScreen';
 import AllRNScreens from './RNScreens/AllRNScreens';
 import All_ReactJS_Screens from './ReactJS_Screens/All_ReactJS_Screens';
 import All_JS_Screens from './JS_Screens/ALL_JS_Screens';
-import All_TS_Screens from './TS_Screens/TypeScriptMainScreen';
 import TypeScriptMainScreen from './TS_Screens/TypeScriptMainScreen';
+import All_TS_Screens from './TS_Screens/All_TS_Screens';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
@@ -251,7 +251,7 @@ const MainScreen = () => {
       <Stack.Screen name="React Native" component={AllRNScreens} />
       <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
       <Stack.Screen name="JS Screen" component={All_JS_Screens} />
-      <Stack.Screen name="TS Screen" component={TypeScriptMainScreen} />
+      <Stack.Screen name="TS Screen" component={All_TS_Screens} />
       <Stack.Screen name="JAVA Screen" component={JAVAScreen} />
       <Stack.Screen name="API Screen" component={RESTAPIScreen} />
       <Stack.Screen name="NODE Screen" component={NODEJSScreen} />
