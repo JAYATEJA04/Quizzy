@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Alert} from 'react-native';
-import {ReactNative_Quiz_Screen_Styles} from '../../Components/ReactNative_Components/ReactNative_Quiz_Screen_Styles';
+import {Quiz_Screen_Styles} from '../../Components/Quiz_Screen_Styles';
 
 const TypeScript_Quiz_screen = ({route}) => {
   const {
@@ -25,99 +25,85 @@ const TypeScript_Quiz_screen = ({route}) => {
   };
 
   return (
-    <View style={ReactNative_Quiz_Screen_Styles.container}>
-      <View style={ReactNative_Quiz_Screen_Styles.TitleOnTopView}>
-        <Text style={ReactNative_Quiz_Screen_Styles.TitleOnTopTextStyle}>
-          ReactJS
-        </Text>
+    <View style={Quiz_Screen_Styles.container}>
+      <View style={Quiz_Screen_Styles.TitleOnTopView}>
+        <Text style={Quiz_Screen_Styles.TitleOnTopTextStyle}>ReactJS</Text>
       </View>
       <ScrollView
         contentContainerStyle={
-          ReactNative_Quiz_Screen_Styles.ScrollView_ContentContainerStyle
+          Quiz_Screen_Styles.ScrollView_ContentContainerStyle
         }>
-        <View style={ReactNative_Quiz_Screen_Styles.ProgressBarView} />
-        <View style={ReactNative_Quiz_Screen_Styles.Question_View}>
-          <Text style={ReactNative_Quiz_Screen_Styles.Question_Text_Style}>
+        <View style={Quiz_Screen_Styles.ProgressBarView} />
+        <View style={Quiz_Screen_Styles.Question_View}>
+          <Text style={Quiz_Screen_Styles.Question_Text_Style}>
             {id}
             {'.)'} {question}
           </Text>
         </View>
         {options.map((option, index) => (
-          <View key={index} style={ReactNative_Quiz_Screen_Styles.Options_View}>
+          <View key={index} style={Quiz_Screen_Styles.Options_View}>
             <TouchableOpacity
               style={[
-                ReactNative_Quiz_Screen_Styles.defaultOptionButtonStyle,
+                Quiz_Screen_Styles.defaultOptionButtonStyle,
                 optionSelected === option
                   ? option === correctAnswer
-                    ? ReactNative_Quiz_Screen_Styles.correctOptionButtonStyle
-                    : ReactNative_Quiz_Screen_Styles.wrongOptionButtonStyle
+                    ? Quiz_Screen_Styles.correctOptionButtonStyle
+                    : Quiz_Screen_Styles.wrongOptionButtonStyle
                   : null,
               ]}
               onPress={() => handleOptionSelected(option)}>
-              <Text style={ReactNative_Quiz_Screen_Styles.Options_Text_Style}>
+              <Text style={Quiz_Screen_Styles.Options_Text_Style}>
                 {option}
               </Text>
             </TouchableOpacity>
           </View>
         ))}
         {result && (
-          <View
-            style={
-              ReactNative_Quiz_Screen_Styles.Explanation_ContinueButton_View
-            }>
+          <View style={Quiz_Screen_Styles.Explanation_ContinueButton_View}>
             <View
               style={
                 optionSelected === correctAnswer
-                  ? ReactNative_Quiz_Screen_Styles.correctAnswerExplanation
-                  : ReactNative_Quiz_Screen_Styles.wrongAnswerExplanation
+                  ? Quiz_Screen_Styles.correctAnswerExplanation
+                  : Quiz_Screen_Styles.wrongAnswerExplanation
               }>
-              <View
-                style={ReactNative_Quiz_Screen_Styles.defaultExplanationView}>
-                <Text style={ReactNative_Quiz_Screen_Styles.BulletPointStyle}>
+              <View style={Quiz_Screen_Styles.defaultExplanationView}>
+                <Text style={Quiz_Screen_Styles.BulletPointStyle}>
                   {'\u2022'}{' '}
                 </Text>
-                <Text
-                  style={ReactNative_Quiz_Screen_Styles.ExplanationTextStyle}>
+                <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
                   {explanation}
                 </Text>
               </View>
-              <View
-                style={ReactNative_Quiz_Screen_Styles.defaultExplanationView}>
-                <Text style={ReactNative_Quiz_Screen_Styles.BulletPointStyle}>
+              <View style={Quiz_Screen_Styles.defaultExplanationView}>
+                <Text style={Quiz_Screen_Styles.BulletPointStyle}>
                   {'\u2022'}{' '}
                 </Text>
-                <Text
-                  style={ReactNative_Quiz_Screen_Styles.ExplanationTextStyle}>
+                <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
                   For further reference:{' '}
                   <Text
                     onPress={() => Alert.alert('YAYYY! you pressed a weblink!')}
-                    style={ReactNative_Quiz_Screen_Styles.ReferenceLinkStyle}>
+                    style={Quiz_Screen_Styles.ReferenceLinkStyle}>
                     {referenceLink}
                   </Text>
                 </Text>
               </View>
             </View>
             {nextScreen ? (
-              <View style={ReactNative_Quiz_Screen_Styles.ContinueButtonView}>
+              <View style={Quiz_Screen_Styles.ContinueButtonView}>
                 <TouchableOpacity
                   style={
                     optionSelected === correctAnswer
-                      ? ReactNative_Quiz_Screen_Styles.continueButtonIfCorrect
-                      : ReactNative_Quiz_Screen_Styles.continueButtonIfWrong
+                      ? Quiz_Screen_Styles.continueButtonIfCorrect
+                      : Quiz_Screen_Styles.continueButtonIfWrong
                   }
                   onPress={() => Navigation.navigate(nextScreen)}>
-                  <Text
-                    style={
-                      ReactNative_Quiz_Screen_Styles.ContinueButtonTextStyle
-                    }>
+                  <Text style={Quiz_Screen_Styles.ContinueButtonTextStyle}>
                     Continue
                   </Text>
                 </TouchableOpacity>
               </View>
             ) : (
-              <Text style={ReactNative_Quiz_Screen_Styles.TheEndTextStyle}>
-                tHE END!
-              </Text>
+              <Text style={Quiz_Screen_Styles.TheEndTextStyle}>tHE END!</Text>
             )}
           </View>
         )}
@@ -126,4 +112,4 @@ const TypeScript_Quiz_screen = ({route}) => {
   );
 };
 
-export default  TypeScript_Quiz_screen;
+export default TypeScript_Quiz_screen;

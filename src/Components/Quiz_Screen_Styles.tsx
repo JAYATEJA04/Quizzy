@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const ReactNative_Quiz_Screen_Styles = StyleSheet.create({
+export const Quiz_Screen_Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -14,7 +14,7 @@ export const ReactNative_Quiz_Screen_Styles = StyleSheet.create({
   },
   TitleOnTopTextStyle: {
     fontSize: 30,
-    color: '#58C4DC',
+    // color: '#58C4DC',
     fontFamily: 'Poppins-Bold',
   },
   ScrollView_ContentContainerStyle: {flex: 1, padding: 10},

@@ -10,25 +10,22 @@ import {
 } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-import JAVAScreen from './JAVAScreen';
-import RESTAPIScreen from './APIScreen';
 import NODEJSScreen from './NODEScreen';
-import GolangScreen from './GolangScreen';
 import AllRNScreens from './RNScreens/AllRNScreens';
 import All_ReactJS_Screens from './ReactJS_Screens/All_ReactJS_Screens';
 import All_JS_Screens from './JS_Screens/ALL_JS_Screens';
-import TypeScriptMainScreen from './TS_Screens/TypeScriptMainScreen';
 import All_TS_Screens from './TS_Screens/All_TS_Screens';
+import ALL_JAVA_Screens from './Java_Screens/ALL_Java_Screens';
 
 const Stack = createNativeStackNavigator();
-const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
+const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
 const HomeScreen = () => {
   const Navigation: any = useNavigation();
 
   return (
     <ScrollView style={styles.parentContainer}>
-      <View style={[styles.TitleContainer1, styles.borderwidthOfAll]}>
+      <View style={styles.TitleContainer1}>
         <Text style={styles.textCC1}>Quizzy</Text>
       </View>
       <View style={styles.childContainer2}>
@@ -141,9 +138,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -165,9 +159,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -195,9 +186,6 @@ const HomeScreen = () => {
           style={{
             margin: 10,
             height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
             elevation: 3,
             padding: 10,
             borderRadius: 5,
@@ -215,30 +203,6 @@ const HomeScreen = () => {
             NodeJS
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            // width: SCREEN_WIDTH / 2.5,
-            // width: '100%',
-            // borderWidth: 1,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('GO Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            Golang
-          </Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -252,10 +216,8 @@ const MainScreen = () => {
       <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
       <Stack.Screen name="JS Screen" component={All_JS_Screens} />
       <Stack.Screen name="TS Screen" component={All_TS_Screens} />
-      <Stack.Screen name="JAVA Screen" component={JAVAScreen} />
-      <Stack.Screen name="API Screen" component={RESTAPIScreen} />
+      <Stack.Screen name="JAVA Screen" component={ALL_JAVA_Screens} />
       <Stack.Screen name="NODE Screen" component={NODEJSScreen} />
-      <Stack.Screen name="GO Screen" component={GolangScreen} />
     </Stack.Navigator>
   );
 };

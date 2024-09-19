@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import {Quiz_Screen_Styles} from '../../Components/Quiz_Screen_Styles';
 
-const ReactJS_Quiz_Screen = ({route}) => {
+const Quiz_Screen = ({route}) => {
   const {
     id,
     question,
@@ -25,10 +25,30 @@ const ReactJS_Quiz_Screen = ({route}) => {
     setResult(!result);
   };
 
+  const getColorByScreenName = screenName => {
+    if (screenName === 'React Native') {
+      return 'lightblue';
+    } else if (screenName === 'React JS') {
+      return 'lightblue';
+    } else if (screenName === 'JavaScript') {
+      return '#FFD35A';
+    } else if (screenName === 'TypeScript') {
+      return '#3178C6';
+    } else if (screenName === 'JAVA') {
+      return '#E11F21';
+    }
+  };
+
   return (
     <View style={Quiz_Screen_Styles.container}>
       <View style={Quiz_Screen_Styles.TitleOnTopView}>
-        <Text style={Quiz_Screen_Styles.TitleOnTopTextStyle}>{screenName}</Text>
+        <Text
+          style={[
+            Quiz_Screen_Styles.TitleOnTopTextStyle,
+            {color: getColorByScreenName(screenName)},
+          ]}>
+          {screenName}
+        </Text>
       </View>
       <ScrollView
         contentContainerStyle={
@@ -113,4 +133,4 @@ const ReactJS_Quiz_Screen = ({route}) => {
   );
 };
 
-export default ReactJS_Quiz_Screen;
+export default Quiz_Screen;

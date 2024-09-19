@@ -1,27 +1,24 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import TypeScriptMainScreen from './TypeScriptMainScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-  TS_Advance_Quiz_Questions,
-  TS_Fundamentals_Quiz_Questions,
-  TS_GearUp_Quiz_Questions,
-} from '../../Components/TypeScript_Components/TypeScriptQuizQuestions';
-import TypeScript_Quiz_screen from './TS_Quiz_Screen';
+  JAVA_advancedQuestions,
+  JAVA_fundamentalsQuestions,
+  JAVA_intermediateQuestions,
+} from '../../Components/JAVA_Components/JAVA_Questions';
+import JAVAMainScreen from './JAVA_Main_Screen';
+import Quiz_Screen from '../QuizScreen/QuizScreen';
 
 const Stack = createNativeStackNavigator();
 
-const All_TS_Screens = () => {
+const ALL_JAVA_Screens = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen
-        name="TypeScript main screen"
-        component={TypeScriptMainScreen}
-      />
-      {TS_Fundamentals_Quiz_Questions.map((question, index) => (
+      <Stack.Screen name="ReactJS Main Screen" component={JAVAMainScreen} />
+      {JAVA_fundamentalsQuestions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`TS_Fundamental_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
+          name={`JAVA_Fundamental_quiz_question_${index}`}
+          component={Quiz_Screen}
           initialParams={{
             id: question.id,
             question: question.question,
@@ -29,19 +26,19 @@ const All_TS_Screens = () => {
             correctAnswer: question.correctAnswer,
             explanation: question.explanation,
             referenceLink: question.referenceLink,
-            screenName: 'TypeScript',
+            screenName: 'JAVA',
             nextScreen:
-              index + 1 < TS_Fundamentals_Quiz_Questions.length
-                ? `TS_Fundamental_quiz_question_${index + 1}`
+              index + 1 < JAVA_fundamentalsQuestions.length
+                ? `JAVA_Fundamental_quiz_question_${index + 1}`
                 : null,
           }}
         />
       ))}
-      {TS_GearUp_Quiz_Questions.map((question, index) => (
+      {JAVA_intermediateQuestions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`TS_GearUp_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
+          name={`JAVA_Intermediate_quiz_question_${index}`}
+          component={Quiz_Screen}
           initialParams={{
             id: question.id,
             question: question.question,
@@ -50,17 +47,17 @@ const All_TS_Screens = () => {
             explanation: question.explanation,
             referenceLink: question.referenceLink,
             nextScreen:
-              index + 1 < TS_GearUp_Quiz_Questions.length
-                ? `TS_GearUp_quiz_question_${index + 1}`
+              index + 1 < JAVA_intermediateQuestions.length
+                ? `JAVA_Intermediate_quiz_question_${index + 1}`
                 : null,
           }}
         />
       ))}
-      {TS_Advance_Quiz_Questions.map((question, index) => (
+      {JAVA_advancedQuestions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`TS_Advance_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
+          name={`JAVA_Advance_quiz_question_${index}`}
+          component={Quiz_Screen}
           initialParams={{
             id: question.id,
             question: question.question,
@@ -69,8 +66,8 @@ const All_TS_Screens = () => {
             explanation: question.explanation,
             referenceLink: question.referenceLink,
             nextScreen:
-              index + 1 < TS_Advance_Quiz_Questions.length
-                ? `TS_GearUp_quiz_question_${index + 1}`
+              index + 1 < JAVA_advancedQuestions.length
+                ? `JAVA_Advance_quiz_question_${index + 1}`
                 : null,
           }}
         />
@@ -79,4 +76,4 @@ const All_TS_Screens = () => {
   );
 };
 
-export default All_TS_Screens;
+export default ALL_JAVA_Screens;

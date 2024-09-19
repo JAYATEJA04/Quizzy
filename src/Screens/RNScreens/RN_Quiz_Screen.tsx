@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Alert} from 'react-native';
-import {ReactNative_Quiz_Screen_Styles} from '../../Components/ReactNative_Components/ReactNative_Quiz_Screen_Styles';
+import {ReactNative_Quiz_Screen_Styles} from '../../Components/Quiz_Screen_Styles';
 
 const RN_Quiz_Screen = ({route}) => {
   const {
