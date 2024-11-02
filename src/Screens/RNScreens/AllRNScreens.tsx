@@ -20,7 +20,7 @@ const AllRNScreens = () => {
       {ReactNative_Fundamentals_Quiz_Questions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`Question${index}`}
+          name={`RN_Fundamentals_quiz_question${index}`}
           component={RN_Quiz_Screen}
           initialParams={{
             id: question.id,
@@ -39,7 +39,7 @@ const AllRNScreens = () => {
       {ReactNative_Intermediate_Topics_Quiz_Questions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`Mid_Question${index}`}
+          name={`RN_Intermediate_quiz_question${index}`}
           component={RN_Quiz_Screen}
           initialParams={{
             id: question.id,
@@ -58,7 +58,7 @@ const AllRNScreens = () => {
       {ReactNative_Advance_Topics_Quiz_Questions.map((question, index) => (
         <Stack.Screen
           key={question.id}
-          name={`AdvanceQuestion${index}`}
+          name={`RN_Advance_quiz_question${index}`}
           component={RN_Quiz_Screen}
           initialParams={{
             id: question.id,

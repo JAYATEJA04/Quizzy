@@ -12,17 +12,102 @@ import Icon from 'react-native-vector-icons/FontAwesome6';
 const ReactNative_Main_Screen = () => {
   const Navigation = useNavigation();
 
-  const handle_RN_FundmentalsQuizButton = () => {
-    Navigation.navigate('Question0');
-  };
-
-  const handleRN_IntermediateTopics_quiz_button = () => {
-    Navigation.navigate('Mid_Question0');
-  };
-
-  const handle_RN_AdvanceTopics_quiz_button = () => {
-    Navigation.navigate('AdvanceQuestion0');
-  };
+  const Levels = [
+    {
+      level: 'First Fundamentals',
+      intro:
+        'Start here to learn the essentials of React Native, focusing on building basic components and understanding the core concepts. This stage will get you comfortable with creating simple mobile UIs.',
+      QuizButtonText: "Let's get started!",
+      ScreenName: 'RN_Fundamentals_quiz_question',
+      topics: [
+        {
+          title: 'Components & JSX',
+          description:
+            'Learn the basics of building UI using components and JSX syntax.',
+        },
+        {
+          title: 'Props & State',
+          description:
+            'Understand how to pass data and manage component memory.',
+        },
+        {
+          title: 'Styling',
+          description: 'Apply styles using React Native’s styling system.',
+        },
+        {
+          title: 'Basic Layouts',
+          description: 'Arrange components with Flexbox for responsive design.',
+        },
+        {
+          title: 'Handling Events',
+          description: 'Set up user interactions like taps and gestures.',
+        },
+      ],
+    },
+    {
+      level: 'Gear Up!',
+      intro:
+        'This category will help you expand your knowledge to create more dynamic, interactive, and organized apps. You’ll focus on managing data, navigating between screens, and handling more complex components.',
+      QuizButtonText: "Let's gear up!",
+      ScreenName: 'RN_Intermediate_quiz_question',
+      topics: [
+        {
+          title: 'Navigation',
+          description:
+            'Implement navigation between screens using React Navigation.',
+        },
+        {
+          title: 'State Management',
+          description:
+            'Manage app state efficiently with Context API or libraries like Redux.',
+        },
+        {
+          title: 'API Integration',
+          description:
+            'Fetch data from external sources and handle asynchronous operations.',
+        },
+        {
+          title: 'Forms & User Input',
+          description: 'Work with inputs, forms, and validation.',
+        },
+        {
+          title: 'React Native CLI',
+          description:
+            'Familiarize yourself with the command-line interface for better control.',
+        },
+      ],
+    },
+    {
+      level: 'Full throttle',
+      intro:
+        'At this level, you’ll explore features for building polished, high-performance apps. Expect to work with animations, native modules, and advanced optimization techniques.',
+      QuizButtonText: "Let's go!",
+      ScreenName: 'RN_Advance_quiz_question',
+      topics: [
+        {
+          title: 'Animations',
+          description:
+            'Create smooth animations using the Animated API or Reanimated.',
+        },
+        {
+          title: 'Performance Optimization',
+          description: 'Techniques to improve rendering speed and reduce lag.',
+        },
+        {
+          title: 'Custom Native Modules',
+          description: 'Integrate native code for extended functionality.',
+        },
+        {
+          title: 'Offline Functionality',
+          description: 'Implement features like local storage and caching.',
+        },
+        {
+          title: 'Testing & Debugging',
+          description: 'Ensure app stability with testing and debugging tools.',
+        },
+      ],
+    },
+  ];
 
   return (
     <View style={RN_Main_Screen_Styles.Container}>
@@ -31,7 +116,7 @@ const ReactNative_Main_Screen = () => {
       </View>
       <ScrollView style={RN_Main_Screen_Styles.ScrollViewStyle}>
         <View style={RN_Main_Screen_Styles.IntroductionView}>
-          <Text style={RN_Main_Screen_Styles.Introduction_Text_Style}>
+          <Text style={RN_Main_Screen_Styles.IntroductionTextStyle}>
             This section is designed to help you strengthen your knowledge of
             React Native and mobile app development. You’ll start with the
             fundamentals—learning about components, JSX, and basic styling to
@@ -43,374 +128,48 @@ const ReactNative_Main_Screen = () => {
             high-quality, production-ready apps.
           </Text>
         </View>
-        <View style={RN_Main_Screen_Styles.Overall_View}>
-          {/* First Fundamentals */}
-          <View style={RN_Main_Screen_Styles.SubTopic_View}>
-            {/* First Fundamentals title */}
-            <View>
-              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
-                First Fundamentals
-              </Text>
-            </View>
-            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
+        <View>
+          {Levels.map((level, index) => (
+            <View key={index} style={RN_Main_Screen_Styles.LevelViewContainer}>
+              <View style={RN_Main_Screen_Styles.SubTopicTitleView}>
+                <Text style={RN_Main_Screen_Styles.SubTopicTitleText}>
+                  {level.level}
                 </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  These are the building blocks of React Native. Without
-                  mastering the basics, as a developers you will struggle to
-                  understand or implement more complex features. This category
-                  ensures a solid foundation, covering the essential components,
-                  layout, and basic user interaction.
+                <View style={RN_Main_Screen_Styles.ThinLineView}>
+                  <Text style={RN_Main_Screen_Styles.ThinLine} />
+                </View>
+              </View>
+              <View style={RN_Main_Screen_Styles.IntroductionView}>
+                <Text style={RN_Main_Screen_Styles.IntroductionTextStyle}>
+                  {level.intro}
                 </Text>
               </View>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Topics you will be quizzed:
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Core Components and APIs
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Basic components (View, Text, Image, TextInput, ScrollView,
-                  Button)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Handling text input
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Using a ScrollView
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Using List Views (FlatList, SectionList)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Styling and Layout (Flexbox)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Handling Touches (Buttons, Touchable components)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Using State and Props
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Platform Specific Code
-                </Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
-                  onPress={() => handle_RN_FundmentalsQuizButton()}>
-                  <Text
-                    style={
-                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
-                    }>
-                    Let’s get started!{' '}
+              {level.topics.map((topic, topicIndex) => (
+                <View
+                  key={topicIndex}
+                  style={RN_Main_Screen_Styles.BulletPointView}>
+                  <Text style={RN_Main_Screen_Styles.BulletPointText}>
+                    •{' '}
+                    <Text
+                      style={RN_Main_Screen_Styles.BulletPointHighlightedText}>
+                      {topic.title}:
+                    </Text>{' '}
+                    {topic.description}
                   </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
+                </View>
+              ))}
+              <View style={RN_Main_Screen_Styles.StartTheQuizButtonView}>
+                <TouchableOpacity
+                  style={RN_Main_Screen_Styles.StartTheQuizButton}
+                  onPress={() => Navigation.navigate(`${level.ScreenName}0`)}>
+                  <Text style={RN_Main_Screen_Styles.StartTheQuizButtonText}>
+                    Let's get started!{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
-          {/* Gearing up things! */}
-          <View style={RN_Main_Screen_Styles.SubTopic_View}>
-            {/* Gear up title */}
-            <View>
-              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
-                Gear up
-              </Text>
-            </View>
-            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Ready to level up? In the gear up section, we'll dive deep
-                  into ReactNative's capabilities.
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Topics you will be quizzed:
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Navigation (React Navigation basics)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Networking (using Fetch API)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Handling text input
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Images (handling and caching)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Animations (Animated API basics)
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Accessibility
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Timers
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Colors
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Device Information
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Transforms
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Handling App State changes
-                </Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
-                  onPress={() => handleRN_IntermediateTopics_quiz_button()}>
-                  <Text
-                    style={
-                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
-                    }>
-                    Let’s gear up!{' '}
-                  </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          {/* Advance Topics */}
-          <View style={RN_Main_Screen_Styles.SubTopic_View}>
-            {/* Advance topics title */}
-            <View>
-              <Text style={RN_Main_Screen_Styles.SubTopic_Title_Text}>
-                Advance topics
-              </Text>
-            </View>
-            <View style={RN_Main_Screen_Styles.sub_topic_container_view}>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Now we're talking! In this section, you'll explore the
-                  powerful features that make ReactNative shine.
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.Each_bullet_pointView}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Topics you will be quizzed:
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Deep Linking
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Running on device
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Debugging
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Testing
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Performance Optimization
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Security
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Native Modules
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Native Components
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Headless JS
-                </Text>
-              </View>
-              <View style={RN_Main_Screen_Styles.sub_bullet_point_view}>
-                <Text style={RN_Main_Screen_Styles.bullet_point_style}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={RN_Main_Screen_Styles.bullet_point_text_style}>
-                  Integration with Existing Apps
-                </Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  style={RN_Main_Screen_Styles.start_the_quiz_button_style}
-                  onPress={() => handle_RN_AdvanceTopics_quiz_button()}>
-                  <Text
-                    style={
-                      RN_Main_Screen_Styles.start_the_quiz_button_text_style
-                    }>
-                    Let’s go!{' '}
-                  </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -437,65 +196,67 @@ const RN_Main_Screen_Styles = StyleSheet.create({
   ScrollViewStyle: {
     flex: 1,
   },
-  IntroductionView: {
-    marginTop: 10,
-  },
   scroll_view_contentcontainer: {
     paddingTop: 20,
     padding: 5,
   },
-  Introduction_Text_Style: {
+  IntroductionTextStyle: {
     color: 'black',
     fontSize: 14,
     fontFamily: 'OpenSans-Regular',
   },
-  Highlight_In_Introduction_Text_Style: {fontWeight: 'bold'},
-  Overall_View: {
-    flex: 1,
+  LevelViewContainer: {
+    flexDirection: 'column',
   },
-  SubTopic_View: {
-    flex: 1,
-    padding: 5,
+  SubTopicTitleView: {
+    marginTop: 10,
+    flexDirection: 'row',
   },
-  SubTopic_Title_Text: {
-    fontSize: 24,
+  SubTopicTitleText: {
+    fontSize: 20,
     color: 'black',
     fontFamily: 'Montserrat-SemiBold',
   },
-  sub_topic_container_view: {
-    padding: 10,
-    backgroundColor: '#EEFDFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: 'lightblue',
+  IntroductionView: {
+    marginTop: 10,
   },
-  Each_bullet_pointView: {
-    flexDirection: 'row',
-  },
-  bullet_point_style: {
-    color: 'black',
-    fontSize: 20,
-  },
-  bullet_point_text_style: {
+  ThinLineView: {
+    marginLeft: 10,
     flex: 1,
-    color: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ThinLine: {
+    height: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    width: '100%',
+  },
+  BulletPointView: {
+    marginLeft: 10,
+  },
+  BulletPointText: {
     fontSize: 14,
-    fontWeight: '300',
+    color: 'black',
+    fontFamily: 'OpenSans-Regular',
   },
-  sub_bullet_point_view: {
-    flexDirection: 'row',
-    marginLeft: 20,
+  BulletPointHighlightedText: {
+    fontWeight: 'bold',
   },
-  start_the_quiz_button_style: {
+  StartTheQuizButtonView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  StartTheQuizButton: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
-  start_the_quiz_button_text_style: {
-    color: '#3C879C',
-    fontSize: 24,
+  StartTheQuizButtonText: {
+    color: '#3178C6',
+    fontSize: 20,
+    fontFamily: 'OpenSans-Bold',
     textDecorationLine: 'underline',
-    fontFamily: 'Montserrat-Medium',
   },
 });
 
