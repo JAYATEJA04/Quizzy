@@ -25,52 +25,24 @@ const ReactNative_Main_Screen = () => {
   };
 
   return (
-    <View style={RN_Main_Screen_Styles.mainContainer}>
-      <View style={RN_Main_Screen_Styles.screenTitleView}>
+    <View style={RN_Main_Screen_Styles.Container}>
+      <View style={RN_Main_Screen_Styles.TitleViewContainer}>
         <Text style={RN_Main_Screen_Styles.screenTitleText}>ReactNative</Text>
       </View>
-      <ScrollView
-        style={RN_Main_Screen_Styles.scroll_view}
-        contentContainerStyle={
-          RN_Main_Screen_Styles.scroll_view_contentcontainer
-        }>
-        <Text style={RN_Main_Screen_Styles.Introduction_Text_Style}>
-          Imagine creating mobile apps using the JavaScript skills you already
-          have. That's the power of React Native. It's not just another
-          framework; it's a bridge between web and mobile development.
-          {'\n'}
-          {'\n'}
-          React Native lets you build mobile apps for both iOS and Android using
-          a single codebase. If you're familiar with React for web development,
-          you're already halfway there!
-          {'\n'}
-          {'\n'}
-          <Text
-            style={RN_Main_Screen_Styles.Highlight_In_Introduction_Text_Style}>
-            Here's why React Native is exciting:
+      <ScrollView style={RN_Main_Screen_Styles.ScrollViewStyle}>
+        <View style={RN_Main_Screen_Styles.IntroductionView}>
+          <Text style={RN_Main_Screen_Styles.Introduction_Text_Style}>
+            This section is designed to help you strengthen your knowledge of
+            React Native and mobile app development. You’ll start with the
+            fundamentals—learning about components, JSX, and basic styling to
+            build simple UIs. As you progress, you’ll dive into state
+            management, props, and navigation, understanding how to create
+            interactive and dynamic app experiences. Finally, in the advanced
+            topics, you’ll tackle animations, performance optimization, and
+            integrating native modules, gaining the skills to build
+            high-quality, production-ready apps.
           </Text>
-          {'\n'}
-          {'\t'}
-          {'\u2022'} You'll write JavaScript, but create truly native apps.
-          {'\n'}
-          {'\t'}
-          {'\u2022'} Your skills become instantly more versatile.
-          {'\n'}
-          {'\t'}
-          {'\u2022'} You can see your changes in real-time as you code.
-          {'\n'}
-          {'\t'}
-          {'\u2022'} It opens doors to both mobile and web development careers.
-          {'\n'}
-          {'\n'}
-          Don't worry if it sounds complex – we'll start with the basics. React
-          Native breaks down into simple, reusable components, making it easier
-          to understand and build upon.
-          {'\n'}
-          {'\n'}
-          Doing one thing at a time is extremely important so its better to
-          start with fundamentals.
-        </Text>
+        </View>
         <View style={RN_Main_Screen_Styles.Overall_View}>
           {/* First Fundamentals */}
           <View style={RN_Main_Screen_Styles.SubTopic_View}>
@@ -446,25 +418,27 @@ const ReactNative_Main_Screen = () => {
 };
 
 const RN_Main_Screen_Styles = StyleSheet.create({
-  mainContainer: {
+  Container: {
     flex: 1,
-    backgroundColor: 'white',
     padding: 10,
+    backgroundColor: 'white',
   },
-  screenTitleView: {
-    height: 60,
+  TitleViewContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },
   screenTitleText: {
-    fontSize: 30,
+    fontSize: 24,
     color: 'lightblue',
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Montserrat-Bold',
   },
-  scroll_view: {
+  ScrollViewStyle: {
     flex: 1,
+  },
+  IntroductionView: {
+    marginTop: 10,
   },
   scroll_view_contentcontainer: {
     paddingTop: 20,
@@ -472,8 +446,8 @@ const RN_Main_Screen_Styles = StyleSheet.create({
   },
   Introduction_Text_Style: {
     color: 'black',
-    fontSize: 15,
-    textAlign: 'justify',
+    fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
   },
   Highlight_In_Introduction_Text_Style: {fontWeight: 'bold'},
   Overall_View: {

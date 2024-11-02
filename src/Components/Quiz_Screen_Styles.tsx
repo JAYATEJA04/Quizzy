@@ -14,12 +14,13 @@ export const Quiz_Screen_Styles = StyleSheet.create({
   },
   TitleOnTopTextStyle: {
     fontSize: 30,
-    // color: '#58C4DC',
+    color: '#58C4DC',
     fontFamily: 'Poppins-Bold',
   },
   ScrollView_ContentContainerStyle: {flex: 1, padding: 10},
   ProgressBarView: {
-    paddingTop: 45,
+    flex: 1,
+    // borderWidth: 1,
   },
   Question_View: {
     padding: 5,

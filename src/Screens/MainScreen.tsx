@@ -212,7 +212,11 @@ const MainScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="React Native" component={AllRNScreens} />
+      <Stack.Screen
+        name="React Native"
+        component={AllRNScreens}
+        options={{gestureEnabled: false}}
+      />
       <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
       <Stack.Screen name="JS Screen" component={All_JS_Screens} />
       <Stack.Screen name="TS Screen" component={All_TS_Screens} />

@@ -17,6 +17,6 @@ export const progressBarSlice = createSlice({
 
 export const {increment, decrement} = progressBarSlice.actions;
 
-export const currentProgress = state => state.progress.value;
+export const currentProgress = (state: any) => state.progress.value;
 
 export default progressBarSlice.reducer;

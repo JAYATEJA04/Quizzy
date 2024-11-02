@@ -15,24 +15,45 @@ import {
 } from 'react-native';
 
 const ProgressBar = ({progress}) => {
-  const count = 0;
+  const [screenCount, setScreenCount] = useState(0);
+
+  const handlePress = ({screenCount}) => {
+    if (screenCount >= 15) {
+      Alert.alert('Done bey!');
+    }
+
+    if (screenCount < 15) {
+      setScreenCount(screenCount + 1);
+    }
+  };
+
+  const progressBarWidth = screenCount * 10;
+
   return (
-    <View style={styles.ProgressBarContainer}>
-      <View style={[styles.ProgressBarStyle, {width: `${progress}%`}]} />
+    <View style={styles.Container}>
+      <View style={styles.ProgressBar}>
+        <View style={[styles.ProgressFill, {width: `${progressBarWidth}%`}]} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  ProgressBarContainer: {
+  Container: {
+    flex: 1,
+    // padding: 5,
+    // justifyContent: 'center',
+    // borderWidth: 1,
+  },
+  ProgressBar: {
     width: '100%',
     height: 20,
-    borderWidth: 1,
-    borderRadius: 20,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 20,
   },
-  ProgressBarStyle: {
+  ProgressFill: {
     height: '100%',
     backgroundColor: 'green',
   },
