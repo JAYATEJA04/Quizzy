@@ -35,7 +35,7 @@ const ProgressBar = () => {
   //   }
   // };
 
-  const progressBarWidth = `${screenCount * 15}%`;
+  const progressBarWidth = `${(screenCount / 15) * 100}%`;
 
   return (
     <View style={styles.Container}>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   ProgressBar: {
     width: '100%',
     height: 20,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 20,

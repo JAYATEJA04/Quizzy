@@ -5,7 +5,7 @@ interface ProgressState {
 }
 
 const initialState: ProgressState = {
-  screenCount: 0,
+  screenCount: 1,
 };
 
 export const progressBar_Slice = createSlice({

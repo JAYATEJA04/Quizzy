@@ -5,7 +5,10 @@ import {Text, View, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import {Quiz_Screen_Styles} from '../../Components/Quiz_Screen_Styles';
 import ProgressBar from '../../Components/ProgressBar';
 import {useDispatch} from 'react-redux';
-import {increment} from '../../../redux store/features/progressBarSlice';
+import {
+  decrement,
+  increment,
+} from '../../../redux store/features/progressBarSlice';
 
 const RN_Quiz_Screen = ({route}: any) => {
   const {
@@ -34,14 +37,34 @@ const RN_Quiz_Screen = ({route}: any) => {
     dispatch(increment());
   };
 
-  useEffect(
-    () =>
-      Navigation.addListener('beforeRemove', e => {
-        e.preventDefault();
-        Alert.alert('You cant go back!');
-      }),
-    [Navigation],
-  );
+  useEffect(() => {
+    // Add listener for the 'beforeRemove' event
+    const unsubscribe = Navigation.addListener('beforeRemove', e => {
+      // Prevent the default behavior of leaving the screen
+      e.preventDefault();
+
+      // Show an alert asking the user if they want to discard changes
+      Alert.alert(
+        'Discard changes?',
+        'You have unsaved changes. Are you sure you want to discard them and leave the screen?',
+        [
+          {
+            text: 'Discard',
+            style: 'destructive',
+            // Remove the listener and navigate to MainScreen if user confirms
+            onPress: () => {
+              unsubscribe(); // Temporarily remove the 'beforeRemove' listener
+              dispatch(decrement());
+              Navigation.navigate('ReactNative Main Screen'); // Go to the MainScreen
+            },
+          },
+        ],
+      );
+    });
+
+    // Cleanup the listener on component unmount
+    return unsubscribe;
+  }, [Navigation]);
 
   return (
     <View style={Quiz_Screen_Styles.container}>
