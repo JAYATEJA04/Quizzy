@@ -1,22 +1,28 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const progressBarSlice = createSlice({
+interface ProgressState {
+  screenCount: number;
+}
+
+const initialState: ProgressState = {
+  screenCount: 0,
+};
+
+export const progressBar_Slice = createSlice({
   name: 'progress',
-  initialState: {
-    value: 10,
-  },
+  initialState,
   reducers: {
     increment: state => {
-      state.value += 10;
+      state.screenCount += 1;
     },
     decrement: state => {
-      state.value -= 10;
+      state.screenCount = 0;
     },
   },
 });
 
-export const {increment, decrement} = progressBarSlice.actions;
+export const {increment, decrement} = progressBar_Slice.actions;
 
 export const currentProgress = (state: any) => state.progress.value;
 
-export default progressBarSlice.reducer;
+export default progressBar_Slice.reducer;

@@ -13,26 +13,34 @@ import {
   Alert,
   Platform,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  decrement,
+  increment,
+} from '../../redux store/features/progressBarSlice';
+import {RootState} from '../../redux store/store/store';
 
-const ProgressBar = ({progress}) => {
-  const [screenCount, setScreenCount] = useState(0);
+const ProgressBar = () => {
+  const screenCount: any = useSelector(
+    (state: RootState) => state.progress.screenCount,
+  );
 
-  const handlePress = ({screenCount}) => {
-    if (screenCount >= 15) {
-      Alert.alert('Done bey!');
-    }
+  // const handlePress = ({screenCount}) => {
+  //   if (screenCount >= 15) {
+  //     Alert.alert('Done bey!');
+  //   }
 
-    if (screenCount < 15) {
-      setScreenCount(screenCount + 1);
-    }
-  };
+  //   if (screenCount < 15) {
+  //     setScreenCount(screenCount + 1);
+  //   }
+  // };
 
-  const progressBarWidth = screenCount * 10;
+  const progressBarWidth = `${screenCount * 15}%`;
 
   return (
     <View style={styles.Container}>
       <View style={styles.ProgressBar}>
-        <View style={[styles.ProgressFill, {width: `${progressBarWidth}%`}]} />
+        <View style={[styles.ProgressFill, {width: progressBarWidth}]} />
       </View>
     </View>
   );
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
     // padding: 5,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     // borderWidth: 1,
   },
   ProgressBar: {
@@ -52,6 +60,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    elevation: 2,
   },
   ProgressFill: {
     height: '100%',

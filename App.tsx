@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -13,21 +12,21 @@ import MainScreen from './src/Screens/MainScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {CountAnswers} from './src/Components/CountContext';
 import {ReactJSCountAnswers} from './src/Components/ReactJS_components/ReactJS_CountContext';
+import {Provider} from 'react-redux';
+import {store} from './redux store/store/store';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <CountAnswers>
-        <ReactJSCountAnswers>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerShown: false}}>
-              <Stack.Screen name="Mainscreen" component={MainScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </ReactJSCountAnswers>
-      </CountAnswers>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Mainscreen" component={MainScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </GestureHandlerRootView>
   );
 };

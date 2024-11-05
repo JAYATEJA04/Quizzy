@@ -31,7 +31,7 @@ const AllRNScreens = () => {
             referenceLink: question.referenceLink,
             nextScreen:
               index + 1 < ReactNative_Fundamentals_Quiz_Questions.length
-                ? `Question${index + 1}`
+                ? `RN_Fundamentals_quiz_question${index + 1}`
                 : null,
           }}
         />
@@ -50,7 +50,7 @@ const AllRNScreens = () => {
             referenceLink: question.referenceLink,
             nextScreen:
               index + 1 < ReactNative_Intermediate_Topics_Quiz_Questions.length
-                ? `Mid_Question${index + 1}`
+                ? `RN_Intermediate_quiz_question${index + 1}`
                 : null,
           }}
         />
@@ -69,7 +69,7 @@ const AllRNScreens = () => {
             referenceLink: question.referenceLink,
             nextScreen:
               index + 1 < ReactNative_Advance_Topics_Quiz_Questions.length
-                ? `AdvanceQuestion${index + 1}`
+                ? `RN_Advance_quiz_question${index + 1}`
                 : null,
           }}
         />

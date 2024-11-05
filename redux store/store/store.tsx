@@ -1,8 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import progressBarSlice from '../features/progressBarSlice';
+import progressBar_Slice from '../features/progressBarSlice';
 
 export const store = configureStore({
   reducer: {
-    progress: progressBarSlice,
+    progress: progressBar_Slice,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

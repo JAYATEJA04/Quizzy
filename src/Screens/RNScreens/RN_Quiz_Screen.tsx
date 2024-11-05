@@ -1,9 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import {Quiz_Screen_Styles} from '../../Components/Quiz_Screen_Styles';
 import ProgressBar from '../../Components/ProgressBar';
+import {useDispatch} from 'react-redux';
+import {increment} from '../../../redux store/features/progressBarSlice';
 
 const RN_Quiz_Screen = ({route}: any) => {
   const {
@@ -20,11 +22,26 @@ const RN_Quiz_Screen = ({route}: any) => {
   const [optionSelected, setOptionSelected] = useState(null);
 
   const Navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleOptionSelected = option => {
     setOptionSelected(option);
     setResult(!result);
   };
+
+  const handleContinueButton = () => {
+    Navigation.navigate(nextScreen);
+    dispatch(increment());
+  };
+
+  useEffect(
+    () =>
+      Navigation.addListener('beforeRemove', e => {
+        e.preventDefault();
+        Alert.alert('You cant go back!');
+      }),
+    [Navigation],
+  );
 
   return (
     <View style={Quiz_Screen_Styles.container}>
@@ -43,7 +60,7 @@ const RN_Quiz_Screen = ({route}: any) => {
             // borderWidth: 1,
           }}>
           <View style={Quiz_Screen_Styles.ProgressBarView}>
-            <ProgressBar progress={1} />
+            <ProgressBar />
           </View>
         </View>
         <View style={Quiz_Screen_Styles.Question_View}>
@@ -108,7 +125,7 @@ const RN_Quiz_Screen = ({route}: any) => {
                       ? Quiz_Screen_Styles.continueButtonIfCorrect
                       : Quiz_Screen_Styles.continueButtonIfWrong
                   }
-                  onPress={() => Navigation.navigate(nextScreen)}>
+                  onPress={() => handleContinueButton()}>
                   <Text style={Quiz_Screen_Styles.ContinueButtonTextStyle}>
                     Continue
                   </Text>
