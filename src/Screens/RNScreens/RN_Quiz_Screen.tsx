@@ -38,12 +38,9 @@ const RN_Quiz_Screen = ({route}: any) => {
   };
 
   useEffect(() => {
-    // Add listener for the 'beforeRemove' event
     const unsubscribe = Navigation.addListener('beforeRemove', e => {
-      // Prevent the default behavior of leaving the screen
       e.preventDefault();
 
-      // Show an alert asking the user if they want to discard changes
       Alert.alert(
         'Discard changes?',
         'You have unsaved changes. Are you sure you want to discard them and leave the screen?',
@@ -51,19 +48,24 @@ const RN_Quiz_Screen = ({route}: any) => {
           {
             text: 'Discard',
             style: 'destructive',
-            // Remove the listener and navigate to MainScreen if user confirms
             onPress: () => {
               unsubscribe(); // Temporarily remove the 'beforeRemove' listener
               dispatch(decrement());
-              Navigation.navigate('ReactNative Main Screen'); // Go to the MainScreen
+              Navigation.navigate('ReactNative Main Screen');
             },
+          },
+          {
+            text: 'Cancel',
+            style: 'cancel',
+            onPress: () => {},
           },
         ],
       );
     });
 
-    // Cleanup the listener on component unmount
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, [Navigation]);
 
   return (
@@ -112,33 +114,36 @@ const RN_Quiz_Screen = ({route}: any) => {
         ))}
         {result && (
           <View style={Quiz_Screen_Styles.Explanation_ContinueButton_View}>
-            <View
-              style={
-                optionSelected === correctAnswer
-                  ? Quiz_Screen_Styles.correctAnswerExplanation
-                  : Quiz_Screen_Styles.wrongAnswerExplanation
-              }>
-              <View style={Quiz_Screen_Styles.defaultExplanationView}>
-                <Text style={Quiz_Screen_Styles.BulletPointStyle}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
-                  {explanation}
-                </Text>
-              </View>
-              <View style={Quiz_Screen_Styles.defaultExplanationView}>
-                <Text style={Quiz_Screen_Styles.BulletPointStyle}>
-                  {'\u2022'}{' '}
-                </Text>
-                <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
-                  For further reference:{' '}
-                  <Text
-                    onPress={() => Alert.alert('YAYYY! you pressed a weblink!')}
-                    style={Quiz_Screen_Styles.ReferenceLinkStyle}>
-                    {referenceLink}
+            <View style={{flex: 3}}>
+              <ScrollView
+                style={
+                  optionSelected === correctAnswer
+                    ? Quiz_Screen_Styles.correctAnswerExplanation
+                    : Quiz_Screen_Styles.wrongAnswerExplanation
+                }>
+                <View style={Quiz_Screen_Styles.defaultExplanationView}>
+                  {/* <Text style={Quiz_Screen_Styles.BulletPointStyle}>
+                  </Text> */}
+                  <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
+                    • {explanation}
                   </Text>
-                </Text>
-              </View>
+                </View>
+                <View style={Quiz_Screen_Styles.defaultExplanationView}>
+                  <Text style={Quiz_Screen_Styles.BulletPointStyle}>
+                    {'\u2022'}{' '}
+                  </Text>
+                  <Text style={Quiz_Screen_Styles.ExplanationTextStyle}>
+                    For further reference:{' '}
+                    <Text
+                      onPress={() =>
+                        Alert.alert('YAYYY! you pressed a weblink!')
+                      }
+                      style={Quiz_Screen_Styles.ReferenceLinkStyle}>
+                      {referenceLink}
+                    </Text>
+                  </Text>
+                </View>
+              </ScrollView>
             </View>
             {nextScreen ? (
               <View style={Quiz_Screen_Styles.ContinueButtonView}>
