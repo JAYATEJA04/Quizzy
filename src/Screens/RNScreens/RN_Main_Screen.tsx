@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import RN_Fluid_Screen from './RN_Screen_Fluid';
 
 const ReactNative_Main_Screen = () => {
   const Navigation = useNavigation();
@@ -162,10 +161,9 @@ const ReactNative_Main_Screen = () => {
               <View style={RN_Main_Screen_Styles.StartTheQuizButtonView}>
                 <TouchableOpacity
                   style={RN_Main_Screen_Styles.StartTheQuizButton}
-                  // onPress={() => Navigation.navigate(`${level.ScreenName}0`)}
-                  onPress={() => Navigation.navigate('RN Fluid Screen')}>
+                  onPress={() => Navigation.navigate(`${level.ScreenName}`)}>
                   <Text style={RN_Main_Screen_Styles.StartTheQuizButtonText}>
-                    Let's get started!{' '}
+                    {level.QuizButtonText}{' '}
                   </Text>
                   <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
                 </TouchableOpacity>

@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import ProgressBar from '../../Components/ProgressBar';
-import {ReactNative_Fundamentals_Quiz_Questions} from '../../Components/ReactNative_Components/ReactNative_Quiz_Questions';
 import {useDispatch} from 'react-redux';
 import {
   decrement,
@@ -19,7 +18,8 @@ import {
 
 const {height} = Dimensions.get('window');
 
-const RN_Fluid_Screen = () => {
+const RN_Fluid_Screen = ({route}) => {
+  const {quizQuestions} = route.params;
   const [questionCount, setQuestionCount] = useState(0);
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
@@ -34,7 +34,7 @@ const RN_Fluid_Screen = () => {
   };
 
   const handleContinueButton = () => {
-    if (questionCount + 1 < ReactNative_Fundamentals_Quiz_Questions.length) {
+    if (questionCount + 1 < quizQuestions.length) {
       setQuestionCount(questionCount + 1);
       dispatch(increment());
       setOptionSelected(null);
@@ -50,12 +50,9 @@ const RN_Fluid_Screen = () => {
     }
   };
 
-  const correctAnswer =
-    ReactNative_Fundamentals_Quiz_Questions[questionCount].correctAnswer;
-  const explanation =
-    ReactNative_Fundamentals_Quiz_Questions[questionCount].explanation;
-  const referenceLink =
-    ReactNative_Fundamentals_Quiz_Questions[questionCount].referenceLink;
+  const correctAnswer = quizQuestions[questionCount].correctAnswer;
+  const explanation = quizQuestions[questionCount].explanation;
+  const referenceLink = quizQuestions[questionCount].referenceLink;
 
   return (
     <View style={RN_Fluid_Screen_Styles.Container}>
@@ -83,38 +80,36 @@ const RN_Fluid_Screen = () => {
       {/* The question view */}
       <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
         <Text style={RN_Fluid_Screen_Styles.QuestionText}>
-          {ReactNative_Fundamentals_Quiz_Questions[questionCount].question}
+          {quizQuestions[questionCount].question}
         </Text>
         <View style={RN_Fluid_Screen_Styles.OptionsContainer}>
-          {ReactNative_Fundamentals_Quiz_Questions[questionCount].options.map(
-            (option, index) => (
-              <View key={index} style={RN_Fluid_Screen_Styles.OptionView}>
-                <View style={RN_Fluid_Screen_Styles.OptionNumberView}>
-                  <Text style={RN_Fluid_Screen_Styles.OptionNumberText}>
-                    {index + 1}
-                    {'.)'}
-                  </Text>
-                </View>
-                <View style={RN_Fluid_Screen_Styles.OptionButtonView}>
-                  <TouchableOpacity
-                    style={[
-                      RN_Fluid_Screen_Styles.DefaultOptionButtonStyle,
-                      optionSelected === option
-                        ? option === correctAnswer
-                          ? RN_Fluid_Screen_Styles.CorrectOptionButtonStyle
-                          : RN_Fluid_Screen_Styles.WrongOptionButtonStyle
-                        : null,
-                    ]}
-                    onPress={() => handleOptionSelected(option)}
-                    disabled={disableOption}>
-                    <Text style={RN_Fluid_Screen_Styles.OptionText}>
-                      {option}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+          {quizQuestions[questionCount].options.map((option, index) => (
+            <View key={index} style={RN_Fluid_Screen_Styles.OptionView}>
+              <View style={RN_Fluid_Screen_Styles.OptionNumberView}>
+                <Text style={RN_Fluid_Screen_Styles.OptionNumberText}>
+                  {index + 1}
+                  {'.)'}
+                </Text>
               </View>
-            ),
-          )}
+              <View style={RN_Fluid_Screen_Styles.OptionButtonView}>
+                <TouchableOpacity
+                  style={[
+                    RN_Fluid_Screen_Styles.DefaultOptionButtonStyle,
+                    optionSelected === option
+                      ? option === correctAnswer
+                        ? RN_Fluid_Screen_Styles.CorrectOptionButtonStyle
+                        : RN_Fluid_Screen_Styles.WrongOptionButtonStyle
+                      : null,
+                  ]}
+                  onPress={() => handleOptionSelected(option)}
+                  disabled={disableOption}>
+                  <Text style={RN_Fluid_Screen_Styles.OptionText}>
+                    {option}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
           {result && (
             <View style={RN_Fluid_Screen_Styles.ResultExplanationContainer}>
               <View
