@@ -7,6 +7,7 @@ import {
   ReactNative_Advance_Topics_Quiz_Questions,
 } from '../../Components/ReactNative_Components/ReactNative_Quiz_Questions';
 import RN_Quiz_Screen from './RN_Quiz_Screen';
+import RN_Fluid_Screen from './RN_Screen_Fluid';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const AllRNScreens = () => {
         name="ReactNative Main Screen"
         component={ReactNative_Main_Screen}
       />
+      <Stack.Screen name="RN Fluid Screen" component={RN_Fluid_Screen} />
       {ReactNative_Fundamentals_Quiz_Questions.map((question, index) => (
         <Stack.Screen
           key={question.id}

@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // padding: 5,
     justifyContent: 'center',
+    alignItems: 'center',
     // borderWidth: 1,
   },
   ProgressBar: {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderRadius: 10,
     overflow: 'hidden',
-    marginBottom: 20,
+    // marginBottom: 20,
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.2)',
     elevation: 2,
