@@ -58,7 +58,7 @@ const Fluid_Screen = ({route}) => {
     <View style={RN_Fluid_Screen_Styles.Container}>
       <StatusBar backgroundColor={'black'} />
       <View style={RN_Fluid_Screen_Styles.TitleViewContainer}>
-        <Text style={RN_Fluid_Screen_Styles.screenTitleText}>React Native</Text>
+        <Text style={RN_Fluid_Screen_Styles.screenTitleText}>JavaScript</Text>
       </View>
       {/* X icon, Progress bar and heart icon */}
       <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>
@@ -158,7 +158,7 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
   },
   screenTitleText: {
     fontSize: 24,
-    color: 'lightblue',
+    color: '#D7BC39',
     fontFamily: 'Montserrat-Bold',
   },
   X_ProgressBar_Aura_container: {

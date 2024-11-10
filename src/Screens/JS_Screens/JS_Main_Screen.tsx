@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -34,761 +33,246 @@ const JS_Main_Screen = () => {
   const Navigation = useNavigation();
 
   const handleFundmentalsQuizButton = () => {
-    const firstQuestionScreen = `Question0`; // Replace with your logic
+    const firstQuestionScreen = 'Question0'; // Replace with your logic
     Navigation.navigate(firstQuestionScreen);
   };
 
+  const JavaScript_Quiz_Content = [
+    {
+      level: 'Fundamentals',
+      intro:
+        'Start here to learn the essentials of JavaScript, focusing on basic syntax, data types, and core concepts.',
+      QuizButtonText: "Let's get started!",
+      ScreenName: 'JS_Fundamentals_quiz_question',
+      topics: [
+        {
+          title: 'Variables & Data Types',
+          description: 'Understand how to store and manipulate data.',
+        },
+        {
+          title: 'Functions',
+          description: 'Learn how to write reusable blocks of code.',
+        },
+        {
+          title: 'Conditionals',
+          description:
+            'Control the flow of your program with if-else statements.',
+        },
+        {title: 'Loops', description: 'Execute repetitive tasks efficiently.'},
+        {
+          title: 'Basic DOM Manipulation',
+          description: 'Interact with web pages dynamically.',
+        },
+      ],
+    },
+    {
+      level: 'Intermediate',
+      intro:
+        'Build on your knowledge by learning about more complex data structures, debugging, and modularity.',
+      QuizButtonText: "Let's gear up!",
+      ScreenName: 'JS_Intermediate_quiz_question',
+      topics: [
+        {
+          title: 'Arrays & Objects',
+          description: 'Work with collections of data.',
+        },
+        {
+          title: 'ES6+ Features',
+          description:
+            'Use modern syntax like arrow functions and destructuring.',
+        },
+        {
+          title: 'Modules',
+          description: 'Organize your code into reusable pieces.',
+        },
+        {
+          title: 'Debugging',
+          description: 'Learn techniques to find and fix bugs in your code.',
+        },
+        {title: 'Events', description: 'Handle user interactions effectively.'},
+      ],
+    },
+    {
+      level: 'Advanced',
+      intro:
+        'Tackle advanced concepts like asynchronous programming, closures, and performance optimization.',
+      QuizButtonText: "Let's go!",
+      ScreenName: 'JS_Advance_quiz_question',
+      topics: [
+        {
+          title: 'Promises & Async/Await',
+          description: 'Handle asynchronous tasks gracefully.',
+        },
+        {
+          title: 'Closures',
+          description:
+            'Understand how functions can retain access to outer variables.',
+        },
+        {
+          title: 'Prototype & Inheritance',
+          description: "Dive into JavaScript's object-oriented features.",
+        },
+        {
+          title: 'Performance Optimization',
+          description: 'Write efficient, high-performance code.',
+        },
+        {
+          title: 'Design Patterns',
+          description: 'Apply proven solutions to common problems.',
+        },
+      ],
+    },
+  ];
+
   return (
-    <View
-      style={{
-        flex: 1,
-        // padding: 10,
-        // backgroundColor: '#FFEEAD',
-        backgroundColor: 'white',
-      }}>
-      <View
-        style={{
-          height: 60,
-          // backgroundColor: '#f8f8f8',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderBottomWidth: 1,
-          borderBottomColor: '#e0e0e0',
-        }}>
-        <Text
-          style={{
-            fontSize: 30,
-            color: '#FFD35A',
-            // fontWeight: '500',
-            fontFamily: 'Poppins-Bold',
-          }}>
-          JavaScript
-        </Text>
+    <View style={JS_Main_Screen_Styles.Container}>
+      <View style={JS_Main_Screen_Styles.TitleViewContainer}>
+        <Text style={JS_Main_Screen_Styles.screenTitleText}>JavaScript</Text>
       </View>
-      <ScrollView style={{flex: 1}} contentContainerStyle={{paddingTop: 20}}>
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Image
-            style={{height: 300, width: 300, borderRadius: 10}}
-            source={require('../../../assets/Images/jsintro.png')}
-          />
+      <ScrollView style={JS_Main_Screen_Styles.ScrollViewStyle}>
+        <View style={JS_Main_Screen_Styles.IntroductionView}>
+          <Text style={JS_Main_Screen_Styles.IntroductionTextStyle}>
+            This section is designed to help you strengthen your knowledge of
+            React Native and mobile app development. You’ll start with the
+            fundamentals—learning about components, JSX, and basic styling to
+            build simple UIs. As you progress, you’ll dive into state
+            management, props, and navigation, understanding how to create
+            interactive and dynamic app experiences. Finally, in the advanced
+            topics, you’ll tackle animations, performance optimization, and
+            integrating native modules, gaining the skills to build
+            high-quality, production-ready apps.
+          </Text>
         </View>
-        <Text
-          style={{
-            color: 'black',
-            padding: 20,
-            fontSize: 15,
-            textAlign: 'justify',
-            // flex: 1,
-          }}>
-          JavaScript is a versatile programming language primarily used to
-          create interactive and dynamic content on websites. If you are
-          aspiring for a developer role, learning JS would allow you to enhance
-          user experience by adding animations, form validations and other
-          features that makes web pages come alive. To work with HTML and CSS
-          seamlessly, JS is essential and it will help you in front-end
-          development. By learning JS you also can work with server-side
-          framework like Node.js, this makes JS a powerful tool for working in
-          client-side and server-side development. Let’s not make it
-          overwhelming for now, let’s focus on getting started instead. All the
-          best.
-          {'\n'}
-          {'\n'}
-          Doing one thing at a time is extremely important so its better for a
-          one who is learning to start with fundamentals, always a good move
-        </Text>
-        {/* <View style={styles.buttonView}>
-          <TouchableOpacity
-            onPress={() => Alert.alert('Bol bey')}
-            style={styles.buttonStyle}>
-            <Text style={styles.buttonTextStyle}>First fundamentals</Text>
-            <Icon name={'angle-right'} size={30} color="black" solid />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonStyle}>
-            <Text style={styles.buttonTextStyle}>Gear up</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonStyle}>
-            <Text style={styles.buttonTextStyle}>Advance topics</Text>
-          </TouchableOpacity>
-        </View> */}
-        <View style={{flex: 1, padding: 20}}>
-          <Text
-            style={{
-              fontSize: 24,
-              color: 'black',
-              fontFamily: 'Montserrat-SemiBold',
-            }}>
-            First Fundamentals
-          </Text>
-          <View
-            style={{
-              // bottom: 10,
-              flex: 1,
-              borderWidth: 1,
-              // height: 200,
-              height: 'auto',
-              borderRadius: 8,
-              padding: 10,
-              backgroundColor: '#FBFFDC',
-              borderColor: '#FFD93D',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Just do the bit, start with the bit and continue doing the bit.
-                Nothing else matters.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Attempting to master the fundamentals and sticking to it always
-                pays off well, fundamentals are the foundation of confidence
-                which reflects in our ability to problem solve.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-                // borderWidth: 1,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                  marginBottom: 5,
-                }}>
-                Here we will start off with concepts like:
-                {'\n'}
-                <View style={{flex: 1, paddingLeft: 20}}>
-                  <Text
-                    style={{fontSize: 15, fontWeight: '300', color: 'grey'}}>
-                    {'\u2022'} variables
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} data types
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} functions
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} control structures
-                  </Text>
-                </View>
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                If you have came prepared, well it so good of you and if not,
-                give some in going through the documentation. Remember
-                documentation is the truth and it makes your life easy too.
-              </Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 5,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  flex: 1,
-                  color: 'grey',
-                  fontSize: 16,
-                  fontWeight: '300',
-                  marginVertical: 5,
-                }}>
-                For fundamentals, going through this documentation would be a
-                great help.
-                {'\n'}
-                {/* <View style={{flex: 1}}>
-                  <TouchableOpacity
-                    onPress={() => handleLinkPress('https://javascript.info/')}>
-                    <Text
-                      style={{
-                        flex: 1,
-                        fontSize: 16,
-                        color: 'blue',
-                        textDecorationLine: 'underline',
-                      }}>
-                      JavaScript info
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() =>
-                      handleLinkPress('https://developer.mozilla.org/en-US/')
-                    }>
-                    <Text
-                      style={{
-                        flex: 1,
-                        fontSize: 16,
-                        color: 'blue',
-                        textDecorationLine: 'underline',
-                      }}>
-                      MDN Docs
-                    </Text>
-                  </TouchableOpacity>
-                </View> */}
-                <View>
-                  {/*
-                    add onPress() here and for the next button too
-                  */}
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        color: 'grey',
-                        fontStyle: 'italic',
-                        fontWeight: '100',
-                      }}>
-                      to be update
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        color: 'grey',
-                        fontStyle: 'italic',
-                        fontWeight: '100',
-                      }}>
-                      to be updated
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </Text>
-            </View>
-            <View
-              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <TouchableOpacity
-                style={{
-                  padding: 10,
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                }}
-                onPress={() => handleFundmentalsQuizButton()}>
-                <Text
-                  style={{
-                    // flex: 1,
-                    color: '#3C879C',
-                    fontSize: 24,
-                    textDecorationLine: 'underline',
-                    fontFamily: 'Montserrat-Medium',
-                    // justifyContent: 'center',
-                  }}>
-                  Let’s start the quiz!{' '}
+        <View>
+          {JavaScript_Quiz_Content.map((level, index) => (
+            <View key={index} style={JS_Main_Screen_Styles.LevelViewContainer}>
+              <View style={JS_Main_Screen_Styles.SubTopicTitleView}>
+                <Text style={JS_Main_Screen_Styles.SubTopicTitleText}>
+                  {level.level}
                 </Text>
-                <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <Text
-            style={{
-              fontSize: 24,
-              color: 'black',
-              fontFamily: 'Montserrat-SemiBold',
-            }}>
-            Gear up!
-          </Text>
-          <View
-            style={{
-              // top: ,
-              flex: 1,
-              borderWidth: 1,
-              // height: 200,
-              height: 'auto',
-              borderRadius: 8,
-              padding: 10,
-              backgroundColor: '#FBFFDC',
-              borderColor: '#FFD93D',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                In this section we will deal with topics like Objects and its
-                properties, Data types, Functions, Prototypes, Inheritance,
-                Classes, Error handling and miscellaneous topics.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                You really need to Gear up as things here require more time and
-                attention from you.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Having a good hold on fundamentals and intermediate topics like
-                in this section, will be a rewarding one as it help you become a
-                good developer to look up to.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Also remember JavaScript is never ending learning journey, you
-                might remember things now and score good in the quiz and move
-                on, but later when the same topics come around we might go
-                blank, so keep iterating around these topics is very essential.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Enough of this discussion, go for it now.
-              </Text>
-            </View>
-            <View
-              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <TouchableOpacity
-                style={{
-                  padding: 10,
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                }}
-                onPress={() => Alert.alert('Gearin up things!')}>
-                <Text
-                  style={{
-                    // flex: 1,
-                    color: '#3C879C',
-                    fontSize: 24,
-                    textDecorationLine: 'underline',
-                    fontFamily: 'Montserrat-Medium',
-                    // justifyContent: 'center',
-                  }}>
-                  Lets gear up!{' '}
+                <View style={JS_Main_Screen_Styles.ThinLineView}>
+                  <Text style={JS_Main_Screen_Styles.ThinLine} />
+                </View>
+              </View>
+              <View style={JS_Main_Screen_Styles.IntroductionView}>
+                <Text style={JS_Main_Screen_Styles.IntroductionTextStyle}>
+                  {level.intro}
                 </Text>
-                <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <Text
-            style={{
-              fontSize: 24,
-              color: 'black',
-              fontFamily: 'Montserrat-SemiBold',
-            }}>
-            Advance Topics
-          </Text>
-          <View
-            style={{
-              // top: ,
-              flex: 1,
-              borderWidth: 1,
-              // height: 200,
-              height: 'auto',
-              borderRadius: 8,
-              padding: 10,
-              backgroundColor: '#FBFFDC',
-              borderColor: '#FFD93D',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Just do the bit, start with the bit and continue doing the bit.
-                Nothing else matters.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                Attempting to master the fundamentals and sticking to it always
-                pays off well, fundamentals are the foundation of confidence
-                which reflects in our ability to problem solve.
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-                // borderWidth: 1,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                  marginBottom: 5,
-                }}>
-                Here we will start off with concepts like:
-                {'\n'}
-                <View style={{flex: 1, paddingLeft: 20}}>
-                  <Text
-                    style={{fontSize: 15, fontWeight: '300', color: 'grey'}}>
-                    {'\u2022'} variables
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} data types
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} functions
-                  </Text>
-                  <Text style={{fontSize: 15, fontWeight: '300'}}>
-                    {'\u2023'} control structures
+              </View>
+              {level.topics.map((topic, topicIndex) => (
+                <View
+                  key={topicIndex}
+                  style={JS_Main_Screen_Styles.BulletPointView}>
+                  <Text style={JS_Main_Screen_Styles.BulletPointText}>
+                    •{' '}
+                    <Text
+                      style={JS_Main_Screen_Styles.BulletPointHighlightedText}>
+                      {topic.title}:
+                    </Text>{' '}
+                    {topic.description}
                   </Text>
                 </View>
-              </Text>
+              ))}
+              <View style={JS_Main_Screen_Styles.StartTheQuizButtonView}>
+                <TouchableOpacity
+                  style={JS_Main_Screen_Styles.StartTheQuizButton}
+                  onPress={() => Navigation.navigate(`${level.ScreenName}`)}>
+                  <Text style={JS_Main_Screen_Styles.StartTheQuizButtonText}>
+                    {level.QuizButtonText}{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'#D7BC39'} size={30} />
+                </TouchableOpacity>
+              </View>
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 10,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 16,
-                  flex: 1,
-                  color: 'grey',
-                  fontWeight: '300',
-                }}>
-                If you have came prepared, well it so good of you and if not,
-                give some in going through the documentation. Remember
-                documentation is the truth and it makes your life easy too.
-              </Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                marginVertical: 5,
-              }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'grey',
-                  marginRight: 5,
-                  // fontFamily: 'Montserrat-SemiBold',
-                }}>
-                {'\u2022'}
-              </Text>
-              <Text
-                style={{
-                  flex: 1,
-                  color: 'grey',
-                  fontSize: 16,
-                  fontWeight: '300',
-                  marginVertical: 5,
-                }}>
-                For fundamentals, going through this documentation would be a
-                great help.
-                {'\n'}
-                {/* <View style={{flex: 1}}>
-                  <TouchableOpacity
-                    onPress={() => handleLinkPress('https://javascript.info/')}>
-                    <Text
-                      style={{
-                        flex: 1,
-                        fontSize: 16,
-                        color: 'blue',
-                        textDecorationLine: 'underline',
-                      }}>
-                      JavaScript info
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() =>
-                      handleLinkPress('https://developer.mozilla.org/en-US/')
-                    }>
-                    <Text
-                      style={{
-                        flex: 1,
-                        fontSize: 16,
-                        color: 'blue',
-                        textDecorationLine: 'underline',
-                      }}>
-                      MDN Docs
-                    </Text>
-                  </TouchableOpacity>
-                </View> */}
-                <View>
-                  {/*
-                    add onPress() here and for the next button too
-                  */}
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        color: 'grey',
-                        fontStyle: 'italic',
-                        fontWeight: '100',
-                      }}>
-                      to be update
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Text
-                      style={{
-                        color: 'grey',
-                        fontStyle: 'italic',
-                        fontWeight: '100',
-                      }}>
-                      to be updated
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </Text>
-            </View>
-            <View
-              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <TouchableOpacity
-                style={{
-                  padding: 10,
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                }}>
-                <Text
-                  style={{
-                    // flex: 1,
-                    color: '#3C879C',
-                    fontSize: 24,
-                    textDecorationLine: 'underline',
-                    fontFamily: 'Montserrat-Medium',
-                    // justifyContent: 'center',
-                  }}>
-                  Let’s go!{' '}
-                </Text>
-                <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-              </TouchableOpacity>
-            </View>
-          </View>
+          ))}
         </View>
       </ScrollView>
     </View>
   );
 };
+
+const JS_Main_Screen_Styles = StyleSheet.create({
+  Container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  TitleViewContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  screenTitleText: {
+    fontSize: 24,
+    color: '#D7BC39',
+    fontFamily: 'Montserrat-Bold',
+  },
+  ScrollViewStyle: {
+    flex: 1,
+  },
+  scroll_view_contentcontainer: {
+    paddingTop: 20,
+    padding: 5,
+  },
+  IntroductionTextStyle: {
+    color: 'black',
+    fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
+  },
+  LevelViewContainer: {
+    flexDirection: 'column',
+  },
+  SubTopicTitleView: {
+    marginTop: 10,
+    flexDirection: 'row',
+  },
+  SubTopicTitleText: {
+    fontSize: 20,
+    color: 'black',
+    fontFamily: 'Montserrat-SemiBold',
+  },
+  IntroductionView: {
+    marginTop: 10,
+  },
+  ThinLineView: {
+    marginLeft: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ThinLine: {
+    height: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    width: '100%',
+  },
+  BulletPointView: {
+    marginLeft: 10,
+  },
+  BulletPointText: {
+    fontSize: 14,
+    color: 'black',
+    fontFamily: 'OpenSans-Regular',
+  },
+  BulletPointHighlightedText: {
+    fontWeight: 'bold',
+  },
+  StartTheQuizButtonView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  StartTheQuizButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  StartTheQuizButtonText: {
+    color: '#D7BC39',
+    fontSize: 20,
+    fontFamily: 'OpenSans-Bold',
+    textDecorationLine: 'underline',
+  },
+});
 
 export default JS_Main_Screen;
