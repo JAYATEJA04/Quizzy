@@ -4,9 +4,9 @@ import TypeScriptMainScreen from './TypeScriptMainScreen';
 import {
   TS_Advance_Quiz_Questions,
   TS_Fundamentals_Quiz_Questions,
-  TS_GearUp_Quiz_Questions,
+  TS_Intermediate_Quiz_Questions,
 } from '../../Components/TypeScript_Components/TypeScriptQuizQuestions';
-import TypeScript_Quiz_screen from './TS_Quiz_Screen';
+import Fluid_Screen from '../Fluid_Screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,64 +17,30 @@ const All_TS_Screens = () => {
         name="TypeScript main screen"
         component={TypeScriptMainScreen}
       />
-      {TS_Fundamentals_Quiz_Questions.map((question, index) => (
-        <Stack.Screen
-          key={question.id}
-          name={`TS_Fundamental_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
-          initialParams={{
-            id: question.id,
-            question: question.question,
-            options: question.options,
-            correctAnswer: question.correctAnswer,
-            explanation: question.explanation,
-            referenceLink: question.referenceLink,
-            screenName: 'TypeScript',
-            nextScreen:
-              index + 1 < TS_Fundamentals_Quiz_Questions.length
-                ? `TS_Fundamental_quiz_question_${index + 1}`
-                : null,
-          }}
-        />
-      ))}
-      {TS_GearUp_Quiz_Questions.map((question, index) => (
-        <Stack.Screen
-          key={question.id}
-          name={`TS_GearUp_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
-          initialParams={{
-            id: question.id,
-            question: question.question,
-            options: question.options,
-            correctAnswer: question.correctAnswer,
-            explanation: question.explanation,
-            referenceLink: question.referenceLink,
-            nextScreen:
-              index + 1 < TS_GearUp_Quiz_Questions.length
-                ? `TS_GearUp_quiz_question_${index + 1}`
-                : null,
-          }}
-        />
-      ))}
-      {TS_Advance_Quiz_Questions.map((question, index) => (
-        <Stack.Screen
-          key={question.id}
-          name={`TS_Advance_quiz_question_${index}`}
-          component={TypeScript_Quiz_screen}
-          initialParams={{
-            id: question.id,
-            question: question.question,
-            options: question.options,
-            correctAnswer: question.correctAnswer,
-            explanation: question.explanation,
-            referenceLink: question.referenceLink,
-            nextScreen:
-              index + 1 < TS_Advance_Quiz_Questions.length
-                ? `TS_GearUp_quiz_question_${index + 1}`
-                : null,
-          }}
-        />
-      ))}
+      <Stack.Screen
+        name="TS_Fundamentals_Quiz_Question"
+        component={Fluid_Screen}
+        initialParams={{
+          quizQuestions: TS_Fundamentals_Quiz_Questions,
+          QuizTitle: 'TypeScript',
+        }}
+      />
+      <Stack.Screen
+        name="TS_Intermediate_Quiz_Question"
+        component={Fluid_Screen}
+        initialParams={{
+          quizQuestions: TS_Intermediate_Quiz_Questions,
+          QuizTitle: 'TypeScript',
+        }}
+      />
+      <Stack.Screen
+        name="TS_Advance_Quiz_Question"
+        component={Fluid_Screen}
+        initialParams={{
+          quizQuestions: TS_Advance_Quiz_Questions,
+          QuizTitle: 'TypeScript',
+        }}
+      />
     </Stack.Navigator>
   );
 };

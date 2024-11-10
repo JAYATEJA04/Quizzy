@@ -20,13 +20,17 @@ const AllRNScreens = () => {
       <Stack.Screen
         name="RN_Fundamentals_quiz_question"
         component={RN_Fluid_Screen}
-        initialParams={{quizQuestions: ReactNative_Fundamentals_Quiz_Questions}}
+        initialParams={{
+          quizQuestions: ReactNative_Fundamentals_Quiz_Questions,
+          QuizTitle: 'React Native',
+        }}
       />
       <Stack.Screen
         name="RN_Intermediate_quiz_question"
         component={RN_Fluid_Screen}
         initialParams={{
           quizQuestions: ReactNative_Intermediate_Topics_Quiz_Questions,
+          QuizTitle: 'React Native',
         }}
       />
       <Stack.Screen
@@ -34,6 +38,7 @@ const AllRNScreens = () => {
         component={RN_Fluid_Screen}
         initialParams={{
           quizQuestions: ReactNative_Advance_Topics_Quiz_Questions,
+          QuizTitle: 'React Native',
         }}
       />
     </Stack.Navigator>

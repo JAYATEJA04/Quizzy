@@ -155,27 +155,6 @@ const HomeScreen = () => {
             JAVA
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('API Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            REST APIs
-          </Text>
-        </TouchableOpacity>
       </View>
       <View
         style={{

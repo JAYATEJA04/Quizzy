@@ -11,225 +11,160 @@ import {useNavigation} from '@react-navigation/native';
 
 const JAVAMainScreen = () => {
   const Navigation = useNavigation();
+
+  const Java_Quiz_Content = [
+    {
+      level: 'Fundamentals',
+      intro:
+        'Start here to learn the essentials of Java, focusing on basic syntax, data types, and object-oriented principles.',
+      QuizButtonText: "Let's get started!",
+      ScreenName: 'JAVA_Fundamentals_Quiz_Question',
+      topics: [
+        {
+          title: 'Variables & Data Types',
+          description: 'Learn how to store and use different types of data.',
+        },
+        {
+          title: 'Control Flow',
+          description: 'Understand if-else, switch, and loops.',
+        },
+        {
+          title: 'Classes & Objects',
+          description: 'Explore the building blocks of Java programs.',
+        },
+        {
+          title: 'Methods',
+          description: 'Write reusable code blocks to perform tasks.',
+        },
+        {
+          title: 'Basic Exception Handling',
+          description: 'Handle errors gracefully.',
+        },
+      ],
+    },
+    {
+      level: 'Intermediate',
+      intro:
+        'Expand your skills by learning about more advanced Java features like collections and multithreading.',
+      QuizButtonText: "Let's gear up!",
+      ScreenName: 'JAVA_Intermediate_Quiz_Question',
+      topics: [
+        {
+          title: 'Collections Framework',
+          description: 'Work with dynamic data structures.',
+        },
+        {
+          title: 'Inheritance & Polymorphism',
+          description: 'Leverage object-oriented design.',
+        },
+        {
+          title: 'Interfaces & Abstract Classes',
+          description: 'Create flexible and scalable code.',
+        },
+        {
+          title: 'Multithreading',
+          description: 'Handle multiple tasks simultaneously.',
+        },
+        {title: 'I/O Streams', description: 'Read and write data efficiently.'},
+      ],
+    },
+    {
+      level: 'Advanced',
+      intro:
+        'Master Java’s advanced capabilities for handling large-scale applications and performance optimization.',
+      QuizButtonText: "Let's go!",
+      ScreenName: 'JAVA_Advance_Quiz_Question',
+      topics: [
+        {title: 'Generics', description: 'Write type-safe and reusable code.'},
+        {
+          title: 'Lambdas & Streams',
+          description: 'Simplify data processing with functional programming.',
+        },
+        {
+          title: 'JVM Internals',
+          description: 'Understand how Java runs under the hood.',
+        },
+        {
+          title: 'Concurrency Utilities',
+          description: 'Optimize performance with advanced thread management.',
+        },
+        {
+          title: 'Java 9+ Features',
+          description: 'Explore the latest additions to the language.',
+        },
+      ],
+    },
+  ];
+
   return (
-    <View style={JAVAMainScreenStyles.container}>
-      <View style={JAVAMainScreenStyles.TitleViewContainer}>
-        <Text style={JAVAMainScreenStyles.TitleText}>JAVA</Text>
+    <View style={Java_Main_Screen_Styles.Container}>
+      <View style={Java_Main_Screen_Styles.TitleViewContainer}>
+        <Text style={Java_Main_Screen_Styles.screenTitleText}>JAVA</Text>
       </View>
-      <ScrollView style={JAVAMainScreenStyles.ScrollViewStyle}>
-        <View style={JAVAMainScreenStyles.IntroductionView}>
-          <Text style={JAVAMainScreenStyles.IntroductionTextStyle}>
-            In this Java quiz, you’ll begin with the essentials like basic
-            types, loops, and methods—laying the foundation for understanding
-            how Java works. As you progress, you’ll dive deeper into
-            object-oriented programming, inheritance, and exception handling,
-            learning how to write more structured and reusable code. Finally,
-            you’ll tackle advanced topics like multithreading, collections, and
-            Java’s powerful features like streams and lambdas, preparing you to
-            handle complex problems with ease. Ready to sharpen your Java
-            skills? Let’s dive in! 🎯
+      <ScrollView style={Java_Main_Screen_Styles.ScrollViewStyle}>
+        <View style={Java_Main_Screen_Styles.IntroductionView}>
+          <Text style={Java_Main_Screen_Styles.IntroductionTextStyle}>
+            This quiz takes you through the fundamentals of Java programming,
+            object-oriented principles, and advanced features like
+            multithreading and streams. Whether you’re starting your coding
+            journey or aiming to sharpen your Java expertise, this section will
+            guide you step by step.
           </Text>
         </View>
-        <View style={JAVAMainScreenStyles.SubTopicTitleView}>
-          <Text style={JAVAMainScreenStyles.SubtopicTitleTextStyle}>
-            First Fundmentals
-          </Text>
-          <View style={JAVAMainScreenStyles.TheThinLineView}>
-            <Text style={JAVAMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={JAVAMainScreenStyles.SubTopicContentView}>
-          <Text style={JAVAMainScreenStyles.SubTopicTextStyle}>
-            This is where you’ll learn the core building blocks of TypeScript.
-            It’s all about getting comfortable with the basics and how
-            TypeScript improves JavaScript for better coding practices.
-          </Text>
-          <View style={JAVAMainScreenStyles.BulletPointView}>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Basic Syntax:
-              </Text>{' '}
-              Learn Java’s structure and syntax.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Variables & Data Types:
-              </Text>{' '}
-              Understand primitive types (int, double, char) and reference
-              types.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Control Flow:
-              </Text>
-              Master if-else, loops (for, while), and switch statements.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Methods:
-              </Text>{' '}
-              Create reusable blocks of code with methods.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Object-Oriented Basics:{' '}
-              </Text>
-              Introduction to classes, objects, and encapsulation.
-            </Text>
-          </View>
-          <View style={JAVAMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={JAVAMainScreenStyles.StartTheQuizButton}
-              onPress={() =>
-                Navigation.navigate('JAVA_Fundamental_quiz_question_0')
-              }>
-              <Text style={JAVAMainScreenStyles.StartTheQuizButtonText}>
-                Let's get started{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#E11F21'} size={30} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={JAVAMainScreenStyles.SubTopicTitleView}>
-          <Text style={JAVAMainScreenStyles.SubtopicTitleTextStyle}>
-            Gearing up!
-          </Text>
-          <View style={JAVAMainScreenStyles.TheThinLineView}>
-            <Text style={JAVAMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={JAVAMainScreenStyles.SubTopicContentView}>
-          <Text style={JAVAMainScreenStyles.SubTopicTextStyle}>
-            This level introduces more advanced concepts, focusing on organizing
-            code, handling errors, and building more efficient and scalable
-            programs.
-          </Text>
-          <View style={JAVAMainScreenStyles.BulletPointView}>
-            <Text style={JAVAMainScreenStyles.SubTopicTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Inheritance & Polymorphism:{' '}
-              </Text>
-              Dive into OOP principles like class hierarchy.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Abstract Classes & Interfaces:{' '}
-              </Text>{' '}
-              Design flexible and reusable code.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Exception Handling:{' '}
-              </Text>
-              Manage errors effectively using try-catch blocks.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Collections:{' '}
-              </Text>
-              Learn about lists, sets, and maps for managing data.
-            </Text>
-            <Text style={JAVAMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                File Handling:{' '}
-              </Text>
-              Work with input and output streams.
-            </Text>
-          </View>
-          <View style={JAVAMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={JAVAMainScreenStyles.StartTheQuizButton}
-              onPress={() =>
-                Navigation.navigate('JAVA_Intermediate_quiz_question_0')
-              }>
-              <Text style={JAVAMainScreenStyles.StartTheQuizButtonText}>
-                Let's gear up!{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#E11F21'} size={30} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={JAVAMainScreenStyles.SubTopicTitleView}>
-          <Text style={JAVAMainScreenStyles.SubtopicTitleTextStyle}>
-            Advance
-          </Text>
-          <View style={JAVAMainScreenStyles.TheThinLineView}>
-            <Text style={JAVAMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={JAVAMainScreenStyles.SubTopicContentView}>
-          <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-            At this stage, you’ll tackle complex problems, learn to optimize
-            performance, and explore Java’s powerful features for
-            professional-level applications.
-          </Text>
-          <View style={JAVAMainScreenStyles.BulletPointView}>
-            <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Multithreading:
-              </Text>{' '}
-              Execute multiple tasks in parallel for better performance.
-            </Text>
-            <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Lambda Expressions:
-              </Text>{' '}
-              Write concise and functional code.
-            </Text>
-            <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Streams API:{' '}
-              </Text>
-              Process collections efficiently.
-            </Text>
-            <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                Generics:{' '}
-              </Text>
-              Create flexible and type-safe code.
-            </Text>
-            <Text style={JAVAMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={JAVAMainScreenStyles.BulletPointBoldStyle}>
-                JVM Internals:{' '}
-              </Text>
-              Understand memory management and garbage collection.
-            </Text>
-          </View>
-          <View style={JAVAMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={JAVAMainScreenStyles.StartTheQuizButton}
-              onPress={() =>
-                Navigation.navigate('JAVA_Intermediate_quiz_question_0')
-              }>
-              <Text style={JAVAMainScreenStyles.StartTheQuizButtonText}>
-                Let's go!{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#E11F21'} size={30} />
-            </TouchableOpacity>
-          </View>
+        <View>
+          {Java_Quiz_Content.map((level, index) => (
+            <View
+              key={index}
+              style={Java_Main_Screen_Styles.LevelViewContainer}>
+              <View style={Java_Main_Screen_Styles.SubTopicTitleView}>
+                <Text style={Java_Main_Screen_Styles.SubTopicTitleText}>
+                  {level.level}
+                </Text>
+                <View style={Java_Main_Screen_Styles.ThinLineView}>
+                  <Text style={Java_Main_Screen_Styles.ThinLine} />
+                </View>
+              </View>
+              <View style={Java_Main_Screen_Styles.IntroductionView}>
+                <Text style={Java_Main_Screen_Styles.IntroductionTextStyle}>
+                  {level.intro}
+                </Text>
+              </View>
+              {level.topics.map((topic, topicIndex) => (
+                <View
+                  key={topicIndex}
+                  style={Java_Main_Screen_Styles.BulletPointView}>
+                  <Text style={Java_Main_Screen_Styles.BulletPointText}>
+                    •{' '}
+                    <Text
+                      style={
+                        Java_Main_Screen_Styles.BulletPointHighlightedText
+                      }>
+                      {topic.title}:
+                    </Text>{' '}
+                    {topic.description}
+                  </Text>
+                </View>
+              ))}
+              <View style={Java_Main_Screen_Styles.StartTheQuizButtonView}>
+                <TouchableOpacity
+                  style={Java_Main_Screen_Styles.StartTheQuizButton}
+                  onPress={() => Navigation.navigate(`${level.ScreenName}`)}>
+                  <Text style={Java_Main_Screen_Styles.StartTheQuizButtonText}>
+                    {level.QuizButtonText}{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'red'} size={30} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </View>
   );
 };
 
-const JAVAMainScreenStyles = StyleSheet.create({
-  container: {
+const Java_Main_Screen_Styles = StyleSheet.create({
+  Container: {
     flex: 1,
     padding: 10,
     backgroundColor: 'white',
@@ -240,64 +175,58 @@ const JAVAMainScreenStyles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },
-  TitleText: {
-    color: '#E11F21',
+  screenTitleText: {
     fontSize: 24,
+    color: 'red',
     fontFamily: 'Montserrat-Bold',
   },
   ScrollViewStyle: {
     flex: 1,
   },
-  IntroductionView: {
-    marginTop: 10,
+  scroll_view_contentcontainer: {
+    paddingTop: 20,
+    padding: 5,
   },
   IntroductionTextStyle: {
     color: 'black',
-    fontFamily: 'OpenSans-Regular',
     fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
   },
-  ContentTextStyle: {
-    color: 'black',
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 14,
+  LevelViewContainer: {
+    flexDirection: 'column',
   },
   SubTopicTitleView: {
     marginTop: 10,
     flexDirection: 'row',
   },
-  SubtopicTitleTextStyle: {
-    fontFamily: 'Montserrat-SemiBold',
+  SubTopicTitleText: {
     fontSize: 20,
     color: 'black',
+    fontFamily: 'Montserrat-SemiBold',
   },
-  TheThinLineView: {
+  IntroductionView: {
+    marginTop: 10,
+  },
+  ThinLineView: {
     marginLeft: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  TheThinLine: {
+  ThinLine: {
     height: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     width: '100%',
   },
-  SubTopicContentView: {
-    marginTop: 10,
-  },
-  SubTopicTextStyle: {
-    fontSize: 14,
-    color: 'black',
-    fontFamily: 'OpenSans-Regular',
-  },
   BulletPointView: {
     marginLeft: 10,
   },
-  BulletPointTextStyle: {
+  BulletPointText: {
     fontSize: 14,
     color: 'black',
     fontFamily: 'OpenSans-Regular',
   },
-  BulletPointBoldStyle: {
+  BulletPointHighlightedText: {
     fontWeight: 'bold',
   },
   StartTheQuizButtonView: {
@@ -311,7 +240,7 @@ const JAVAMainScreenStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   StartTheQuizButtonText: {
-    color: '#E11F21',
+    color: 'red',
     fontSize: 20,
     fontFamily: 'OpenSans-Bold',
     textDecorationLine: 'underline',

@@ -218,7 +218,7 @@ export const TS_Fundamentals_Quiz_Questions = [
   },
 ];
 
-export const TS_GearUp_Quiz_Questions = [
+export const TS_Intermediate_Quiz_Questions = [
   {
     id: 1,
     question: 'What is a union type in TypeScript?',

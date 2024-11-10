@@ -19,7 +19,7 @@ import {
 const {height} = Dimensions.get('window');
 
 const Fluid_Screen = ({route}) => {
-  const {quizQuestions} = route.params;
+  const {quizQuestions, QuizTitle} = route.params;
   const [questionCount, setQuestionCount] = useState(0);
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
@@ -58,7 +58,7 @@ const Fluid_Screen = ({route}) => {
     <View style={RN_Fluid_Screen_Styles.Container}>
       <StatusBar backgroundColor={'black'} />
       <View style={RN_Fluid_Screen_Styles.TitleViewContainer}>
-        <Text style={RN_Fluid_Screen_Styles.screenTitleText}>JavaScript</Text>
+        <Text style={RN_Fluid_Screen_Styles.screenTitleText}>{QuizTitle}</Text>
       </View>
       {/* X icon, Progress bar and heart icon */}
       <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>

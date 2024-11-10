@@ -11,201 +11,158 @@ import {useNavigation} from '@react-navigation/native';
 
 const TypeScriptMainScreen = () => {
   const Navigation = useNavigation();
+
+  const TypeScript_Quiz_Content = [
+    {
+      level: 'Fundamentals',
+      intro:
+        'Start here to learn the essentials of TypeScript, focusing on basic types, interfaces, and how TypeScript improves JavaScript.',
+      QuizButtonText: "Let's get started!",
+      ScreenName: 'TS_Fundamentals_Quiz_Question',
+      topics: [
+        {
+          title: 'Basic Types',
+          description: 'Learn how to define and use different data types.',
+        },
+        {
+          title: 'Functions & Arrays',
+          description: 'Understand typed functions and arrays.',
+        },
+        {
+          title: 'Interfaces',
+          description: 'Define the shape of objects with interfaces.',
+        },
+        {
+          title: 'Type Inference',
+          description: 'Let TypeScript infer types for you.',
+        },
+        {title: 'Enums', description: 'Use enums to define named constants.'},
+      ],
+    },
+    {
+      level: 'Intermediate',
+      intro:
+        'Enhance your skills by learning about more powerful TypeScript features like generics and type manipulation.',
+      QuizButtonText: "Let's gear up!",
+      ScreenName: 'TS_Intermediate_Quiz_Question',
+      topics: [
+        {
+          title: 'Generics',
+          description: 'Write reusable, type-safe components.',
+        },
+        {
+          title: 'Union & Intersection Types',
+          description: 'Combine types for more flexibility.',
+        },
+        {
+          title: 'Type Assertions',
+          description: 'Override TypeScript’s inferred types.',
+        },
+        {
+          title: 'Modules & Namespaces',
+          description: 'Organize and structure your code.',
+        },
+        {
+          title: 'Decorators',
+          description: 'Add meta-programming features to your classes.',
+        },
+      ],
+    },
+    {
+      level: 'Advanced',
+      intro:
+        'Master TypeScript’s advanced features to handle complex projects and ensure robust type safety.',
+      QuizButtonText: "Let's go!",
+      ScreenName: 'TS_Advance_Quiz_Section',
+      topics: [
+        {
+          title: 'Advanced Types',
+          description: 'Dive deeper into utility types and mapped types.',
+        },
+        {
+          title: 'Type Guards',
+          description: 'Refine types using control flow analysis.',
+        },
+        {
+          title: 'Conditional Types',
+          description: 'Create types based on conditions.',
+        },
+        {
+          title: 'Declaration Merging',
+          description: 'Combine multiple declarations seamlessly.',
+        },
+        {
+          title: 'TypeScript with React',
+          description: 'Use TypeScript effectively in React projects.',
+        },
+      ],
+    },
+  ];
+
   return (
-    <View style={TypeScriptMainScreenStyles.container}>
-      <View style={TypeScriptMainScreenStyles.TitleViewContainer}>
-        <Text style={TypeScriptMainScreenStyles.TitleText}>TypeScript</Text>
+    <View style={TS_Main_Screen_Styles.Container}>
+      <View style={TS_Main_Screen_Styles.TitleViewContainer}>
+        <Text style={TS_Main_Screen_Styles.screenTitleText}>TypeScript</Text>
       </View>
-      <ScrollView style={TypeScriptMainScreenStyles.ScrollViewStyle}>
-        <View style={TypeScriptMainScreenStyles.IntroductionView}>
-          <Text style={TypeScriptMainScreenStyles.IntroductionTextStyle}>
-            You'll start by exploring the basics like types and interfaces,
-            learning how TypeScript helps you write safer, more predictable
-            code. As you progress, you'll dive into more exciting topics like
-            generics and enums, mastering how to write reusable and flexible
-            code. Finally, you'll tackle advanced concepts like utility types
-            and decorators, gaining the skills to handle complex projects with
-            ease. Ready to take your coding to the next level?
+      <ScrollView style={TS_Main_Screen_Styles.ScrollViewStyle}>
+        <View style={TS_Main_Screen_Styles.IntroductionView}>
+          <Text style={TS_Main_Screen_Styles.IntroductionTextStyle}>
+            From understanding the basics of types and interfaces to mastering
+            advanced concepts like generics and decorators, this quiz will help
+            you write safer, more reliable code. Perfect for both beginners and
+            seasoned developers aiming to level up their TypeScript skills.
           </Text>
         </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicTitleView}>
-          <Text style={TypeScriptMainScreenStyles.SubtopicTitleTextStyle}>
-            First Fundmentals
-          </Text>
-          <View style={TypeScriptMainScreenStyles.TheThinLineView}>
-            <Text style={TypeScriptMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicContentView}>
-          <Text style={TypeScriptMainScreenStyles.SubTopicTextStyle}>
-            This category is all about building a solid foundation, learning the
-            basics, and understanding how TypeScript improves JavaScript.
-          </Text>
-          <View style={TypeScriptMainScreenStyles.BulletPointView}>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Basic Types:
-              </Text>{' '}
-              Numbers, strings, booleans, and more.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Type Annotations:
-              </Text>{' '}
-              Explicitly define the type of your variables.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Interfaces & Types:
-              </Text>
-              Describe the structure of objects and functions.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Type Inference:
-              </Text>{' '}
-              Let TypeScript guess the type for you.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Union & Intersection Types:{' '}
-              </Text>
-              Combine types for flexible code.
-            </Text>
-          </View>
-          <View style={TypeScriptMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={TypeScriptMainScreenStyles.StartTheQuizButton}
-              onPress={() =>
-                Navigation.navigate('TS_Fundamental_quiz_question_0')
-              }>
-              <Text style={TypeScriptMainScreenStyles.StartTheQuizButtonText}>
-                Let's get started{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicTitleView}>
-          <Text style={TypeScriptMainScreenStyles.SubtopicTitleTextStyle}>
-            Gearing up!
-          </Text>
-          <View style={TypeScriptMainScreenStyles.TheThinLineView}>
-            <Text style={TypeScriptMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicContentView}>
-          <Text style={TypeScriptMainScreenStyles.SubTopicTextStyle}>
-            In this stage, you'll discover how to make your code more efficient,
-            reusable, and scalable with TypeScript’s more advanced tools.
-          </Text>
-          <View style={TypeScriptMainScreenStyles.BulletPointView}>
-            <Text style={TypeScriptMainScreenStyles.SubTopicTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Generics:{' '}
-              </Text>
-              Write flexible and reusable code.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointView}>
-                Enums:
-              </Text>{' '}
-              Organize related values more clearly.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Type Assertions:{' '}
-              </Text>
-              Tell TypeScript exactly what a variable should be.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.BulletPointTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Modules:{' '}
-              </Text>
-              Structure your code with imports and exports.
-            </Text>
-          </View>
-          <View style={TypeScriptMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={TypeScriptMainScreenStyles.StartTheQuizButton}
-              onPress={() => Navigation.navigate('TS_GearUp_quiz_question_0')}>
-              <Text style={TypeScriptMainScreenStyles.StartTheQuizButtonText}>
-                Let's gear up!{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicTitleView}>
-          <Text style={TypeScriptMainScreenStyles.SubtopicTitleTextStyle}>
-            Advance
-          </Text>
-          <View style={TypeScriptMainScreenStyles.TheThinLineView}>
-            <Text style={TypeScriptMainScreenStyles.TheThinLine} />
-          </View>
-        </View>
-        <View style={TypeScriptMainScreenStyles.SubTopicContentView}>
-          <Text style={TypeScriptMainScreenStyles.ContentTextStyle}>
-            These advanced concepts will help you manage large-scale projects
-            and tackle complex challenges in TypeScript.
-          </Text>
-          <View style={TypeScriptMainScreenStyles.BulletPointView}>
-            <Text style={TypeScriptMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Utility Types:
-              </Text>{' '}
-              Manipulate and transform types easily.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Decorators:
-              </Text>{' '}
-              Add metadata and enhance classes or methods.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Mapped & Conditional Types:{' '}
-              </Text>
-              Build more dynamic and powerful types.
-            </Text>
-            <Text style={TypeScriptMainScreenStyles.ContentTextStyle}>
-              •{' '}
-              <Text style={TypeScriptMainScreenStyles.BulletPointBoldStyle}>
-                Advanced Type Narrowing:{' '}
-              </Text>
-              Refine types with precision.
-            </Text>
-          </View>
-          <View style={TypeScriptMainScreenStyles.StartTheQuizButtonView}>
-            <TouchableOpacity
-              style={TypeScriptMainScreenStyles.StartTheQuizButton}
-              onPress={() => Navigation.navigate('TS_Advance_quiz_question_0')}>
-              <Text style={TypeScriptMainScreenStyles.StartTheQuizButtonText}>
-                Let's go!{' '}
-              </Text>
-              <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
-            </TouchableOpacity>
-          </View>
+        <View>
+          {TypeScript_Quiz_Content.map((level, index) => (
+            <View key={index} style={TS_Main_Screen_Styles.LevelViewContainer}>
+              <View style={TS_Main_Screen_Styles.SubTopicTitleView}>
+                <Text style={TS_Main_Screen_Styles.SubTopicTitleText}>
+                  {level.level}
+                </Text>
+                <View style={TS_Main_Screen_Styles.ThinLineView}>
+                  <Text style={TS_Main_Screen_Styles.ThinLine} />
+                </View>
+              </View>
+              <View style={TS_Main_Screen_Styles.IntroductionView}>
+                <Text style={TS_Main_Screen_Styles.IntroductionTextStyle}>
+                  {level.intro}
+                </Text>
+              </View>
+              {level.topics.map((topic, topicIndex) => (
+                <View
+                  key={topicIndex}
+                  style={TS_Main_Screen_Styles.BulletPointView}>
+                  <Text style={TS_Main_Screen_Styles.BulletPointText}>
+                    •{' '}
+                    <Text
+                      style={TS_Main_Screen_Styles.BulletPointHighlightedText}>
+                      {topic.title}:
+                    </Text>{' '}
+                    {topic.description}
+                  </Text>
+                </View>
+              ))}
+              <View style={TS_Main_Screen_Styles.StartTheQuizButtonView}>
+                <TouchableOpacity
+                  style={TS_Main_Screen_Styles.StartTheQuizButton}
+                  onPress={() => Navigation.navigate(`${level.ScreenName}`)}>
+                  <Text style={TS_Main_Screen_Styles.StartTheQuizButtonText}>
+                    {level.QuizButtonText}{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'#3178C6'} size={30} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </View>
   );
 };
 
-const TypeScriptMainScreenStyles = StyleSheet.create({
-  container: {
+const TS_Main_Screen_Styles = StyleSheet.create({
+  Container: {
     flex: 1,
     padding: 10,
     backgroundColor: 'white',
@@ -216,64 +173,58 @@ const TypeScriptMainScreenStyles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },
-  TitleText: {
-    color: '#3178C6',
+  screenTitleText: {
     fontSize: 24,
+    color: '#3178C6',
     fontFamily: 'Montserrat-Bold',
   },
   ScrollViewStyle: {
     flex: 1,
   },
-  IntroductionView: {
-    marginTop: 10,
+  scroll_view_contentcontainer: {
+    paddingTop: 20,
+    padding: 5,
   },
   IntroductionTextStyle: {
     color: 'black',
-    fontFamily: 'OpenSans-Regular',
     fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
   },
-  ContentTextStyle: {
-    color: 'black',
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 14,
+  LevelViewContainer: {
+    flexDirection: 'column',
   },
   SubTopicTitleView: {
     marginTop: 10,
     flexDirection: 'row',
   },
-  SubtopicTitleTextStyle: {
-    fontFamily: 'Montserrat-SemiBold',
+  SubTopicTitleText: {
     fontSize: 20,
     color: 'black',
+    fontFamily: 'Montserrat-SemiBold',
   },
-  TheThinLineView: {
+  IntroductionView: {
+    marginTop: 10,
+  },
+  ThinLineView: {
     marginLeft: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  TheThinLine: {
+  ThinLine: {
     height: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     width: '100%',
   },
-  SubTopicContentView: {
-    marginTop: 10,
-  },
-  SubTopicTextStyle: {
-    fontSize: 14,
-    color: 'black',
-    fontFamily: 'OpenSans-Regular',
-  },
   BulletPointView: {
     marginLeft: 10,
   },
-  BulletPointTextStyle: {
+  BulletPointText: {
     fontSize: 14,
     color: 'black',
     fontFamily: 'OpenSans-Regular',
   },
-  BulletPointBoldStyle: {
+  BulletPointHighlightedText: {
     fontWeight: 'bold',
   },
   StartTheQuizButtonView: {
@@ -293,4 +244,5 @@ const TypeScriptMainScreenStyles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
+
 export default TypeScriptMainScreen;

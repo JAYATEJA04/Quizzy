@@ -17,17 +17,26 @@ const All_JS_Screens = () => {
       <Stack.Screen
         name="JS_Fundamentals_quiz_question"
         component={Fluid_Screen}
-        initialParams={{quizQuestions: JS_Fundamentals_Quiz_Questions}}
+        initialParams={{
+          quizQuestions: JS_Fundamentals_Quiz_Questions,
+          QuizTitle: 'JavaScript',
+        }}
       />
       <Stack.Screen
         name="JS_Intermediate_quiz_question"
         component={Fluid_Screen}
-        initialParams={{quizQuestions: JS_Intermediate_Quiz_Questions}}
+        initialParams={{
+          quizQuestions: JS_Intermediate_Quiz_Questions,
+          QuizTitle: 'JavaScript',
+        }}
       />
       <Stack.Screen
         name="JS_Advance_quiz_question"
         component={Fluid_Screen}
-        initialParams={{quizQuestions: JS_Advance_Quiz_Questions}}
+        initialParams={{
+          quizQuestions: JS_Advance_Quiz_Questions,
+          QuizTitle: 'JavaScript',
+        }}
       />
     </Stack.Navigator>
   );
