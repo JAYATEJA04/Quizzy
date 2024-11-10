@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   ScrollView,
@@ -11,263 +10,239 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 
 const ReactJS_MainScreen = () => {
-  const Topic_Brief_Points = [
-    'ReactJS is a powerful JavaScript library for building user interfaces, revolutionizing the way web applications are developed. Its component-based architecture promotes reusability and maintainability, making it a favorite among developers worldwide.',
-    'Core concept: Building reusable UI components',
-    'Virtual DOM: Efficiently updates and renders UI elements',
-    'Declarative approach: Makes code more predictable and easier to debug',
-    'Unidirectional data flow: Simplifies the understanding of how data changes over time',
-    'Rich ecosystem: Vast collection of tools, libraries, and community support',
-  ];
-
-  const First_Fundamentals_Points = [
-    'Creating and nesting components',
-    'Writing markup with JSX',
-    'JavaScript in JSX with curly braces',
-    'Passing props to a component',
-    'Conditional rendering',
-    'Rendering lists',
-    'Responding to events',
-    'State: Memory of a component',
-    'Render and commit',
-    'State as a snapshot',
-    'Queueing a series of state updates',
-  ];
-
-  const Intermediate_topic_points = [
-    'Sharing state between components',
-    'Preserving and resetting state',
-    'Extracting state logic into a reducer',
-    'Passing data deeply with context',
-    'Scaling up with reducer and context',
-    'Referencing values with refs',
-    'Manipulating the DOM with refs',
-    'Synchronizing with Effects',
-    'You Might Not Need an Effect',
-    'Lifecycle of reactive effects',
-    'Separating events from Effects',
-    'Removing Effect dependencies',
-  ];
-
-  const Advanced_topics_points = [
-    'Reusing logic with custom Hooks',
-    'Lifecycle of reactive effects',
-    'Escape hatches (useImperativeHandle, useDeferredValue, useInsertionEffect)',
-    'Referencing values with refs',
-    'Manipulating the DOM with refs',
-    'Performance optimization (useMemo, useCallback)',
-    'Lazy loading components (React.lazy)',
-    'Writing custom Hooks',
-    'Implementing advanced UI patterns (portals, error boundaries)',
-    'Server Components',
-    'Concurrent rendering',
-    'Suspense for data fetching',
+  const ReactJS_Quiz_Content = [
+    {
+      level: 'Fundamentals',
+      intro:
+        'Start here to learn the essentials of ReactJS, focusing on building basic components and understanding the core concepts.',
+      QuizButtonText: "Let's get started!",
+      ScreenName: 'RJS_Fundamentals_quiz_question',
+      topics: [
+        {
+          title: 'JSX',
+          description: 'Write HTML-like syntax directly in JavaScript.',
+        },
+        {title: 'Components', description: 'Build reusable UI elements.'},
+        {
+          title: 'Props & State',
+          description: 'Pass data and manage component memory.',
+        },
+        {
+          title: 'Event Handling',
+          description: 'Capture user interactions like clicks and inputs.',
+        },
+        {
+          title: 'Conditional Rendering',
+          description: 'Render different UI elements based on conditions.',
+        },
+      ],
+    },
+    {
+      level: 'Intermediate',
+      intro:
+        'Dive deeper into React’s features, managing more complex applications efficiently.',
+      QuizButtonText: "Let's gear up!",
+      ScreenName: 'RJS_Intermediate_quiz_question',
+      topics: [
+        {
+          title: 'Hooks',
+          description:
+            'Manage state and side effects in functional components.',
+        },
+        {
+          title: 'Context API',
+          description: 'Share data across components without props drilling.',
+        },
+        {
+          title: 'Routing',
+          description: 'Navigate between pages using React Router.',
+        },
+        {
+          title: 'Form Handling',
+          description: 'Work with inputs and validations.',
+        },
+        {
+          title: 'Lifecycle Methods',
+          description: 'Control component behavior at different stages.',
+        },
+      ],
+    },
+    {
+      level: 'Advanced',
+      intro:
+        'Explore powerful tools and techniques to optimize performance and handle large-scale applications.',
+      QuizButtonText: "Let's go!",
+      ScreenName: 'RJS_Advance_quiz_question',
+      topics: [
+        {title: 'Custom Hooks', description: 'Reuse logic across components.'},
+        {
+          title: 'Performance Optimization',
+          description: 'Use tools like useMemo and useCallback.',
+        },
+        {
+          title: 'Code Splitting & Lazy Loading',
+          description:
+            'Improve app performance by loading only necessary code.',
+        },
+        {
+          title: 'Error Boundaries',
+          description: 'Handle errors gracefully in your application.',
+        },
+        {
+          title: 'Server-Side Rendering (SSR)',
+          description:
+            'Improve SEO and performance with frameworks like Next.js.',
+        },
+      ],
+    },
   ];
 
   const Navigation = useNavigation();
 
-  const handle_RJS_Fundamentals_Quiz_Button = () => {
-    Navigation.navigate('Fundamental_quiz_question_0');
-  };
-
-  const handle_RJS_Intermediate_Topics_Quiz_Button = () => {
-    Navigation.navigate('Intermediate_quiz_question_0');
-  };
-  const handle_RJS_Advance_Quiz_Button = () => {
-    Navigation.navigate('Advance_quiz_question_0');
-  };
-
   return (
-    <View style={ReactJS_MainScreen_Styles.container}>
-      <View style={ReactJS_MainScreen_Styles.screenTitleView}>
-        <Text style={ReactJS_MainScreen_Styles.screenTitleText}>ReactJS</Text>
+    <View style={RJS_Main_Screen_Styles.Container}>
+      <View style={RJS_Main_Screen_Styles.TitleViewContainer}>
+        <Text style={RJS_Main_Screen_Styles.screenTitleText}>ReactJS</Text>
       </View>
-      <ScrollView style={{flex: 1}} contentContainerStyle={{padding: 10}}>
+      <ScrollView style={RJS_Main_Screen_Styles.ScrollViewStyle}>
+        <View style={RJS_Main_Screen_Styles.IntroductionView}>
+          <Text style={RJS_Main_Screen_Styles.IntroductionTextStyle}>
+            You’ll explore key concepts like components, state, and props, move
+            on to hooks, routing, and context, and finally tackle advanced
+            topics like performance optimization and server-side rendering.
+            Whether you're just starting out or aiming to refine your skills,
+            this quiz will guide you through every step of your React journey.
+          </Text>
+        </View>
         <View>
-          {Topic_Brief_Points.map((point, index) => (
-            <View key={index} style={{flexDirection: 'row'}}>
-              <Text style={{fontSize: 20, color: 'black'}}>{'\u2022'} </Text>
-              <Text style={{fontSize: 16, color: 'black'}}>{point}</Text>
+          {ReactJS_Quiz_Content.map((level, index) => (
+            <View key={index} style={RJS_Main_Screen_Styles.LevelViewContainer}>
+              <View style={RJS_Main_Screen_Styles.SubTopicTitleView}>
+                <Text style={RJS_Main_Screen_Styles.SubTopicTitleText}>
+                  {level.level}
+                </Text>
+                <View style={RJS_Main_Screen_Styles.ThinLineView}>
+                  <Text style={RJS_Main_Screen_Styles.ThinLine} />
+                </View>
+              </View>
+              <View style={RJS_Main_Screen_Styles.IntroductionView}>
+                <Text style={RJS_Main_Screen_Styles.IntroductionTextStyle}>
+                  {level.intro}
+                </Text>
+              </View>
+              {level.topics.map((topic, topicIndex) => (
+                <View
+                  key={topicIndex}
+                  style={RJS_Main_Screen_Styles.BulletPointView}>
+                  <Text style={RJS_Main_Screen_Styles.BulletPointText}>
+                    •{' '}
+                    <Text
+                      style={RJS_Main_Screen_Styles.BulletPointHighlightedText}>
+                      {topic.title}:
+                    </Text>{' '}
+                    {topic.description}
+                  </Text>
+                </View>
+              ))}
+              <View style={RJS_Main_Screen_Styles.StartTheQuizButtonView}>
+                <TouchableOpacity
+                  style={RJS_Main_Screen_Styles.StartTheQuizButton}
+                  onPress={() => Navigation.navigate(`${level.ScreenName}`)}>
+                  <Text style={RJS_Main_Screen_Styles.StartTheQuizButtonText}>
+                    {level.QuizButtonText}{' '}
+                  </Text>
+                  <Icon name="arrow-right-long" color={'#58C4DC'} size={30} />
+                </TouchableOpacity>
+              </View>
             </View>
           ))}
-        </View>
-        <View style={ReactJS_MainScreen_Styles.Overall_View}>
-          {/* First Fundamentals */}
-          <View style={{marginTop: 5}}>
-            <Text style={ReactJS_MainScreen_Styles.SubTopic_Title_Text}>
-              First Fundamentals
-            </Text>
-            <View style={ReactJS_MainScreen_Styles.sub_category_container_view}>
-              {First_Fundamentals_Points.map((point, index) => (
-                <View
-                  key={index}
-                  style={ReactJS_MainScreen_Styles.Bullet_Point_View}>
-                  <Text style={ReactJS_MainScreen_Styles.Bullet_point_style}>
-                    {'\u2022'}{' '}
-                  </Text>
-                  <Text
-                    style={ReactJS_MainScreen_Styles.Bullet_point_text_style}>
-                    {point}
-                  </Text>
-                </View>
-              ))}
-              <View>
-                <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}
-                    onPress={() => handle_RJS_Fundamentals_Quiz_Button()}>
-                    Let's start the quiz{' '}
-                  </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          {/* Intermediate topics */}
-          <View style={{marginTop: 5}}>
-            <Text style={ReactJS_MainScreen_Styles.SubTopic_Title_Text}>
-              Gear up
-            </Text>
-            <View style={ReactJS_MainScreen_Styles.sub_category_container_view}>
-              {Intermediate_topic_points.map((point, index) => (
-                <View
-                  key={index}
-                  style={ReactJS_MainScreen_Styles.Bullet_Point_View}>
-                  <Text style={ReactJS_MainScreen_Styles.Bullet_point_style}>
-                    {'\u2022'}{' '}
-                  </Text>
-                  <Text
-                    style={ReactJS_MainScreen_Styles.Bullet_point_text_style}>
-                    {point}
-                  </Text>
-                </View>
-              ))}
-              <View>
-                <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}
-                    onPress={() =>
-                      handle_RJS_Intermediate_Topics_Quiz_Button()
-                    }>
-                    Let's gear up!{' '}
-                  </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          {/* Advance Topics */}
-          <View style={{marginTop: 5}}>
-            <Text style={ReactJS_MainScreen_Styles.SubTopic_Title_Text}>
-              Advance Topics
-            </Text>
-            <View style={ReactJS_MainScreen_Styles.sub_category_container_view}>
-              {Advanced_topics_points.map((point, index) => (
-                <View
-                  key={index}
-                  style={ReactJS_MainScreen_Styles.Bullet_Point_View}>
-                  <Text style={ReactJS_MainScreen_Styles.Bullet_point_style}>
-                    {'\u2022'}{' '}
-                  </Text>
-                  <Text
-                    style={ReactJS_MainScreen_Styles.Bullet_point_text_style}>
-                    {point}
-                  </Text>
-                </View>
-              ))}
-              <View>
-                <TouchableOpacity
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                  }}>
-                  <Text
-                    style={{
-                      color: '#3C879C',
-                      fontSize: 24,
-                      textDecorationLine: 'underline',
-                      fontFamily: 'Montserrat-Medium',
-                    }}
-                    onPress={() => handle_RJS_Advance_Quiz_Button()}>
-                    Let's go!{' '}
-                  </Text>
-                  <Icon name="arrow-right-long" color={'#3C879C'} size={30} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
         </View>
       </ScrollView>
     </View>
   );
 };
 
-const ReactJS_MainScreen_Styles = StyleSheet.create({
-  container: {
+const RJS_Main_Screen_Styles = StyleSheet.create({
+  Container: {
     flex: 1,
-    backgroundColor: 'white',
     padding: 10,
+    backgroundColor: 'white',
   },
-  screenTitleView: {
-    height: 60,
+  TitleViewContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },
   screenTitleText: {
-    fontSize: 30,
-    color: 'lightblue',
-    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    color: '#58C4DC',
+    fontFamily: 'Montserrat-Bold',
   },
-  Overall_View: {
+  ScrollViewStyle: {
     flex: 1,
   },
-  SubTopic_Title_Text: {
-    fontSize: 24,
+  scroll_view_contentcontainer: {
+    paddingTop: 20,
+    padding: 5,
+  },
+  IntroductionTextStyle: {
+    color: 'black',
+    fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
+  },
+  LevelViewContainer: {
+    flexDirection: 'column',
+  },
+  SubTopicTitleView: {
+    marginTop: 10,
+    flexDirection: 'row',
+  },
+  SubTopicTitleText: {
+    fontSize: 20,
     color: 'black',
     fontFamily: 'Montserrat-SemiBold',
   },
-  sub_category_container_view: {
-    padding: 10,
-    backgroundColor: '#EEFDFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: 'lightblue',
+  IntroductionView: {
+    marginTop: 10,
   },
-  Bullet_Point_View: {
+  ThinLineView: {
+    marginLeft: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ThinLine: {
+    height: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    width: '100%',
+  },
+  BulletPointView: {
+    marginLeft: 10,
+  },
+  BulletPointText: {
+    fontSize: 14,
+    color: 'black',
+    fontFamily: 'OpenSans-Regular',
+  },
+  BulletPointHighlightedText: {
+    fontWeight: 'bold',
+  },
+  StartTheQuizButtonView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  StartTheQuizButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
   },
-  Bullet_point_style: {
-    color: 'black',
+  StartTheQuizButtonText: {
+    color: '#58C4DC',
     fontSize: 20,
-  },
-  Bullet_point_text_style: {
-    flex: 1,
-    color: 'black',
-    fontSize: 14,
-    fontWeight: '300',
+    fontFamily: 'OpenSans-Bold',
+    textDecorationLine: 'underline',
   },
 });
 

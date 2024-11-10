@@ -9,16 +9,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import ProgressBar from '../../Components/ProgressBar';
+import ProgressBar from '../Components/ProgressBar';
 import {useDispatch} from 'react-redux';
 import {
   decrement,
   increment,
-} from '../../../redux store/features/progressBarSlice';
+} from '../../redux store/features/progressBarSlice';
 
 const {height} = Dimensions.get('window');
 
-const RN_Fluid_Screen = ({route}) => {
+const Fluid_Screen = ({route}) => {
   const {quizQuestions} = route.params;
   const [questionCount, setQuestionCount] = useState(0);
   const [result, setResult] = useState(false);
@@ -287,4 +287,4 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
   },
 });
 
-export default RN_Fluid_Screen;
+export default Fluid_Screen;

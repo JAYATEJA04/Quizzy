@@ -6,7 +6,7 @@ import {
   ReactNative_Intermediate_Topics_Quiz_Questions,
   ReactNative_Advance_Topics_Quiz_Questions,
 } from '../../Components/ReactNative_Components/ReactNative_Quiz_Questions';
-import RN_Fluid_Screen from './RN_Screen_Fluid';
+import RN_Fluid_Screen from '../Fluid_Screen';
 
 const Stack = createNativeStackNavigator();
 

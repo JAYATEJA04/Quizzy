@@ -6,7 +6,7 @@ import {
   ReactJS_Intermediate_Quiz_Questions,
   ReactJS_Advance_Quiz_Questions,
 } from '../../Components/ReactJS_components/ReactJS_Quiz_Questions';
-import ReactJS_Quiz_Screen from './ReactJS_Quiz_Screen';
+import Fluid_Screen from '../Fluid_Screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,22 @@ const All_ReactJS_Screens = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="ReactJS Main Screen" component={ReactJS_MainScreen} />
-      {ReactJS_Fundamentals_Quiz_Questions.map((question, index) => (
+      <Stack.Screen
+        name="RJS_Fundamentals_quiz_question"
+        component={Fluid_Screen}
+        initialParams={{quizQuestions: ReactJS_Fundamentals_Quiz_Questions}}
+      />
+      <Stack.Screen
+        name="RJS_Intermediate_quiz_question"
+        component={Fluid_Screen}
+        initialParams={{quizQuestions: ReactJS_Intermediate_Quiz_Questions}}
+      />
+      <Stack.Screen
+        name="RJS_Advance_quiz_question"
+        component={Fluid_Screen}
+        initialParams={{quizQuestions: ReactJS_Advance_Quiz_Questions}}
+      />
+      {/* {ReactJS_Fundamentals_Quiz_Questions.map((question, index) => (
         <Stack.Screen
           key={question.id}
           name={`Fundamental_quiz_question_${index}`}
@@ -70,7 +85,7 @@ const All_ReactJS_Screens = () => {
                 : null,
           }}
         />
-      ))}
+      ))} */}
     </Stack.Navigator>
   );
 };
