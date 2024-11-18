@@ -10,8 +10,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainScreen from './src/Screens/MainScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {CountAnswers} from './src/Components/CountContext';
-import {ReactJSCountAnswers} from './src/Components/ReactJS_components/ReactJS_CountContext';
 import {Provider} from 'react-redux';
 import {store} from './redux store/store/store';
 
