@@ -11,18 +11,20 @@ import RN_Fluid_Screen from '../Fluid_Screen';
 const Stack = createNativeStackNavigator();
 
 const AllRNScreens = () => {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState({
+    fundamentals: [],
+    intermediate: [],
+    advanced: [],
+  });
 
   const getReactNativeQuizData = async () => {
     try {
-      const response = await fetch(
-        'http://192.168.0.5:3000/quiz/ReactNative/Fundamentals',
-      );
+      const response = await fetch('http://192.168.0.5:3000/quiz/ReactNative');
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setQuestions(data);
     } catch (error) {
       console.error(`Error fetching quiz data: ${error}`);
@@ -44,7 +46,7 @@ const AllRNScreens = () => {
         component={RN_Fluid_Screen}
         initialParams={{
           // quizQuestions: ReactNative_Fundamentals_Quiz_Questions,
-          quizQuestions: questions,
+          quizQuestions: questions.fundamentals,
           QuizTitle: 'React Native',
         }}
       />
@@ -52,7 +54,8 @@ const AllRNScreens = () => {
         name="RN_Intermediate_quiz_question"
         component={RN_Fluid_Screen}
         initialParams={{
-          quizQuestions: ReactNative_Intermediate_Topics_Quiz_Questions,
+          // quizQuestions: ReactNative_Intermediate_Topics_Quiz_Questions,
+          quizQuestions: questions.intermediate,
           QuizTitle: 'React Native',
         }}
       />
@@ -60,7 +63,8 @@ const AllRNScreens = () => {
         name="RN_Advance_quiz_question"
         component={RN_Fluid_Screen}
         initialParams={{
-          quizQuestions: ReactNative_Advance_Topics_Quiz_Questions,
+          // quizQuestions: ReactNative_Advance_Topics_Quiz_Questions,
+          quizQuestions: questions.advanced,
           QuizTitle: 'React Native',
         }}
       />
