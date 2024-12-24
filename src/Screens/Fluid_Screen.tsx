@@ -19,7 +19,7 @@ import {
 const {height} = Dimensions.get('window');
 
 const Fluid_Screen = ({route}) => {
-  const {quizQuestions, QuizTitle} = route.params;
+  const {quizQuestions, QuizTitle, baseUrl} = route.params;
   const [questionCount, setQuestionCount] = useState(0);
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
@@ -27,10 +27,39 @@ const Fluid_Screen = ({route}) => {
 
   const dispatch = useDispatch();
 
-  const handleOptionSelected = (option: any) => {
+  const handleOptionSelected = async (option: any) => {
     setOptionSelected(option);
     setResult(!result);
     setDisableOption(!disableOption);
+
+    await storeSelectedOption(option);
+  };
+
+  const storeSelectedOption = async (option: any) => {
+    try {
+      const url = `${baseUrl}/quiz/${QuizTitle}/fundamentals/${
+        questionCount + 1
+      }/answer`;
+      console.log(url);
+      const responseExpected = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          questionId: quizQuestions[questionCount].id,
+          selectedOption: option,
+        }),
+      });
+      if (!responseExpected.ok) {
+        throw new Error(`HTTP error: ${responseExpected.status}`);
+      }
+
+      const data = await responseExpected.json();
+      console.log('Option stored successfully:', data);
+    } catch (error) {
+      console.log(`Error storing selected option: ${error}`);
+    }
   };
 
   const handleContinueButton = () => {
