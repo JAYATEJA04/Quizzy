@@ -28,7 +28,7 @@ const Fluid_Screen = ({route}) => {
   const dispatch = useDispatch();
 
   const handleOptionSelected = async (option: any) => {
-    setOptionSelected(option);
+    setOptionSelected(option.optionId);
     setResult(!result);
     setDisableOption(!disableOption);
 
@@ -124,8 +124,8 @@ const Fluid_Screen = ({route}) => {
                 <TouchableOpacity
                   style={[
                     RN_Fluid_Screen_Styles.DefaultOptionButtonStyle,
-                    optionSelected === option
-                      ? option === correctAnswer
+                    optionSelected === option.optionId
+                      ? option.optionId === correctAnswer
                         ? RN_Fluid_Screen_Styles.CorrectOptionButtonStyle
                         : RN_Fluid_Screen_Styles.WrongOptionButtonStyle
                       : null,
@@ -133,7 +133,7 @@ const Fluid_Screen = ({route}) => {
                   onPress={() => handleOptionSelected(option)}
                   disabled={disableOption}>
                   <Text style={RN_Fluid_Screen_Styles.OptionText}>
-                    {option}
+                    {option.optionText}
                   </Text>
                 </TouchableOpacity>
               </View>
