@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -15,6 +15,7 @@ import {
   decrement,
   increment,
 } from '../../redux store/features/progressBarSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const {height} = Dimensions.get('window');
 
@@ -26,6 +27,33 @@ const Fluid_Screen = ({route}) => {
   const [disableOption, setDisableOption] = useState(false);
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const isQuizInProgress = useState(true);
+
+  useEffect(
+    () =>
+      navigation.addListener('beforeRemove', e => {
+        const action = e.data.action;
+
+        const handleGoingBack = () => {
+          setQuestionCount(0);
+          dispatch(decrement());
+          navigation.dispatch(action);
+        };
+
+        e.preventDefault();
+
+        Alert.alert('Quit Quiz?', 'Are you sure you want to quit the quiz?', [
+          {text: "Don't leave", style: 'cancel', onPress: () => {}},
+          {
+            text: 'Leave',
+            style: 'destructive',
+            onPress: () => handleGoingBack(),
+          },
+        ]);
+      }),
+    [navigation],
+  );
 
   const handleOptionSelected = async (option: any) => {
     setOptionSelected(option.optionId);
