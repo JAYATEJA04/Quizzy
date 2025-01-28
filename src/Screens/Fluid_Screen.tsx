@@ -20,7 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 const {height} = Dimensions.get('window');
 
 const Fluid_Screen = ({route}) => {
-  const {quizQuestions, QuizTitle, baseUrl} = route.params;
+  const {quizQuestions, QuizTitle, QuizLevel, baseUrl} = route.params;
   const [questionCount, setQuestionCount] = useState(0);
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
@@ -30,14 +30,34 @@ const Fluid_Screen = ({route}) => {
   const navigation = useNavigation();
   const isQuizInProgress = useState(true);
 
+  const clearSelectedOptions = async () => {
+    try {
+      const url = `${baseUrl}/selected-options`;
+      console.log(url);
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Selected options cleared successfully:', data);
+    } catch (error) {
+      console.error('Error clearing selected options:', error);
+    }
+  };
+
   useEffect(
     () =>
       navigation.addListener('beforeRemove', e => {
         const action = e.data.action;
 
-        const handleGoingBack = () => {
+        const handleGoingBack = async () => {
           setQuestionCount(0);
           dispatch(decrement());
+          await clearSelectedOptions();
           navigation.dispatch(action);
         };
 
@@ -52,7 +72,7 @@ const Fluid_Screen = ({route}) => {
           },
         ]);
       }),
-    [navigation],
+    [dispatch, navigation],
   );
 
   const handleOptionSelected = async (option: any) => {
@@ -65,7 +85,7 @@ const Fluid_Screen = ({route}) => {
 
   const storeSelectedOption = async (option: any) => {
     try {
-      const url = `${baseUrl}/quiz/${QuizTitle}/fundamentals/${
+      const url = `${baseUrl}/quiz/${QuizTitle}/${QuizLevel}/${
         questionCount + 1
       }/answer`;
       console.log(url);

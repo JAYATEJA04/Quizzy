@@ -48,6 +48,7 @@ const AllRNScreens = () => {
           // quizQuestions: ReactNative_Fundamentals_Quiz_Questions,
           quizQuestions: questions.fundamentals,
           QuizTitle: 'ReactNative',
+          QuizLevel: 'fundamentals',
           baseUrl: 'http://192.168.0.2:3000',
         }}
       />
@@ -57,7 +58,8 @@ const AllRNScreens = () => {
         initialParams={{
           // quizQuestions: ReactNative_Intermediate_Topics_Quiz_Questions,
           quizQuestions: questions.intermediate,
-          QuizTitle: 'React Native',
+          QuizTitle: 'ReactNative',
+          QuizLevel: 'intermediate',
           baseUrl: 'http://192.168.0.2:3000',
         }}
       />
@@ -68,6 +70,7 @@ const AllRNScreens = () => {
           // quizQuestions: ReactNative_Advance_Topics_Quiz_Questions,
           quizQuestions: questions.advanced,
           QuizTitle: 'ReactNative',
+          QuizLevel: 'advanced',
           baseUrl: 'http://192.168.0.2:3000',
         }}
       />
