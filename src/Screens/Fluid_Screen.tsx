@@ -127,6 +127,9 @@ const Fluid_Screen = ({route}) => {
     }
   };
 
+  // console.log('Quiz Questions:', quizQuestions);
+  // console.log('Quiz count:', questionCount);
+
   const correctAnswer = quizQuestions[questionCount].correctAnswer;
   const explanation = quizQuestions[questionCount].explanation;
   const referenceLink = quizQuestions[questionCount].referenceLink;
