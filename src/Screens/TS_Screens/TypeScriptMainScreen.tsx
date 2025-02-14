@@ -73,7 +73,7 @@ const TypeScriptMainScreen = () => {
       intro:
         'Master TypeScript’s advanced features to handle complex projects and ensure robust type safety.',
       QuizButtonText: "Let's go!",
-      ScreenName: 'TS_Advance_Quiz_Section',
+      ScreenName: 'TS_Advance_Quiz_Question',
       topics: [
         {
           title: 'Advanced Types',

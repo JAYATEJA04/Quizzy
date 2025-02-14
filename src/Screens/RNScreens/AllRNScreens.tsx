@@ -17,15 +17,17 @@ const AllRNScreens = () => {
     advanced: [],
   });
 
+  const BASE_URL = 'http://192.168.0.3:3000';
+
   const getReactNativeQuizData = async () => {
     try {
-      const response = await fetch('http://192.168.0.4:3000/quiz/ReactNative');
+      const response = await fetch(`${BASE_URL}/quiz/ReactNative`);
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
       setQuestions(data);
-      console.log('hi');
+      console.log('ReactNative data loaded successfully!');
     } catch (error) {
       console.log('hi');
 
@@ -50,7 +52,7 @@ const AllRNScreens = () => {
           quizQuestions: questions.fundamentals,
           QuizTitle: 'ReactNative',
           QuizLevel: 'Fundamentals',
-          baseUrl: 'http://192.168.0.4:3000',
+          baseUrl: BASE_URL,
         }}
       />
       <Stack.Screen
@@ -61,7 +63,7 @@ const AllRNScreens = () => {
           quizQuestions: questions.intermediate,
           QuizTitle: 'ReactNative',
           QuizLevel: 'Intermediate',
-          baseUrl: 'http://192.168.0.4:3000',
+          baseUrl: BASE_URL,
         }}
       />
       <Stack.Screen
@@ -72,7 +74,7 @@ const AllRNScreens = () => {
           quizQuestions: questions.advanced,
           QuizTitle: 'ReactNative',
           QuizLevel: 'Advanced',
-          baseUrl: 'http://192.168.0.4:3000',
+          baseUrl: BASE_URL,
         }}
       />
     </Stack.Navigator>

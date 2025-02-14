@@ -16,6 +16,8 @@ import All_ReactJS_Screens from './ReactJS_Screens/All_ReactJS_Screens';
 import All_JS_Screens from './JS_Screens/ALL_JS_Screens';
 import All_TS_Screens from './TS_Screens/All_TS_Screens';
 import ALL_JAVA_Screens from './Java_Screens/ALL_Java_Screens';
+import QuizzyMainScreen from './QuizzyMainScreen';
+import ScreensOfTopic from './ScreensOfTopic';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
@@ -187,20 +189,45 @@ const HomeScreen = () => {
   );
 };
 
+const topicScreens = [
+  {name: 'ReactNative', label: 'React Native', component: AllRNScreens},
+  {name: 'ReactJS', label: 'ReactJS', component: All_ReactJS_Screens},
+  {name: 'JavaScript', label: 'JavaScript', component: All_JS_Screens},
+  {name: 'TypeScript', label: 'TypeScript', component: All_TS_Screens},
+  {name: 'JAVA', label: 'JAVA', component: ALL_JAVA_Screens},
+  {name: 'NodeJS', label: 'NodeJS', component: NODEJSScreen},
+];
+
 const MainScreen = () => {
   return (
+    // <Stack.Navigator screenOptions={{headerShown: false}}>
+    //   <Stack.Screen name="Home" component={HomeScreen} />
+    //   <Stack.Screen
+    //     name="React Native"
+    //     component={AllRNScreens}
+    //     options={{gestureEnabled: false}}
+    //   />
+    //   <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
+    //   <Stack.Screen name="JS Screen" component={All_JS_Screens} />
+    //   <Stack.Screen name="TS Screen" component={All_TS_Screens} />
+    //   <Stack.Screen name="JAVA Screen" component={ALL_JAVA_Screens} />
+    //   <Stack.Screen name="NODE Screen" component={NODEJSScreen} />
+    // </Stack.Navigator>
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen
-        name="React Native"
-        component={AllRNScreens}
-        options={{gestureEnabled: false}}
-      />
-      <Stack.Screen name="ReactJS" component={All_ReactJS_Screens} />
-      <Stack.Screen name="JS Screen" component={All_JS_Screens} />
-      <Stack.Screen name="TS Screen" component={All_TS_Screens} />
-      <Stack.Screen name="JAVA Screen" component={ALL_JAVA_Screens} />
-      <Stack.Screen name="NODE Screen" component={NODEJSScreen} />
+      <Stack.Screen name="Home">
+        {() => <QuizzyMainScreen title="Quizzy" screens={topicScreens} />}
+      </Stack.Screen>
+      {topicScreens.map((screen, index) => (
+        <Stack.Screen
+          key={index}
+          name={screen.name}
+          component={ScreensOfTopic}
+          options={{gestureEnabled: false}}
+          initialParams={{
+            Topictitle: screen.label,
+          }}
+        />
+      ))}
     </Stack.Navigator>
   );
 };
