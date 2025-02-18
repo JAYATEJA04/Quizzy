@@ -34,7 +34,7 @@ const QuizzyMainScreen = ({title, screens}) => {
           <TouchableOpacity
             style={styles.optionButton}
             onPress={() => navigation.navigate(screen.name)}>
-            <Text style={styles.optionText}>{screen.label}</Text>
+            <Text style={styles.optionText}>{screen.title}</Text>
           </TouchableOpacity>
         </View>
       ))}

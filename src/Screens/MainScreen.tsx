@@ -190,12 +190,12 @@ const HomeScreen = () => {
 };
 
 const topicScreens = [
-  {name: 'ReactNative', label: 'React Native', component: AllRNScreens},
-  {name: 'ReactJS', label: 'ReactJS', component: All_ReactJS_Screens},
-  {name: 'JavaScript', label: 'JavaScript', component: All_JS_Screens},
-  {name: 'TypeScript', label: 'TypeScript', component: All_TS_Screens},
-  {name: 'JAVA', label: 'JAVA', component: ALL_JAVA_Screens},
-  {name: 'NodeJS', label: 'NodeJS', component: NODEJSScreen},
+  {name: 'ReactNativeScreen', title: 'ReactNative', component: AllRNScreens},
+  {name: 'ReactJSScreen', title: 'ReactJS', component: All_ReactJS_Screens},
+  {name: 'JavaScriptScreen', title: 'JavaScript', component: All_JS_Screens},
+  {name: 'TypeScriptScreen', title: 'TypeScript', component: All_TS_Screens},
+  {name: 'JAVAScreen', title: 'JAVA', component: ALL_JAVA_Screens},
+  {name: 'NodeJSScreen', title: 'NodeJS', component: NODEJSScreen},
 ];
 
 const MainScreen = () => {
@@ -224,7 +224,7 @@ const MainScreen = () => {
           component={ScreensOfTopic}
           options={{gestureEnabled: false}}
           initialParams={{
-            Topictitle: screen.label,
+            Topictitle: screen.title,
           }}
         />
       ))}

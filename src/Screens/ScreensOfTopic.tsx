@@ -24,7 +24,7 @@ const ScreensOfTopic = ({route}) => {
   const {Topictitle} = route.params;
   console.log(Topictitle);
 
-  const BASE_URL = 'http://192.168.0.3:3000';
+  const BASE_URL = 'http://192.168.0.5:3000';
 
   const getQuizContent = async () => {
     try {
@@ -35,6 +35,7 @@ const ScreensOfTopic = ({route}) => {
 
       const quizData = await response.json();
       setQuizContent(quizData);
+      // console.log(quizData);
       console.log(`${Topictitle} data loaded successfully!`);
     } catch (error) {
       console.error(`Error fetching quiz data: ${error}`);
@@ -52,7 +53,7 @@ const ScreensOfTopic = ({route}) => {
       <Stack.Screen
         name={`${Topictitle} Main Screen`}
         component={TopicMainScreen}
-        initialParams={{screenTitle: Topictitle}}
+        initialParams={{screenTitle: Topictitle, baseUrl: BASE_URL}}
       />
       {quizLevels.map((level, index) => (
         <Stack.Screen
