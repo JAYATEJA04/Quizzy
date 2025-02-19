@@ -58,10 +58,10 @@ const ScreensOfTopic = ({route}) => {
       {quizLevels.map((level, index) => (
         <Stack.Screen
           key={index}
-          name={`${Topictitle}_${level}_quiz_questions`}
+          name={`${Topictitle}${level}QuizScreen`}
           component={Fluid_Screen}
           initialParams={{
-            // quizQuestions: quizContent[level.toLowerCase()],
+            quizQuestions: quizContent[level.toLowerCase()],
             QuizTitle: Topictitle,
             QuizLevel: level,
             baseUrl: BASE_URL,

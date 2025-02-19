@@ -213,14 +213,17 @@
 // export default TopicMainScreen;
 
 // -------- X ---------
+
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useNavigation} from '@react-navigation/native';
 
 const TopicMainScreen = ({route, navigation}) => {
   const {screenTitle, baseUrl} = route.params;
   const [mainScreenData, setMainScreenData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const Navigation = useNavigation();
 
   const getMainScreenContent = async () => {
     try {
@@ -291,7 +294,7 @@ const TopicMainScreen = ({route, navigation}) => {
       <View style={styles.startTheQuizButtonView}>
         <TouchableOpacity
           style={styles.startTheQuizButton}
-          onPress={() => navigation.navigate(item.ScreenName)}>
+          onPress={() => Navigation.navigate(item.ScreenName)}>
           <Text style={styles.startTheQuizButtonText}>
             {item.QuizButtonText}
           </Text>
