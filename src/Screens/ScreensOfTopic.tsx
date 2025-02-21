@@ -26,25 +26,25 @@ const ScreensOfTopic = ({route}) => {
 
   const BASE_URL = 'http://192.168.0.5:3000';
 
-  const getQuizContent = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/quiz/${Topictitle}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-
-      const quizData = await response.json();
-      setQuizContent(quizData);
-      // console.log(quizData);
-      console.log(`${Topictitle} data loaded successfully!`);
-    } catch (error) {
-      console.error(`Error fetching quiz data: ${error}`);
-    }
-  };
-
   useEffect(() => {
+    const getQuizContent = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/quiz/${Topictitle}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        const quizData = await response.json();
+        setQuizContent(quizData);
+        // console.log(quizData);
+        console.log(`${Topictitle} data loaded successfully!`);
+      } catch (error) {
+        console.error(`Error fetching quiz data: ${error}`);
+      }
+    };
+
     getQuizContent();
-  }, []);
+  }, [Topictitle]);
 
   const quizLevels = ['Fundamentals', 'Intermediate', 'Advanced'];
 
