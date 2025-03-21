@@ -18,176 +18,10 @@ import All_TS_Screens from './TS_Screens/All_TS_Screens';
 import ALL_JAVA_Screens from './Java_Screens/ALL_Java_Screens';
 import QuizzyMainScreen from './QuizzyMainScreen';
 import ScreensOfTopic from './ScreensOfTopic';
+import DashBoard from './ResultsDashboard2';
 
 const Stack = createNativeStackNavigator();
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
-
-const HomeScreen = () => {
-  const Navigation: any = useNavigation();
-
-  return (
-    <ScrollView style={styles.parentContainer}>
-      <View style={styles.TitleContainer1}>
-        <Text style={styles.textCC1}>Quizzy</Text>
-      </View>
-      <View style={styles.childContainer2}>
-        <Text style={{fontFamily: 'AlberSans-Black', color: 'black'}}>
-          Choose your tech stack here:
-        </Text>
-      </View>
-      <View
-        style={{
-          justifyContent: 'space-evenly',
-          flexDirection: 'column',
-        }}>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('React Native')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            React Native
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('ReactJS')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            ReactJS
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          justifyContent: 'space-evenly',
-          flexDirection: 'column',
-        }}>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('JS Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            JavaScript
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('TS Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            TypeScript
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          justifyContent: 'space-evenly',
-          flexDirection: 'column',
-        }}>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('JAVA Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            JAVA
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          justifyContent: 'space-evenly',
-          flexDirection: 'column',
-        }}>
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            height: SCREEN_HEIGHT / 8,
-            elevation: 3,
-            padding: 10,
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            backgroundColor: '#ffffff',
-          }}
-          onPress={() => Navigation.navigate('NODE Screen')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 20,
-              fontFamily: 'AlbertSans-Black',
-            }}>
-            NodeJS
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
-};
 
 const topicScreens = [
   {name: 'ReactNativeScreen', title: 'ReactNative', component: AllRNScreens},
@@ -228,6 +62,7 @@ const MainScreen = () => {
           }}
         />
       ))}
+      <Stack.Screen name="Dashboard" component={DashBoard} />
     </Stack.Navigator>
   );
 };

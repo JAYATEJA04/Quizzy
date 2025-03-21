@@ -63,14 +63,18 @@ const Fluid_Screen = ({route}) => {
 
         e.preventDefault();
 
-        Alert.alert('Quit Quiz?', 'Are you sure you want to quit the quiz?', [
-          {text: "Don't leave", style: 'cancel', onPress: () => {}},
-          {
-            text: 'Leave',
-            style: 'destructive',
-            onPress: () => handleGoingBack(),
-          },
-        ]);
+        Alert.alert(
+          'Quit Quiz?',
+          'Are you sure you want to quit the quiz? It will clear all the progress.',
+          [
+            {text: "Don't leave", style: 'cancel', onPress: () => {}},
+            {
+              text: 'Leave',
+              style: 'destructive',
+              onPress: () => handleGoingBack(),
+            },
+          ],
+        );
       }),
     [dispatch, navigation],
   );
@@ -118,7 +122,8 @@ const Fluid_Screen = ({route}) => {
       setResult(false);
       setDisableOption(false);
     } else {
-      Alert.alert('The end bro!');
+      // Alert.alert('The end bro!');
+      // navigation.navigate('Dashboard');
       setQuestionCount(0);
       dispatch(decrement());
       setOptionSelected(null);
