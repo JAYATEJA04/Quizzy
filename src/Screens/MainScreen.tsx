@@ -62,7 +62,7 @@ const MainScreen = () => {
           }}
         />
       ))}
-      <Stack.Screen name="Dashboard" component={DashBoard} />
+      {/* <Stack.Screen name="Dashboard" component={DashBoard} /> */}
     </Stack.Navigator>
   );
 };

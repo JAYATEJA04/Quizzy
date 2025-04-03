@@ -32,7 +32,7 @@ const Fluid_Screen = ({route}) => {
 
   const clearSelectedOptions = async () => {
     try {
-      const url = `${baseUrl}/selected-options`;
+      const url = `${baseUrl}/${QuizTitle}/selected-options`;
       console.log(url);
       const response = await fetch(url, {
         method: 'DELETE',
@@ -79,20 +79,31 @@ const Fluid_Screen = ({route}) => {
     [dispatch, navigation],
   );
 
-  const handleOptionSelected = async (option: any) => {
+  const handleOptionSelected = async option => {
     setOptionSelected(option.optionId);
     setResult(!result);
     setDisableOption(!disableOption);
+    console.log('hi', option);
 
     await storeSelectedOption(option);
   };
 
-  const storeSelectedOption = async (option: any) => {
+  const storeSelectedOption = async option => {
     try {
       const url = `${baseUrl}/quiz/${QuizTitle}/${QuizLevel}/${
         questionCount + 1
       }/answer`;
-      console.log(url);
+
+      console.log(
+        QuizTitle,
+        '&',
+        QuizLevel,
+        '&',
+        url,
+        quizQuestions[questionCount].id,
+        option,
+      );
+
       const responseExpected = await fetch(url, {
         method: 'POST',
         headers: {
@@ -103,11 +114,28 @@ const Fluid_Screen = ({route}) => {
           selectedOption: option,
         }),
       });
+
+      // console.log(
+      //   QuizTitle,
+      //   '&',
+      //   QuizLevel,
+      //   '&',
+      //   url,
+      //   '&',
+      //   quizQuestions[questionCount].question,
+      //   '&',
+      //   responseExpected.json(),
+      //   '&',
+      //   option,
+      // );
+
       if (!responseExpected.ok) {
         throw new Error(`HTTP error: ${responseExpected.status}`);
       }
 
       const data = await responseExpected.json();
+      console.log(data);
+
       console.log('Option stored successfully:', data);
     } catch (error) {
       console.log(`Error storing selected option: ${error}`);
@@ -123,7 +151,7 @@ const Fluid_Screen = ({route}) => {
       setDisableOption(false);
     } else {
       // Alert.alert('The end bro!');
-      // navigation.navigate('Dashboard');
+      navigation.navigate('Dashboard');
       setQuestionCount(0);
       dispatch(decrement());
       setOptionSelected(null);

@@ -33,8 +33,8 @@ const QuizzyMainScreen = ({title, screens}) => {
           style={{justifyContent: 'space-evenly', flexDirection: 'column'}}>
           <TouchableOpacity
             style={styles.optionButton}
-            // onPress={() => navigation.navigate(screen.name)}>
-            onPress={() => navigation.navigate('Dashboard')}>
+            onPress={() => navigation.navigate(screen.name)}>
+            {/* onPress={() => navigation.navigate('Dashboard')}> */}
             <Text style={styles.optionText}>{screen.title}</Text>
           </TouchableOpacity>
         </View>

@@ -13,8 +13,13 @@ export const selectedOptionsSlice = createSlice({
   name: 'selectedOption',
   initialState,
   reducers: {
-    increment: state => {
+    setCorrectOptionPoint: state => {
       state.value += 1;
+    },
+    setWrongOptionPoint: state => {
+      state.value += 0;
     },
   },
 });
+
+export const {setSelectedOption} = selectedOptionsSlice.actions;

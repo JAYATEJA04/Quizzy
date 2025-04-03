@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,11 +9,23 @@ import {
   Dimensions,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {fetchDashBoardResults} from '../api/quizResults';
 
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
 const DashBoard = () => {
   const Navigation = useNavigation();
+
+  const [resultsOnDashboard, setResultsOnDashboard] = useState<Array<any>>([]);
+
+  const getResults = async () => {
+    const config = {
+      basePath: 'ReactNative',
+      endPoint: 'dashboardresults',
+    };
+
+    const results = fetchDashBoardResults(config);
+  };
 
   return (
     <View style={DashBoardScreenStyles.container}>
