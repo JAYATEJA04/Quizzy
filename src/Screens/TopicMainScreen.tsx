@@ -44,7 +44,9 @@ const TopicMainScreen = ({route, navigation}) => {
   if (!mainScreenData) {
     return (
       <View style={styles.errorContainer}>
-        <Text>Error loading data. Please try again later.</Text>
+        <Text style={{color: 'black'}}>
+          Error loading data. Please try again later.
+        </Text>
       </View>
     );
   }

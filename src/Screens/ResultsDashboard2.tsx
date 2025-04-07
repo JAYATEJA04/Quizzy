@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -13,19 +13,58 @@ import {fetchDashBoardResults} from '../api/quizResults';
 
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
+interface Config {
+  basePath: string;
+  endpoint: string;
+}
+
 const DashBoard = () => {
   const Navigation = useNavigation();
 
   const [resultsOnDashboard, setResultsOnDashboard] = useState<Array<any>>([]);
 
-  const getResults = async () => {
-    const config = {
-      basePath: 'ReactNative',
-      endPoint: 'dashboardresults',
-    };
+  // const getResults = async () => {
+  //   console.log('hi there');
+  //   const config: Config = {
+  //     basePath: 'ReactNative',
+  //     endpoint: 'dashboard-results',
+  //   };
 
-    const results = fetchDashBoardResults(config);
+  //   const results = await fetchDashBoardResults(config);
+  //   setResultsOnDashboard(results);
+  //   console.log('the length of the array', resultsOnDashboard.length);
+
+  //   console.log('Succesfully fetched the dashboard results to store it here.');
+  // };
+
+  // console.log(resultsOnDashboard.length);
+
+  const fetchDashboardResults = async () => {
+    try {
+      console.log('in try block of fetchdashboard results');
+
+      const dashboardResultsResponse = await fetch(
+        'http://192.168.0.5:3000/ReactNative/dashboard-results',
+      );
+
+      console.log('in here in fetching results on the dashboard');
+
+      if (!dashboardResultsResponse.ok) {
+        throw new Error("Can't fetch the results");
+      }
+
+      const data = await dashboardResultsResponse.json();
+      setResultsOnDashboard(data);
+    } catch (error) {
+      console.log('Unable to fetch the desired results:', error);
+    }
   };
+  useEffect(() => {
+    fetchDashboardResults();
+  }, []);
+
+  console.log(resultsOnDashboard.length);
+  console.log('the contents of result in dashboard', resultsOnDashboard);
 
   return (
     <View style={DashBoardScreenStyles.container}>
@@ -83,7 +122,9 @@ const DashBoard = () => {
             }}>
             <Text style={{color: 'black'}}>
               Correct answers:
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}> 14 </Text>
+              <Text style={{fontSize: 24, fontWeight: 'bold', color: 'black'}}>
+                {resultsOnDashboard.overallPoints}
+              </Text>
             </Text>
           </View>
           <View
