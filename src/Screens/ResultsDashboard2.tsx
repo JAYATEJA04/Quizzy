@@ -23,47 +23,48 @@ const DashBoard = () => {
 
   const [resultsOnDashboard, setResultsOnDashboard] = useState<Array<any>>([]);
 
-  // const getResults = async () => {
-  //   console.log('hi there');
-  //   const config: Config = {
-  //     basePath: 'ReactNative',
-  //     endpoint: 'dashboard-results',
-  //   };
+  const getResults = async () => {
+    console.log('hi there');
+    const config: Config = {
+      basePath: 'ReactNative',
+      endpoint: 'dashboard-results',
+    };
 
-  //   const results = await fetchDashBoardResults(config);
-  //   setResultsOnDashboard(results);
-  //   console.log('the length of the array', resultsOnDashboard.length);
+    const results = await fetchDashBoardResults(config);
+    setResultsOnDashboard(results);
+    console.log('the length of the array', resultsOnDashboard.length);
 
-  //   console.log('Succesfully fetched the dashboard results to store it here.');
-  // };
+    console.log('Succesfully fetched the dashboard results to store it here.');
+  };
 
   // console.log(resultsOnDashboard.length);
 
-  const fetchDashboardResults = async () => {
-    try {
-      console.log('in try block of fetchdashboard results');
+  // const fetchDashboardResults = async () => {
+  //   try {
+  //     console.log('in try block of fetchdashboard results');
 
-      const dashboardResultsResponse = await fetch(
-        'http://192.168.0.5:3000/ReactNative/dashboard-results',
-      );
+  //     const dashboardResultsResponse = await fetch(
+  //       'http://192.168.0.5:3000/ReactNative/dashboard-results',
+  //     );
 
-      console.log('in here in fetching results on the dashboard');
+  //     console.log('in here in fetching results on the dashboard');
 
-      if (!dashboardResultsResponse.ok) {
-        throw new Error("Can't fetch the results");
-      }
+  //     if (!dashboardResultsResponse.ok) {
+  //       throw new Error("Can't fetch the results");
+  //     }
 
-      const data = await dashboardResultsResponse.json();
-      setResultsOnDashboard(data);
-    } catch (error) {
-      console.log('Unable to fetch the desired results:', error);
-    }
-  };
+  //     const data = await dashboardResultsResponse.json();
+  //     setResultsOnDashboard(data);
+  //   } catch (error) {
+  //     console.log('Unable to fetch the desired results:', error);
+  //   }
+  // };
   useEffect(() => {
-    fetchDashboardResults();
+    // fetchDashboardResults();
+    getResults();
   }, []);
 
-  console.log(resultsOnDashboard.length);
+  // console.log(resultsOnDashboard.length);
   console.log('the contents of result in dashboard', resultsOnDashboard);
 
   return (

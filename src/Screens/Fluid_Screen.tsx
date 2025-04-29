@@ -25,10 +25,12 @@ const Fluid_Screen = ({route}) => {
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
   const [disableOption, setDisableOption] = useState(false);
+  const [isQuizInProgress, setIsQuizInProgress] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<Boolean>(false);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const isQuizInProgress = useState(true);
+  // const isQuizInProgress = useState(true);
 
   const clearSelectedOptions = async () => {
     try {
@@ -49,41 +51,59 @@ const Fluid_Screen = ({route}) => {
     }
   };
 
-  useEffect(
-    () =>
-      navigation.addListener('beforeRemove', e => {
-        const action = e.data.action;
+  useEffect(() => {
+    console.log('Adding beforeRemove listener');
 
-        const handleGoingBack = async () => {
-          setQuestionCount(0);
-          dispatch(decrement());
-          await clearSelectedOptions();
-          navigation.dispatch(action);
-        };
+    console.log(`The question count is: ${questionCount}`);
 
-        e.preventDefault();
+    if (!isQuizInProgress) {
+      return;
+    }
 
-        Alert.alert(
-          'Quit Quiz?',
-          'Are you sure you want to quit the quiz? It will clear all the progress.',
-          [
-            {text: "Don't leave", style: 'cancel', onPress: () => {}},
-            {
-              text: 'Leave',
-              style: 'destructive',
-              onPress: () => handleGoingBack(),
-            },
-          ],
-        );
-      }),
-    [dispatch, navigation],
-  );
+    const unsubscribe = navigation.addListener('beforeRemove', e => {
+      // if (!isMounted) {
+      //   console.log('yeah hi hello');
+
+      //   return;
+      // }
+
+      const action = e.data.action;
+
+      const handleGoingBack = async () => {
+        setQuestionCount(0);
+        dispatch(decrement());
+        await clearSelectedOptions();
+        unsubscribe();
+        navigation.dispatch(action);
+      };
+
+      e.preventDefault();
+
+      Alert.alert(
+        'Quit Quiz?',
+        'Are you sure you want to quit the quiz? It will clear all the progress.',
+        [
+          {text: "Don't leave", style: 'cancel', onPress: () => {}},
+          {
+            text: 'Leave',
+            style: 'destructive',
+            onPress: () => handleGoingBack(),
+          },
+        ],
+      );
+    });
+
+    return () => {
+      console.log('Cleaning up beforeRemove listener');
+      unsubscribe();
+    };
+  }, [navigation, questionCount]);
 
   const handleOptionSelected = async option => {
     setOptionSelected(option.optionId);
     setResult(!result);
     setDisableOption(!disableOption);
-    console.log('hi', option);
+    // console.log('hi', option);
 
     await storeSelectedOption(option);
   };
@@ -94,15 +114,20 @@ const Fluid_Screen = ({route}) => {
         questionCount + 1
       }/answer`;
 
-      console.log(
-        QuizTitle,
-        '&',
-        QuizLevel,
-        '&',
-        url,
-        quizQuestions[questionCount].id,
-        option,
-      );
+      // console.log(
+      //   'The question count is:',
+      //   questionCount,
+      //   '& the quiz questions length is:',
+      //   quizQuestions.length,
+      //   '&',
+      //   QuizTitle,
+      //   '&',
+      //   QuizLevel,
+      //   '&',
+      //   url,
+      //   quizQuestions[questionCount].id,
+      //   option,
+      // );
 
       const responseExpected = await fetch(url, {
         method: 'POST',
@@ -143,7 +168,11 @@ const Fluid_Screen = ({route}) => {
   };
 
   const handleContinueButton = () => {
-    if (questionCount + 1 < quizQuestions.length) {
+    console.log(
+      `The question count is: ${questionCount} and the quiz question length is: ${quizQuestions.length}`,
+    );
+
+    if (questionCount < quizQuestions.length - 1) {
       setQuestionCount(questionCount + 1);
       dispatch(increment());
       setOptionSelected(null);
@@ -151,12 +180,18 @@ const Fluid_Screen = ({route}) => {
       setDisableOption(false);
     } else {
       // Alert.alert('The end bro!');
-      navigation.navigate('Dashboard');
+      // navigation.removeListener('beforeRemove');
+      console.log('This is after navigating to dashboard');
       setQuestionCount(0);
       dispatch(decrement());
+      console.log(
+        'This is after setting the count to 0 and dispatching decrement()',
+      );
       setOptionSelected(null);
       setResult(false);
       setDisableOption(false);
+      setIsQuizInProgress(false);
+      navigation.navigate('Dashboard');
     }
   };
 
@@ -193,7 +228,7 @@ const Fluid_Screen = ({route}) => {
       {/* The question view */}
       <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
         <Text style={RN_Fluid_Screen_Styles.QuestionText}>
-          {quizQuestions[questionCount].question}
+          {questionCount} {quizQuestions[questionCount].question}
         </Text>
         <View style={RN_Fluid_Screen_Styles.OptionsContainer}>
           {quizQuestions[questionCount].options.map((option, index) => (
