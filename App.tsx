@@ -12,7 +12,6 @@ import MainScreen from './src/Screens/MainScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
 import {store} from './redux store/store/store';
-import DashBoard from './src/Screens/ResultsDashboard2';
 
 const Stack = createNativeStackNavigator();
 

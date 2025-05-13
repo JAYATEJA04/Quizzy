@@ -26,11 +26,9 @@ const Fluid_Screen = ({route}) => {
   const [optionSelected, setOptionSelected] = useState(null);
   const [disableOption, setDisableOption] = useState(false);
   const [isQuizInProgress, setIsQuizInProgress] = useState(true);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<Boolean>(false);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  // const isQuizInProgress = useState(true);
 
   const clearSelectedOptions = async () => {
     try {
@@ -61,12 +59,6 @@ const Fluid_Screen = ({route}) => {
     }
 
     const unsubscribe = navigation.addListener('beforeRemove', e => {
-      // if (!isMounted) {
-      //   console.log('yeah hi hello');
-
-      //   return;
-      // }
-
       const action = e.data.action;
 
       const handleGoingBack = async () => {
@@ -180,9 +172,6 @@ const Fluid_Screen = ({route}) => {
       navigation.navigate('Dashboard');
     }
   };
-
-  // console.log('Quiz Questions:', quizQuestions);
-  // console.log('Quiz count:', questionCount);
 
   const correctAnswer = quizQuestions[questionCount].correctAnswer;
   const explanation = quizQuestions[questionCount].explanation;
