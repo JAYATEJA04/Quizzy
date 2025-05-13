@@ -34,7 +34,7 @@ test('go home button is rendered correctly', () => {
 
 jest.mock('../api/quizResults.ts');
 
-test('yeah there is a function name fetchDashBoardResults', () => {
+test('yeah there is a function name fetchDashBoardResults', async () => {
   const mockResults = {
     totalScore: 15,
     correctAnswers: 15,

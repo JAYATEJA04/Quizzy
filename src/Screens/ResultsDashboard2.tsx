@@ -15,6 +15,7 @@ const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
 interface Config {
   basePath: string;
+  level: string;
   endpoint: string;
 }
 
@@ -27,6 +28,7 @@ const DashBoard = () => {
     console.log('hi there');
     const config: Config = {
       basePath: 'ReactNative',
+      level: 'Fundamentals',
       endpoint: 'dashboard-results',
     };
 
@@ -59,10 +61,36 @@ const DashBoard = () => {
   //     console.log('Unable to fetch the desired results:', error);
   //   }
   // };
+
   useEffect(() => {
     // fetchDashboardResults();
     getResults();
   }, []);
+
+  const handleGoToHomeButton = () => {
+    clearOverAllPoints();
+    console.log('Cleard the selected options data');
+    Navigation.navigate('Home');
+  };
+
+  const clearOverAllPoints = async () => {
+    try {
+      const url = 'http://192.168.0.3:3000/ReactNative/selected-options';
+      console.log(url);
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Selected options cleared successfully:', data);
+    } catch (error) {
+      console.error('Error clearing selected options:', error);
+    }
+  };
 
   // console.log(resultsOnDashboard.length);
   console.log('the contents of result in dashboard', resultsOnDashboard);
@@ -111,7 +139,10 @@ const DashBoard = () => {
             }}>
             <Text style={{color: 'black'}}>
               Total score:
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}> 14 </Text>
+              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
+                {' '}
+                {resultsOnDashboard.totalNoOfQuestions}{' '}
+              </Text>
             </Text>
           </View>
           <View
@@ -140,7 +171,10 @@ const DashBoard = () => {
             ]}>
             <Text style={{color: 'black'}}>
               Wrong answers:
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}> 14 </Text>
+              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
+                {' '}
+                {resultsOnDashboard.wrongAnswers}{' '}
+              </Text>
             </Text>
           </View>
           <View
@@ -199,7 +233,7 @@ const DashBoard = () => {
             marginTop: 10,
           }}
           testID="go-home-button"
-          onPress={() => Navigation.navigate('Home')}>
+          onPress={() => handleGoToHomeButton()}>
           <Text
             style={{
               color: 'black',

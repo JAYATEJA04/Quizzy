@@ -1,9 +1,13 @@
-export const fetchDashBoardResults = async ({basePath, endpoint}: any) => {
+export const fetchDashBoardResults = async ({
+  basePath,
+  level,
+  endpoint,
+}: any) => {
   try {
-    console.log('hi dudududud', basePath, endpoint);
+    console.log('hi dudududud', basePath, level, endpoint);
 
     const response = await fetch(
-      `http://192.168.0.4:3000/${basePath}/${endpoint}`,
+      `http://192.168.0.3:3000/${basePath}/${level}/${endpoint}`,
     );
 
     console.log('this is get fetchDashboardResults and the response is:');

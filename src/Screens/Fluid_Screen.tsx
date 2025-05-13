@@ -25,7 +25,7 @@ const Fluid_Screen = ({route}) => {
   const [result, setResult] = useState(false);
   const [optionSelected, setOptionSelected] = useState(null);
   const [disableOption, setDisableOption] = useState(false);
-  const [isQuizInProgress, setIsQuizInProgress] = useState(false);
+  const [isQuizInProgress, setIsQuizInProgress] = useState(true);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState<Boolean>(false);
 
   const dispatch = useDispatch();
@@ -139,20 +139,6 @@ const Fluid_Screen = ({route}) => {
           selectedOption: option,
         }),
       });
-
-      // console.log(
-      //   QuizTitle,
-      //   '&',
-      //   QuizLevel,
-      //   '&',
-      //   url,
-      //   '&',
-      //   quizQuestions[questionCount].question,
-      //   '&',
-      //   responseExpected.json(),
-      //   '&',
-      //   option,
-      // );
 
       if (!responseExpected.ok) {
         throw new Error(`HTTP error: ${responseExpected.status}`);
