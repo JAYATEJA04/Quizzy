@@ -11,7 +11,7 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TopicMainScreen from './TopicMainScreen';
 import Fluid_Screen from './Fluid_Screen';
-import DashBoard from './ResultsDashboard2';
+import DashBoard from './ResultsDashboard';
 
 const Stack = createNativeStackNavigator();
 

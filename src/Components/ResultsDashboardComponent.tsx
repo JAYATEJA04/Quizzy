@@ -1,100 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
-  FlatList,
+  Text,
   TouchableOpacity,
+  View,
   Dimensions,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {fetchDashBoardResults} from '../api/quizResults';
 
 const {height: SCREEN_HEIGHT, width: SCREEN_WIDTH} = Dimensions.get('window');
 
-interface Config {
-  basePath: string;
-  level: string;
-  endpoint: string;
-}
-
-const DashBoard = () => {
-  const Navigation = useNavigation();
-
-  const [resultsOnDashboard, setResultsOnDashboard] = useState<Array<any>>([]);
-
-  const getResults = async () => {
-    console.log('hi there');
-    const config: Config = {
-      basePath: 'ReactNative',
-      level: 'Fundamentals',
-      endpoint: 'dashboard-results',
-    };
-
-    const results = await fetchDashBoardResults(config);
-    setResultsOnDashboard(results);
-    console.log('the length of the array', resultsOnDashboard.length);
-
-    console.log('Succesfully fetched the dashboard results to store it here.');
-  };
-
-  // console.log(resultsOnDashboard.length);
-
-  // const fetchDashboardResults = async () => {
-  //   try {
-  //     console.log('in try block of fetchdashboard results');
-
-  //     const dashboardResultsResponse = await fetch(
-  //       'http://192.168.0.5:3000/ReactNative/dashboard-results',
-  //     );
-
-  //     console.log('in here in fetching results on the dashboard');
-
-  //     if (!dashboardResultsResponse.ok) {
-  //       throw new Error("Can't fetch the results");
-  //     }
-
-  //     const data = await dashboardResultsResponse.json();
-  //     setResultsOnDashboard(data);
-  //   } catch (error) {
-  //     console.log('Unable to fetch the desired results:', error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchDashboardResults();
-    getResults();
-  }, []);
-
-  const handleGoToHomeButton = () => {
-    clearOverAllPoints();
-    console.log('Cleard the selected options data');
-    Navigation.navigate('Home');
-  };
-
-  const clearOverAllPoints = async () => {
-    try {
-      const url = 'http://192.168.0.3:3000/ReactNative/selected-options';
-      console.log(url);
-      const response = await fetch(url, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('Selected options cleared successfully:', data);
-    } catch (error) {
-      console.error('Error clearing selected options:', error);
-    }
-  };
-
-  // console.log(resultsOnDashboard.length);
-  console.log('the contents of result in dashboard', resultsOnDashboard);
-
+const ResultsDashboardComponent = ({
+  resultsOnDashboard,
+  handleGoToHomeButton,
+}) => {
   return (
     <View style={DashBoardScreenStyles.container}>
       <Text style={DashBoardScreenStyles.ScreenTitleText}>Results</Text>
@@ -138,11 +57,12 @@ const DashBoard = () => {
               paddingLeft: 10,
             }}>
             <Text style={{color: 'black'}}>
-              Total score:
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
-                {' '}
-                {resultsOnDashboard.totalNoOfQuestions}{' '}
-              </Text>
+              Total score:{' '}
+              <Text
+                style={{fontSize: 24, fontWeight: 'bold'}}
+                testID="totalNoOfQuestions">
+                {resultsOnDashboard[0]?.totalNoOfQuestions}
+              </Text>{' '}
             </Text>
           </View>
           <View
@@ -154,8 +74,10 @@ const DashBoard = () => {
             }}>
             <Text style={{color: 'black'}}>
               Correct answers:
-              <Text style={{fontSize: 24, fontWeight: 'bold', color: 'black'}}>
-                {resultsOnDashboard.overallPoints}
+              <Text
+                style={{fontSize: 24, fontWeight: 'bold', color: 'black'}}
+                testID="overAllPoints">
+                {resultsOnDashboard[0]?.overallPoints}
               </Text>
             </Text>
           </View>
@@ -170,11 +92,12 @@ const DashBoard = () => {
               },
             ]}>
             <Text style={{color: 'black'}}>
-              Wrong answers:
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
-                {' '}
-                {resultsOnDashboard.wrongAnswers}{' '}
-              </Text>
+              Wrong answers:{' '}
+              <Text
+                style={{fontSize: 24, fontWeight: 'bold'}}
+                testID="wrongAnswers">
+                {resultsOnDashboard[0]?.wrongAnswers}
+              </Text>{' '}
             </Text>
           </View>
           <View
@@ -268,4 +191,4 @@ const DashBoardScreenStyles = StyleSheet.create({
   },
 });
 
-export default DashBoard;
+export default ResultsDashboardComponent;
