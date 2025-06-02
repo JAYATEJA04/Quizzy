@@ -14,6 +14,7 @@ const ResultsDashboardComponent = ({
   resultsOnDashboard,
   handleGoToHomeButton,
 }) => {
+  console.log('the answer:', resultsOnDashboard.totalNoOfQuestions);
   return (
     <View style={DashBoardScreenStyles.container}>
       <Text style={DashBoardScreenStyles.ScreenTitleText}>Results</Text>
@@ -59,9 +60,9 @@ const ResultsDashboardComponent = ({
             <Text style={{color: 'black'}}>
               Total score:{' '}
               <Text
-                style={{fontSize: 24, fontWeight: 'bold'}}
+                style={{fontSize: 24, fontWeight: 'bold', color: 'black'}}
                 testID="totalNoOfQuestions">
-                {resultsOnDashboard[0]?.totalNoOfQuestions}
+                {resultsOnDashboard.totalNoOfQuestions}
               </Text>{' '}
             </Text>
           </View>
@@ -77,7 +78,7 @@ const ResultsDashboardComponent = ({
               <Text
                 style={{fontSize: 24, fontWeight: 'bold', color: 'black'}}
                 testID="overAllPoints">
-                {resultsOnDashboard[0]?.overallPoints}
+                {resultsOnDashboard.overallPoints}
               </Text>
             </Text>
           </View>
@@ -96,7 +97,7 @@ const ResultsDashboardComponent = ({
               <Text
                 style={{fontSize: 24, fontWeight: 'bold'}}
                 testID="wrongAnswers">
-                {resultsOnDashboard[0]?.wrongAnswers}
+                {resultsOnDashboard.wrongAnswers}
               </Text>{' '}
             </Text>
           </View>

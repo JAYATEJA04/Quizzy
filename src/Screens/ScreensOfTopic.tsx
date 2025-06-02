@@ -25,7 +25,7 @@ const ScreensOfTopic = ({route}) => {
   const {Topictitle} = route.params;
   console.log(Topictitle);
 
-  const BASE_URL = 'http://192.168.0.3:3000';
+  const BASE_URL = 'http://192.168.0.7:3000';
 
   useEffect(() => {
     const getQuizContent = async () => {
@@ -75,7 +75,15 @@ const ScreensOfTopic = ({route}) => {
           options={{gestureEnabled: false}}
         />
       ))}
-      <Stack.Screen name="Dashboard" component={DashBoard} />
+      <Stack.Screen
+        name="Dashboard"
+        component={DashBoard}
+        initialParams={{
+          QuizTitle: Topictitle,
+          QuizLevel: quizLevels,
+          baseUrl: BASE_URL,
+        }}
+      />
     </Stack.Navigator>
   );
 };

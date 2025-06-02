@@ -9,15 +9,16 @@ interface Config {
   endpoint: string;
 }
 
-const DashBoard = () => {
+const DashBoard = ({route}: any) => {
+  const {QuizTitle, QuizLevel, baseUrl} = route.params;
   const Navigation = useNavigation();
 
   const [resultsOnDashboard, setResultsOnDashboard] = useState<Array<any>>([]);
 
   const getResults = async () => {
     const config: Config = {
-      basePath: 'ReactNative',
-      level: 'Fundamentals',
+      basePath: QuizTitle,
+      level: QuizLevel,
       endpoint: 'dashboard-results',
     };
 
@@ -46,7 +47,7 @@ const DashBoard = () => {
 
   const clearOverAllPoints = async () => {
     try {
-      const url = 'http://192.168.0.3:3000/ReactNative/selected-options';
+      const url = `${baseUrl}ReactNative/selected-options`;
       console.log(url);
       const response = await fetch(url, {
         method: 'DELETE',
