@@ -47,7 +47,7 @@ const DashBoard = ({route}: any) => {
 
   const clearOverAllPoints = async () => {
     try {
-      const url = `${baseUrl}/ReactNative/selected-options`;
+      const url = `${baseUrl}/${QuizTitle}/selected-options`;
       console.log(url);
       const response = await fetch(url, {
         method: 'DELETE',

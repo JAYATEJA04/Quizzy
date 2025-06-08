@@ -1,4 +1,3 @@
-//homescreen
 import React from 'react';
 import {
   View,
@@ -12,7 +11,20 @@ import {useNavigation} from '@react-navigation/native';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
-const QuizzyMainScreen = ({title, screens}) => {
+type ScreenItem = {
+  name: string;
+  title: string;
+};
+
+type QuizzyMainScreenProps = {
+  title: string;
+  screens: ScreenItem[];
+};
+
+const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
+  title,
+  screens,
+}) => {
   const navigation = useNavigation();
   //   console.log(screens.name);
   console.log(title);
@@ -23,14 +35,12 @@ const QuizzyMainScreen = ({title, screens}) => {
         <Text style={styles.textCC1}>{title}</Text>
       </View>
       <View style={styles.childContainer2}>
-        <Text style={{fontFamily: 'AlberSans-Black', color: 'black'}}>
+        <Text style={styles.ChooseOptionsStyle}>
           Choose your tech stack here:
         </Text>
       </View>
       {screens.map((screen, index) => (
-        <View
-          key={index}
-          style={{justifyContent: 'space-evenly', flexDirection: 'column'}}>
+        <View key={index} style={styles.ScreeStyle}>
           <TouchableOpacity
             style={styles.optionButton}
             onPress={() => navigation.navigate(screen.name)}>
@@ -60,10 +70,18 @@ const styles = StyleSheet.create({
     margin: 5,
     height: 'auto',
   },
+  ChooseOptionsStyle: {
+    fontFamily: 'AlbertSans-Black',
+    color: 'black',
+  },
   textCC1: {
     fontSize: 40,
     fontFamily: 'AlbertSans-BoldItalic',
     color: '#FDA403',
+  },
+  ScreeStyle: {
+    justifyContent: 'space-evenly',
+    flexDirection: 'column',
   },
   optionButton: {
     margin: 10,

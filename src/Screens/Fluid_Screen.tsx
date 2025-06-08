@@ -50,9 +50,9 @@ const Fluid_Screen = ({route}) => {
   };
 
   useEffect(() => {
-    console.log('Adding beforeRemove listener');
+    // console.log('Adding beforeRemove listener');
 
-    console.log(`The question count is: ${questionCount}`);
+    // console.log(`The question count is: ${questionCount}`);
 
     if (!isQuizInProgress) {
       return;
@@ -86,7 +86,7 @@ const Fluid_Screen = ({route}) => {
     });
 
     return () => {
-      console.log('Cleaning up beforeRemove listener');
+      // console.log('Cleaning up beforeRemove listener');
       unsubscribe();
     };
   }, [navigation, questionCount]);
@@ -137,7 +137,7 @@ const Fluid_Screen = ({route}) => {
       }
 
       const data = await responseExpected.json();
-      console.log(data);
+      // console.log(data);
 
       console.log('Option stored successfully:', data);
     } catch (error) {
@@ -146,9 +146,9 @@ const Fluid_Screen = ({route}) => {
   };
 
   const handleContinueButton = () => {
-    console.log(
-      `The question count is: ${questionCount} and the quiz question length is: ${quizQuestions.length}`,
-    );
+    // console.log(
+    //   `The question count is: ${questionCount} and the quiz question length is: ${quizQuestions.length}`,
+    // );
 
     if (questionCount < quizQuestions.length - 1) {
       setQuestionCount(questionCount + 1);
@@ -159,12 +159,12 @@ const Fluid_Screen = ({route}) => {
     } else {
       // Alert.alert('The end bro!');
       // navigation.removeListener('beforeRemove');
-      console.log('This is after navigating to dashboard');
+      // console.log('This is after navigating to dashboard');
       setQuestionCount(0);
       dispatch(decrement());
-      console.log(
-        'This is after setting the count to 0 and dispatching decrement()',
-      );
+      // console.log(
+      //   'This is after setting the count to 0 and dispatching decrement()',
+      // );
       setOptionSelected(null);
       setResult(false);
       setDisableOption(false);
