@@ -31,7 +31,7 @@ const ScreensOfTopic: React.FC<ScreensOfTopicProps> = ({route}) => {
 
   useEffect(() => {
     getQuizContent(BASE_URL, Topictitle, setQuizContent);
-  }, [Topictitle, quizContent]);
+  }, [BASE_URL, Topictitle]);
 
   const quizLevels = ['Fundamentals', 'Intermediate', 'Advanced'];
 
