@@ -1,5 +1,3 @@
-import React, {useReducer} from 'react';
-
 export const initialState = {
   questionCount: 0,
   result: false,
