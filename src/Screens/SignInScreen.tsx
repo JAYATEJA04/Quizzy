@@ -93,7 +93,9 @@ const LoginScreen = () => {
             alignItems: 'center',
           }}
           onPress={() => handleLoginButton()}>
-          <Text>Sign in</Text>
+          <Text style={{color: 'black', fontSize: 24, fontWeight: 'bold'}}>
+            Sign in
+          </Text>
         </TouchableOpacity>
       </View>
       {/* <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

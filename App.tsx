@@ -14,20 +14,36 @@ import {Provider} from 'react-redux';
 import {store} from './redux store/store/store';
 import LoginScreen from './src/Screens/SignInScreen';
 import SignUpScreen from './src/Screens/SignUpScreen';
+import SampleLogin from './src/Screens/SampleScreen';
+import {AuthProvider, useAuth} from './src/Screens/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const {session} = useAuth();
+
   return (
     <GestureHandlerRootView>
       <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-            {/* <Stack.Screen name="Mainscreen" component={MainScreen} /> */}
-            <Stack.Screen name="Login Screen" component={LoginScreen} />
-            <Stack.Screen name="Sign up screen" component={SignUpScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AuthProvider>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+              <Stack.Screen name="Mainscreen" component={MainScreen} />
+              {!session ? (
+                <>
+                  <Stack.Screen
+                    name="Sample Login Screen"
+                    component={SampleLogin}
+                  />
+                </>
+              ) : (
+                <Stack.Screen name="Main Screen" component={MainScreen} />
+              )}
+              {/* <Stack.Screen name="Login Screen" component={LoginScreen} />
+            <Stack.Screen name="Sign up screen" component={SignUpScreen} /> */}
+            </Stack.Navigator>
+          </NavigationContainer>
+        </AuthProvider>
       </Provider>
     </GestureHandlerRootView>
   );

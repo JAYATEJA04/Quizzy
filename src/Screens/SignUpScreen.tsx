@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Alert, TextInput} from 'react-native';
+import {Text, View, Alert, TextInput} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const SignUpScreen = () => {
@@ -28,6 +28,11 @@ const SignUpScreen = () => {
         flex: 1,
         padding: 10,
       }}>
+      <View style={{marginLeft: 10, marginBottom: 20}}>
+        <Text style={{color: 'black', fontSize: 24, fontWeight: 'bold'}}>
+          Hello! Please register yourselves to get started.
+        </Text>
+      </View>
       <View>
         <TextInput
           style={{
@@ -40,7 +45,7 @@ const SignUpScreen = () => {
           value={userName}
           placeholder="Enter your username"
           onChangeText={u => setUsername(u)}
-          placeholderTextColor={'white'}
+          placeholderTextColor={'grey'}
         />
       </View>
       <View>
@@ -55,7 +60,7 @@ const SignUpScreen = () => {
           value={email}
           placeholder="Enter your email"
           onChangeText={e => setEmail(e)}
-          placeholderTextColor={'white'}
+          placeholderTextColor={'grey'}
         />
       </View>
       <View>
@@ -70,7 +75,7 @@ const SignUpScreen = () => {
           value={password}
           placeholder="Enter your password"
           onChangeText={p => setPassword(p)}
-          placeholderTextColor={'white'}
+          placeholderTextColor={'grey'}
         />
       </View>
       <View>
