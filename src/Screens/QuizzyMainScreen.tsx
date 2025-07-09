@@ -6,8 +6,10 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
+  Button,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {supabase} from '../../lib/supabase';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
@@ -49,6 +51,7 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
           </TouchableOpacity>
         </View>
       ))}
+      <Button title="Log out" onPress={() => supabase.auth.signOut()} />
     </ScrollView>
   );
 };

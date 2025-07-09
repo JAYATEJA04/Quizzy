@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import {Alert, Button, StyleSheet, TextInput, View} from 'react-native';
 import {supabase} from '../../lib/supabase';
+import {useAuth} from './AuthContext';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const {session, setSession} = useAuth();
+
   async function signInWithEmail() {
     setLoading(true);
-    const {error} = await supabase.auth.signInWithPassword({
+    const {data, error} = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
@@ -17,8 +20,11 @@ export default function Auth() {
     if (error) {
       Alert.alert(error.message);
     }
-    setLoading(false);
+    // setSession(data.session);
+    console.log(data.session?.user.email);
+
     Alert.alert('You signed in!');
+    setLoading(false);
   }
 
   async function signUpWithEmail() {

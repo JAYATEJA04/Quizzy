@@ -4,6 +4,7 @@ import {supabase} from '../../lib/supabase';
 import Auth from '../Screens/Auth';
 import {View, Text} from 'react-native';
 import {Session} from '@supabase/supabase-js';
+import {Button} from 'react-native';
 
 export default function SampleLogin() {
   const [session, setSession] = useState<Session | null>(null);
@@ -23,14 +24,16 @@ export default function SampleLogin() {
 
   return (
     <View>
-      {/* <Auth />
-      {session && session.user && <Text>{session.user.id}</Text>}
+      <Auth />
+      {/* {session && session.user && <Text>{session.user.id}</Text>}
       <Text>{anything}</Text> */}
-      {!session ? (
+      {/* {!session ? (
         <Auth />
       ) : (
-        <Text style={{color: 'black'}}>Hello {session.user.email}</Text>
-      )}
+        <>
+          <Text style={{color: 'black'}}>Hello {session.user.email}</Text>
+        </>
+      )} */}
     </View>
   );
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import QuizzyMainScreen from './QuizzyMainScreen';
 import ScreensOfTopic from './ScreensOfTopic';
+import {Button} from 'react-native';
+import {supabase} from '../../lib/supabase';
 
 const Stack = createNativeStackNavigator();
 

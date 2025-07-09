@@ -19,17 +19,32 @@ import {AuthProvider, useAuth} from './src/Screens/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const RootNavigator = () => {
   const {session} = useAuth();
+
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      {!session ? (
+        <Stack.Screen name="Sample Login Screen" component={SampleLogin} />
+      ) : (
+        <Stack.Screen name="Main Screen" component={MainScreen} />
+      )}
+    </Stack.Navigator>
+  );
+};
+
+const App = () => {
+  // const {session} = useAuth();
+  // console.log(session);
 
   return (
     <GestureHandlerRootView>
       <Provider store={store}>
         <AuthProvider>
           <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerShown: false}}>
-              <Stack.Screen name="Mainscreen" component={MainScreen} />
-              {!session ? (
+            {/* <Stack.Navigator screenOptions={{headerShown: false}}> */}
+            {/* <Stack.Screen name="Mainscreen" component={MainScreen} /> */}
+            {/* {!session ? (
                 <>
                   <Stack.Screen
                     name="Sample Login Screen"
@@ -38,10 +53,15 @@ const App = () => {
                 </>
               ) : (
                 <Stack.Screen name="Main Screen" component={MainScreen} />
-              )}
-              {/* <Stack.Screen name="Login Screen" component={LoginScreen} />
+              )} */}
+            {/* <Stack.Screen name="Login Screen" component={LoginScreen} />
             <Stack.Screen name="Sign up screen" component={SignUpScreen} /> */}
-            </Stack.Navigator>
+            {/* <Stack.Screen
+                name="Sample Login Screen"
+                component={SampleLogin}
+              /> */}
+            {/* </Stack.Navigator> */}
+            <RootNavigator />
           </NavigationContainer>
         </AuthProvider>
       </Provider>
