@@ -3,23 +3,28 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Text, View, Alert, TextInput} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import Auth from './Auth';
 
 const SignUpScreen = () => {
-  const [userName, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [userName, setUsername] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  const {email, setEmail, password, setPassword, loading, signUpWithEmail} =
+    Auth();
 
   const Navigation = useNavigation();
 
   const handleSignUpScreen = () => {
-    setUsername('');
     setEmail('');
+    // setEmail('');
     setPassword('');
+    signUpWithEmail();
     Alert.alert('You signed up! Wooo!');
   };
 
   const handleSignIn = () => {
-    Navigation.navigate('Login Screen');
+    Navigation.navigate('SignIn Screen');
   };
 
   return (
@@ -30,7 +35,7 @@ const SignUpScreen = () => {
       }}>
       <View style={{marginLeft: 10, marginBottom: 20}}>
         <Text style={{color: 'black', fontSize: 24, fontWeight: 'bold'}}>
-          Hello! Please register yourselves to get started.
+          Hello! Please register yourself to get started.
         </Text>
       </View>
       <View>
@@ -42,9 +47,9 @@ const SignUpScreen = () => {
             padding: 10,
             backgroundColor: 'lightgrey',
           }}
-          value={userName}
+          value={email}
           placeholder="Enter your username"
-          onChangeText={u => setUsername(u)}
+          onChangeText={u => setEmail(u)}
           placeholderTextColor={'grey'}
         />
       </View>

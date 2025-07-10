@@ -9,21 +9,33 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
+import Auth from './Auth';
 
 const LoginScreen = () => {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  // const [userName, setUserName] = useState('');
+  // const [password, setPassword] = useState('');
+
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    loading,
+    signInWithEmail,
+    signUpWithEmail,
+  } = Auth();
 
   const Navigation = useNavigation();
 
   const handleLoginButton = () => {
-    setUserName('');
+    setEmail('');
     setPassword('');
+    signInWithEmail();
     Alert.alert('You are signed in!');
   };
 
   const handleSignUpScreen = () => {
-    Navigation.navigate('Sign up screen');
+    Navigation.navigate('SignUp Screen');
   };
 
   return (
@@ -36,35 +48,17 @@ const LoginScreen = () => {
       <View>
         <Text style={{color: 'black', marginLeft: 10}}>Name</Text>
         <TextInput
-          style={{
-            borderWidth: 1,
-            color: 'black',
-            borderRadius: 8,
-            marginLeft: 10,
-            marginRight: 10,
-            marginBottom: 20,
-            padding: 10,
-            backgroundColor: 'lightgrey',
-          }}
+          style={styles.InputStyle}
           placeholder="Enter your username/password"
-          onChangeText={v => setUserName(v)}
-          value={userName}
+          onChangeText={v => setEmail(v)}
+          value={email}
           placeholderTextColor={'white'}
         />
       </View>
       <View>
         <Text style={{color: 'black', marginLeft: 10}}>Password</Text>
         <TextInput
-          style={{
-            borderWidth: 1,
-            color: 'black',
-            borderRadius: 8,
-            marginLeft: 10,
-            marginRight: 10,
-            marginBottom: 20,
-            padding: 10,
-            backgroundColor: 'lightgrey',
-          }}
+          style={styles.InputStyle}
           placeholder="Enter your password"
           onChangeText={p => setPassword(p)}
           value={password}
@@ -113,5 +107,18 @@ const LoginScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  InputStyle: {
+    borderWidth: 1,
+    color: 'black',
+    borderRadius: 8,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 20,
+    padding: 10,
+    backgroundColor: 'lightgrey',
+  },
+});
 
 export default LoginScreen;

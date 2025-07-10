@@ -27,6 +27,7 @@ const RootNavigator = () => {
       {!session ? (
         <Stack.Screen name="Sample Login Screen" component={SampleLogin} />
       ) : (
+        // <Stack.Screen name="Sample Login Screen" component={LoginScreen} />
         <Stack.Screen name="Main Screen" component={MainScreen} />
       )}
     </Stack.Navigator>
