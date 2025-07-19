@@ -16,6 +16,7 @@ import LoginScreen from './src/Screens/SignInScreen';
 import SignUpScreen from './src/Screens/SignUpScreen';
 import SampleLogin from './src/Screens/SampleScreen';
 import {AuthProvider, useAuth} from './src/Screens/AuthContext';
+import BottomTabTest from './src/Screens/BottomTabtest';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ const RootNavigator = () => {
         <Stack.Screen name="Sample Login Screen" component={SampleLogin} />
       ) : (
         // <Stack.Screen name="Sample Login Screen" component={LoginScreen} />
-        <Stack.Screen name="Main Screen" component={MainScreen} />
+        <Stack.Screen name="Main Screen" component={BottomTabTest} />
       )}
     </Stack.Navigator>
   );

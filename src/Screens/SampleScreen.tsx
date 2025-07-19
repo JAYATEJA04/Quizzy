@@ -41,7 +41,7 @@ export default function SampleLogin() {
     //     </>
     //   )} */}
     // </View>
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignIn Screen" component={LoginScreen} />
       <Stack.Screen name="SignUp Screen" component={SignUpScreen} />
     </Stack.Navigator>

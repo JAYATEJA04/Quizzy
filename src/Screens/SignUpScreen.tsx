@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Auth from './Auth';
 
 const SignUpScreen = () => {
-  // const [userName, setUsername] = useState('');
+  const [userName, setUsername] = useState('');
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
 
@@ -16,9 +16,9 @@ const SignUpScreen = () => {
   const Navigation = useNavigation();
 
   const handleSignUpScreen = () => {
-    setEmail('');
     // setEmail('');
-    setPassword('');
+    // // setEmail('');
+    // setPassword('');
     signUpWithEmail();
     Alert.alert('You signed up! Wooo!');
   };
@@ -32,6 +32,7 @@ const SignUpScreen = () => {
       style={{
         flex: 1,
         padding: 10,
+        backgroundColor: '#FBFAF2',
       }}>
       <View style={{marginLeft: 10, marginBottom: 20}}>
         <Text style={{color: 'black', fontSize: 24, fontWeight: 'bold'}}>
@@ -47,9 +48,9 @@ const SignUpScreen = () => {
             padding: 10,
             backgroundColor: 'lightgrey',
           }}
-          value={email}
+          value={userName}
           placeholder="Enter your username"
-          onChangeText={u => setEmail(u)}
+          onChangeText={u => setUsername(u)}
           placeholderTextColor={'grey'}
         />
       </View>

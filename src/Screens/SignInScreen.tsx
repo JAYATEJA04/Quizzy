@@ -15,15 +15,8 @@ const LoginScreen = () => {
   // const [userName, setUserName] = useState('');
   // const [password, setPassword] = useState('');
 
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    loading,
-    signInWithEmail,
-    signUpWithEmail,
-  } = Auth();
+  const {email, setEmail, password, setPassword, loading, signInWithEmail} =
+    Auth();
 
   const Navigation = useNavigation();
 
@@ -39,20 +32,21 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, padding: 10}}>
+    <View style={{flex: 1, padding: 10, backgroundColor: '#F9FDFE'}}>
       <View style={{alignItems: 'center'}}>
-        <Text style={{color: 'black', fontSize: 32, fontStyle: 'italic'}}>
-          Quizzler
+        <Text style={{color: 'black', fontSize: 32, fontWeight: 'bold'}}>
+          Quizzy
         </Text>
       </View>
       <View>
         <Text style={{color: 'black', marginLeft: 10}}>Name</Text>
         <TextInput
           style={styles.InputStyle}
-          placeholder="Enter your username/password"
+          placeholder="Enter your username/email"
           onChangeText={v => setEmail(v)}
           value={email}
-          placeholderTextColor={'white'}
+          placeholderTextColor={'grey'}
+          autoCapitalize="none"
         />
       </View>
       <View>
@@ -60,8 +54,10 @@ const LoginScreen = () => {
         <TextInput
           style={styles.InputStyle}
           placeholder="Enter your password"
+          placeholderTextColor={'grey'}
           onChangeText={p => setPassword(p)}
           value={password}
+          autoCapitalize="none"
         />
       </View>
       <View style={{alignItems: 'flex-end', marginBottom: 10}}>

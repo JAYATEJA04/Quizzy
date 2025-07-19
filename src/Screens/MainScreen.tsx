@@ -4,8 +4,10 @@ import QuizzyMainScreen from './QuizzyMainScreen';
 import ScreensOfTopic from './ScreensOfTopic';
 import {Button} from 'react-native';
 import {supabase} from '../../lib/supabase';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Stack = createNativeStackNavigator();
+const BottomTab = createBottomTabNavigator();
 
 const topicScreens = [
   {name: 'ReactNativeScreen', title: 'ReactNative'},
