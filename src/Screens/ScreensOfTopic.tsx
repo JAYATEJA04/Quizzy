@@ -27,7 +27,7 @@ const ScreensOfTopic: React.FC<ScreensOfTopicProps> = ({route}) => {
 
   const {Topictitle} = route.params;
 
-  const BASE_URL = 'http://192.168.0.6:3000';
+  const BASE_URL = 'http://192.168.0.4:3000';
 
   useEffect(() => {
     getQuizContent(BASE_URL, Topictitle, setQuizContent);

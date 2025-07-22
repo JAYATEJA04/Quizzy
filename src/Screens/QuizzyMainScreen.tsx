@@ -51,7 +51,6 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
           </TouchableOpacity>
         </View>
       ))}
-      <Button title="Log out" onPress={() => supabase.auth.signOut()} />
     </ScrollView>
   );
 };
