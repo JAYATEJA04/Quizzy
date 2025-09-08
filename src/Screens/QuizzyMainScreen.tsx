@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
@@ -36,10 +37,20 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
       <View style={styles.TitleContainer1}>
         <Text style={styles.textCC1}>{title}</Text>
       </View>
+      <View
+        style={{
+          height: 100,
+          // borderWidth: 0.2,
+          elevation: 3,
+          borderRadius: 8,
+          backgroundColor: 'orange',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text>Your current progress.</Text>
+      </View>
       <View style={styles.childContainer2}>
-        <Text style={styles.ChooseOptionsStyle}>
-          Choose your tech stack here:
-        </Text>
+        <Text style={styles.ChooseOptionsStyle}>Choose your quiz.</Text>
       </View>
       {screens.map((screen, index) => (
         <View key={index} style={styles.ScreeStyle}>
@@ -59,27 +70,30 @@ const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
     padding: 10,
-    backgroundColor: 'F3F8FF',
+    backgroundColor: '#F3F8FF',
   },
   TitleContainer1: {
-    borderWidth: 1,
-    height: 'auto',
-    padding: 10,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    // borderWidth: 1,
+    // height: 'auto',
+    flex: 1,
+    // padding: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   childContainer2: {
     margin: 5,
     height: 'auto',
   },
   ChooseOptionsStyle: {
-    fontFamily: 'AlbertSans-Black',
+    // fontFamily: ,
     color: 'black',
+    fontWeight: '400',
   },
   textCC1: {
-    fontSize: 40,
-    fontFamily: 'AlbertSans-BoldItalic',
-    color: '#FDA403',
+    fontSize: 24,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    color: 'orange',
   },
   ScreeStyle: {
     justifyContent: 'space-evenly',

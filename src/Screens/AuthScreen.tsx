@@ -1,18 +1,14 @@
-import React, {useState, useEffect, useContext, createContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'react-native-url-polyfill/auto';
 import {supabase} from '../../lib/supabase';
-import Auth from '../Screens/Auth';
-import {View, Text} from 'react-native';
 import {Session} from '@supabase/supabase-js';
-import {Button} from 'react-native';
 import SignUpScreen from './SignUpScreen';
 import LoginScreen from './SignInScreen';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-export default function SampleLogin() {
+export default function VerifyLogin() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -29,18 +25,6 @@ export default function SampleLogin() {
   // console.log(session);
 
   return (
-    // <View>
-    //   <SignUpScreen />
-    //   {/* {session && session.user && <Text>{session.user.id}</Text>}
-    //   <Text>{anything}</Text> */}
-    //   {/* {!session ? (
-    //     <Auth />
-    //   ) : (
-    //     <>
-    //       <Text style={{color: 'black'}}>Hello {session.user.email}</Text>
-    //     </>
-    //   )} */}
-    // </View>
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignIn Screen" component={LoginScreen} />
       <Stack.Screen name="SignUp Screen" component={SignUpScreen} />

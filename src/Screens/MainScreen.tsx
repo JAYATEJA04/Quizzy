@@ -9,7 +9,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
-const topicScreens = [
+const topicScreenNames = [
   {name: 'ReactNativeScreen', title: 'ReactNative'},
   {name: 'ReactJSScreen', title: 'React'},
   {name: 'JavaScriptScreen', title: 'JavaScript'},
@@ -22,9 +22,9 @@ const MainScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home">
-        {() => <QuizzyMainScreen title="Quizzy" screens={topicScreens} />}
+        {() => <QuizzyMainScreen title="Quizzy" screens={topicScreenNames} />}
       </Stack.Screen>
-      {topicScreens.map((screen, index) => (
+      {topicScreenNames.map((screen, index) => (
         <Stack.Screen
           key={index}
           name={screen.name}
