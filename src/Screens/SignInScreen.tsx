@@ -32,7 +32,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, padding: 10, backgroundColor: '#ffffffff'}}>
+    <View style={{flex: 1, padding: 10, backgroundColor: 'white'}}>
       <View
         style={{
           flex: 1,
@@ -44,7 +44,7 @@ const LoginScreen = () => {
           style={{
             color: 'orange',
             fontStyle: 'italic',
-            fontSize: 24,
+            fontSize: 28,
             fontWeight: 'bold',
           }}>
           Quizzy
