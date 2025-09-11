@@ -10,11 +10,11 @@ const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 const topicScreenNames = [
-  {name: 'ReactNativeScreen', title: 'ReactNative'},
+  {name: 'ReactNativeScreen', title: 'React Native'},
   {name: 'ReactJSScreen', title: 'React'},
   {name: 'JavaScriptScreen', title: 'JavaScript'},
   {name: 'TypeScriptScreen', title: 'TypeScript'},
-  {name: 'JAVAScreen', title: 'JAVA'},
+  {name: 'JAVAScreen', title: 'Java'},
   {name: 'NodeJSScreen', title: 'NodeJS'},
 ];
 

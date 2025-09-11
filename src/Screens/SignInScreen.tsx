@@ -93,9 +93,6 @@ const LoginScreen = () => {
             ) : (
               <TouchableOpacity
                 style={{
-                  // borderWidth: 1,
-                  // height: 50,
-                  // width: 100,
                   elevation: 3,
                   borderRadius: 8,
                   padding: 10,
@@ -116,9 +113,6 @@ const LoginScreen = () => {
             )}
           </View>
         </View>
-        {/* <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{color: 'black'}}>or sign-in with</Text>
-      </View> */}
         <View
           style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}>
           <Text style={{color: 'black'}}>

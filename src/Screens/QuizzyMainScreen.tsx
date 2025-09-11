@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
   Dimensions,
   Button,
+  Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {supabase} from '../../lib/supabase';
+import Topic_ProgressBar from '../Components/Topic_ProgressBar';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
@@ -32,6 +34,23 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
   //   console.log(screens.name);
   console.log(title);
 
+  const getImageSource = (name: string) => {
+    switch (name) {
+      case 'ReactNativeScreen':
+        return require('../../assets/Images/ReactNative_logo.png');
+      case 'ReactJSScreen':
+        return require('../../assets/Images/React_logo.png');
+      case 'JavaScriptScreen':
+        return require('../../assets/Images/JS_logo.png');
+      case 'TypeScriptScreen':
+        return require('../../assets/Images/typescript_logo.png');
+      case 'JAVAScreen':
+        return require('../../assets/Images/java_logo.png');
+      default:
+        return require('../../assets/Images/jsintro.png');
+    }
+  };
+
   return (
     <ScrollView style={styles.parentContainer}>
       <View style={styles.TitleContainer1}>
@@ -39,15 +58,17 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
       </View>
       <View
         style={{
-          height: 100,
+          height: SCREEN_HEIGHT / 4,
           // borderWidth: 0.2,
-          elevation: 3,
-          borderRadius: 8,
+          elevation: 5,
+          borderRadius: 20,
           backgroundColor: 'orange',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text>Your current progress.</Text>
+        <Text style={{fontSize: 40, textAlign: 'left'}}>
+          Your current progress.
+        </Text>
       </View>
       <View style={styles.childContainer2}>
         <Text style={styles.ChooseOptionsStyle}>Choose your quiz.</Text>
@@ -58,7 +79,30 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
             style={styles.optionButton}
             onPress={() => navigation.navigate(screen.name)}>
             {/* onPress={() => navigation.navigate('Dashboard')}> */}
-            <Text style={styles.optionText}>{screen.title}</Text>
+            {/* {console.log(screen.name)} */}
+            {/* <Image
+              style={{
+                position: 'absolute',
+                resizeMode: 'cover',
+                height: SCREEN_HEIGHT / 8,
+                width: '50%',
+                alignSelf: 'flex-end',
+              }}
+              source={getImageSource(screen.name)}
+            /> */}
+            <View
+              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={styles.optionText}>{screen.title}</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+              }}>
+              <Topic_ProgressBar />
+              <Topic_ProgressBar />
+              <Topic_ProgressBar />
+            </View>
           </TouchableOpacity>
         </View>
       ))}
@@ -86,8 +130,9 @@ const styles = StyleSheet.create({
   },
   ChooseOptionsStyle: {
     // fontFamily: ,
-    color: 'black',
-    fontWeight: '400',
+    fontSize: 20,
+    color: 'grey',
+    fontWeight: 'bold',
   },
   textCC1: {
     fontSize: 24,
@@ -96,23 +141,29 @@ const styles = StyleSheet.create({
     color: 'orange',
   },
   ScreeStyle: {
+    overflow: 'hidden',
     justifyContent: 'space-evenly',
     flexDirection: 'column',
   },
   optionButton: {
     margin: 10,
     height: SCREEN_HEIGHT / 8,
+    // width: '95%',
     elevation: 3,
     padding: 10,
     borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    // justifyContent: 'flex-start',
+    // alignItems: 'center',
+    justifyContent: 'space-evenly',
     backgroundColor: '#ffffff',
+    shadowColor: 'green',
+    tintColor: 'red',
   },
   optionText: {
-    color: 'black',
-    fontSize: 20,
-    fontFamily: 'AlbertSans-Black',
+    color: 'grey',
+    fontSize: 18,
+    fontWeight: '500',
+    fontStyle: 'italic',
   },
 });
 
