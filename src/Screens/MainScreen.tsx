@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 const topicScreenNames = [
-  {name: 'ReactNativeScreen', title: 'React Native'},
+  {name: 'ReactNativeScreen', title: 'ReactNative'},
   {name: 'ReactJSScreen', title: 'React'},
   {name: 'JavaScriptScreen', title: 'JavaScript'},
   {name: 'TypeScriptScreen', title: 'TypeScript'},
@@ -21,7 +21,7 @@ const topicScreenNames = [
 const MainScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home">
+      <Stack.Screen name="QuizzyMainScreen">
         {() => <QuizzyMainScreen title="Quizzy" screens={topicScreenNames} />}
       </Stack.Screen>
       {topicScreenNames.map((screen, index) => (

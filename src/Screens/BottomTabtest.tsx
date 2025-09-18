@@ -5,6 +5,7 @@ import {View, StyleSheet, Text, Button, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MainScreen from './MainScreen';
 import {supabase} from '../../lib/supabase';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -33,11 +34,58 @@ const ProfileScreen = () => {
   );
 };
 
+const SearchScreen = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+      }}>
+      <Text style={{fontSize: 20, color: 'black'}}>Profile Screen</Text>
+    </View>
+  );
+};
+
+const HomeTabIcon = () => (
+  <FontAwesomeIcon name="house" size={20} color={'black'} />
+);
+
+const renderIcons = (iconname: string) => () => {
+  if (iconname === 'Home') {
+    return <FontAwesomeIcon name="house" size={24} color={'black'} />;
+  } else if (iconname === 'Profile') {
+    return <FontAwesomeIcon name="user" size={20} color={'black'} />;
+  } else if (iconname === 'Search') {
+    return (
+      <FontAwesomeIcon name="magnifying-glass" size={20} color={'black'} />
+    );
+  }
+};
+
 const BottomTabTest = () => {
   return (
     <BottomTab.Navigator screenOptions={{headerShown: false}}>
-      <BottomTab.Screen name="Home2" component={MainScreen} />
-      <BottomTab.Screen name="Profile Screen" component={ProfileScreen} />
+      <BottomTab.Screen
+        name="Home"
+        component={MainScreen}
+        options={{
+          tabBarIcon: renderIcons('Home'),
+        }}
+      />
+      <BottomTab.Screen
+        name="Search Screen"
+        component={SearchScreen}
+        options={{tabBarIcon: renderIcons('Search')}}
+      />
+      <BottomTab.Screen
+        name="Profile Screen"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: renderIcons('Profile'),
+        }}
+      />
     </BottomTab.Navigator>
   );
 };

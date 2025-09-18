@@ -7,13 +7,10 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
-  Button,
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {supabase} from '../../lib/supabase';
-import Topic_ProgressBar from '../Components/Topic_ProgressBar';
-
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
 type ScreenItem = {
@@ -31,21 +28,22 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
   screens,
 }) => {
   const navigation = useNavigation();
-  //   console.log(screens.name);
   console.log(title);
 
   const getImageSource = (name: string) => {
     switch (name) {
       case 'ReactNativeScreen':
-        return require('../../assets/Images/ReactNative_logo.png');
+        return require('../../assets/Images/ReactNative_logo2.png');
       case 'ReactJSScreen':
-        return require('../../assets/Images/React_logo.png');
+        return require('../../assets/Images/ReactNative_logo2.png');
       case 'JavaScriptScreen':
         return require('../../assets/Images/JS_logo.png');
       case 'TypeScriptScreen':
         return require('../../assets/Images/typescript_logo.png');
       case 'JAVAScreen':
         return require('../../assets/Images/java_logo.png');
+      case 'NodeJSScreen':
+        return require('../../assets/Images/nodejs_logo.png');
       default:
         return require('../../assets/Images/jsintro.png');
     }
@@ -55,11 +53,13 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
     <ScrollView style={styles.parentContainer}>
       <View style={styles.TitleContainer1}>
         <Text style={styles.textCC1}>{title}</Text>
+        <Text style={{fontSize: 20}}>
+          4444 <FontAwesomeIcon name="fire" size={20} color={'orange'} />
+        </Text>
       </View>
       <View
         style={{
           height: SCREEN_HEIGHT / 4,
-          // borderWidth: 0.2,
           elevation: 5,
           borderRadius: 20,
           backgroundColor: 'orange',
@@ -78,30 +78,45 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
           <TouchableOpacity
             style={styles.optionButton}
             onPress={() => navigation.navigate(screen.name)}>
-            {/* onPress={() => navigation.navigate('Dashboard')}> */}
-            {/* {console.log(screen.name)} */}
-            {/* <Image
-              style={{
-                position: 'absolute',
-                resizeMode: 'cover',
-                height: SCREEN_HEIGHT / 8,
-                width: '50%',
-                alignSelf: 'flex-end',
-              }}
-              source={getImageSource(screen.name)}
-            /> */}
-            <View
-              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={styles.optionText}>{screen.title}</Text>
-            </View>
             <View
               style={{
                 flex: 1,
+                justifyContent: 'space-evenly',
+                alignItems: 'center',
                 flexDirection: 'row',
               }}>
-              <Topic_ProgressBar />
-              <Topic_ProgressBar />
-              <Topic_ProgressBar />
+              <View
+                style={{
+                  flex: 1,
+                }}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Image
+                    style={{
+                      height: 50,
+                      width: 50,
+                      borderRadius: 4,
+                      resizeMode: 'contain',
+                    }}
+                    source={getImageSource(screen.name)}
+                  />
+                </View>
+              </View>
+              <View style={{flex: 4}}>
+                <Text style={styles.optionText}> {screen.title}</Text>
+              </View>
+              <View style={{flex: 1, alignItems: 'center'}}>
+                <FontAwesomeIcon
+                  name="arrow-right"
+                  size={24}
+                  color={'black'}
+                  style={{opacity: 0.6}}
+                />
+              </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -114,14 +129,12 @@ const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#F3F8FF',
+    backgroundColor: 'white',
   },
   TitleContainer1: {
-    // borderWidth: 1,
-    // height: 'auto',
     flex: 1,
-    // padding: 10,
-    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   childContainer2: {
@@ -129,9 +142,8 @@ const styles = StyleSheet.create({
     height: 'auto',
   },
   ChooseOptionsStyle: {
-    // fontFamily: ,
     fontSize: 20,
-    color: 'grey',
+    color: 'black',
     fontWeight: 'bold',
   },
   textCC1: {
@@ -147,23 +159,20 @@ const styles = StyleSheet.create({
   },
   optionButton: {
     margin: 10,
-    height: SCREEN_HEIGHT / 8,
-    // width: '95%',
-    elevation: 3,
+    height: SCREEN_HEIGHT / 10,
+    elevation: 5,
     padding: 10,
-    borderRadius: 5,
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 0.5,
     justifyContent: 'space-evenly',
     backgroundColor: '#ffffff',
-    shadowColor: 'green',
-    tintColor: 'red',
+    shadowColor: 'black',
   },
   optionText: {
     color: 'grey',
     fontSize: 18,
     fontWeight: '500',
-    fontStyle: 'italic',
+    fontFamily: 'Roboto-ExtraBoldItalic',
   },
 });
 
