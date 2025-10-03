@@ -7,6 +7,8 @@ import MainScreen from '../Components/MainScreenComponent';
 import {supabase} from '../../lib/supabase';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 import MainScreenStack from '../Components/MainScreenComponent';
+import SearchScreen from './SearchScreen/SearchScreen';
+import SearchList from './SearchScreen/SearchList';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -31,20 +33,6 @@ const ProfileScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
-  );
-};
-
-const SearchScreen = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10,
-      }}>
-      <Text style={{fontSize: 20, color: 'black'}}>Profile Screen</Text>
     </View>
   );
 };
@@ -77,7 +65,7 @@ const PostAuthenticationScreens = () => {
       />
       <BottomTab.Screen
         name="Search Screen"
-        component={SearchScreen}
+        component={SearchList}
         options={{tabBarIcon: renderIcons('Search')}}
       />
       <BottomTab.Screen
