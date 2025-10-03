@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   ChooseOptionsStyle: {
     fontSize: 20,
     color: 'black',
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
   },
   textCC1: {
     fontSize: 24,
@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'space-evenly',
     flexDirection: 'column',
+    // borderWidth: 1,
   },
   optionButton: {
     margin: 10,
@@ -163,7 +164,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 10,
     borderRadius: 10,
-    borderWidth: 0.5,
     justifyContent: 'space-evenly',
     backgroundColor: '#ffffff',
     shadowColor: 'black',
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 18,
     fontWeight: '500',
-    fontFamily: 'Roboto-ExtraBoldItalic',
+    fontFamily: 'RobotoExtraBoldItalic',
   },
 });
 

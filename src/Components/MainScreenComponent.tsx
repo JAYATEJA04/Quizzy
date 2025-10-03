@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import QuizzyMainScreen from './QuizzyMainScreen';
-import ScreensOfTopic from './ScreensOfTopic';
+import QuizzyMainScreen from '../Screens/QuizzyMainScreen';
+import ScreensOfTopic from '../Screens/ScreensOfTopic';
 import {Button} from 'react-native';
 import {supabase} from '../../lib/supabase';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -18,7 +18,7 @@ const topicScreenNames = [
   {name: 'NodeJSScreen', title: 'NodeJS'},
 ];
 
-const MainScreen = () => {
+const MainScreenStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="QuizzyMainScreen">
@@ -39,4 +39,4 @@ const MainScreen = () => {
   );
 };
 
-export default MainScreen;
+export default MainScreenStack;

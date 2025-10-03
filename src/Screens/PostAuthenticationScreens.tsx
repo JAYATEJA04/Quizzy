@@ -3,9 +3,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, StyleSheet, Text, Button, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import MainScreen from './MainScreen';
+import MainScreen from '../Components/MainScreenComponent';
 import {supabase} from '../../lib/supabase';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
+import MainScreenStack from '../Components/MainScreenComponent';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -64,12 +65,12 @@ const renderIcons = (iconname: string) => () => {
   }
 };
 
-const BottomTabTest = () => {
+const PostAuthenticationScreens = () => {
   return (
     <BottomTab.Navigator screenOptions={{headerShown: false}}>
       <BottomTab.Screen
         name="Home"
-        component={MainScreen}
+        component={MainScreenStack}
         options={{
           tabBarIcon: renderIcons('Home'),
         }}
@@ -90,4 +91,4 @@ const BottomTabTest = () => {
   );
 };
 
-export default BottomTabTest;
+export default PostAuthenticationScreens;

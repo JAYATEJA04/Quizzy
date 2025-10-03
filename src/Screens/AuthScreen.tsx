@@ -8,7 +8,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-export default function VerifyLogin() {
+export default function AuthenticationScreens() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {

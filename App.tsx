@@ -11,9 +11,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
 import {store} from './redux store/store/store';
-import SampleLogin from './src/Screens/AuthScreen';
 import {AuthProvider, useAuth} from './src/Screens/AuthContext';
-import BottomTabTest from './src/Screens/BottomTabtest';
+import AuthenticationScreens from './src/Screens/AuthScreen';
+import PostAuthenticationScreens from './src/Screens/PostAuthenticationScreens';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,19 +23,21 @@ const RootNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {!session ? (
-        <Stack.Screen name="Authentication Screens" component={SampleLogin} />
+        <Stack.Screen
+          name="Authentication Screens"
+          component={AuthenticationScreens}
+        />
       ) : (
-        // <Stack.Screen name="Sample Login Screen" component={LoginScreen} />
-        <Stack.Screen name="Main Screen" component={BottomTabTest} />
+        <Stack.Screen
+          name="Post Authentication Screen"
+          component={PostAuthenticationScreens}
+        />
       )}
     </Stack.Navigator>
   );
 };
 
 const App = () => {
-  // const {session} = useAuth();
-  // console.log(session);
-
   return (
     <GestureHandlerRootView>
       <Provider store={store}>
