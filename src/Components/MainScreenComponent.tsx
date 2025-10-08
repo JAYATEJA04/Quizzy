@@ -5,6 +5,7 @@ import ScreensOfTopic from '../Screens/ScreensOfTopic';
 import {Button} from 'react-native';
 import {supabase} from '../../lib/supabase';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import SearchList from '../Screens/SearchScreen/SearchList';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();

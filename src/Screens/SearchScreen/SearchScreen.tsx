@@ -8,6 +8,7 @@ const SearchScreen = ({onSearch}) => {
   const handleSearchChange = text => {
     setSearchText(text);
     onSearch(text);
+    // console.log('The text is: ', text);
   };
 
   return (

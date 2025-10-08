@@ -9,6 +9,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 import MainScreenStack from '../Components/MainScreenComponent';
 import SearchScreen from './SearchScreen/SearchScreen';
 import SearchList from './SearchScreen/SearchList';
+import SearchScreenStack from './SearchScreen/SearchScreenStack';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -65,7 +66,7 @@ const PostAuthenticationScreens = () => {
       />
       <BottomTab.Screen
         name="Search Screen"
-        component={SearchList}
+        component={SearchScreenStack}
         options={{tabBarIcon: renderIcons('Search')}}
       />
       <BottomTab.Screen

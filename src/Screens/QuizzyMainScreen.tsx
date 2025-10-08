@@ -169,10 +169,10 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
   },
   optionText: {
-    color: 'grey',
+    color: 'black',
     fontSize: 18,
     fontWeight: '500',
-    fontFamily: 'RobotoExtraBoldItalic',
+    fontFamily: 'Roboto-Bold',
   },
 });
 
