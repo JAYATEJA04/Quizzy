@@ -1,1 +1,1 @@
-1. Create a progress bar with animation.
+- Create curved boxes for quiz main screen.

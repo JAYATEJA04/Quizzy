@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
@@ -60,6 +67,12 @@ const TopicMainScreen = ({route, navigation}) => {
     </View>
   );
 
+  const getTopicName = argument => {
+    if (argument === 'ReactNative') {
+      return <Text style={{color: '#58C4DC'}}>React Native</Text>;
+    }
+  };
+
   const renderLevel = ({item}) => (
     <View style={styles.levelContainer}>
       <View style={styles.subTopicTitleView}>
@@ -93,14 +106,19 @@ const TopicMainScreen = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleViewContainer}>
-        <Text style={styles.screenTitleText}>{screenTitle}</Text>
+        <Text style={styles.screenTitleText}>{getTopicName(screenTitle)}</Text>
       </View>
       <FlatList
+        contentContainerStyle={{
+          padding: 5,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
         ListHeaderComponent={
           <View style={styles.introductionView}>
-            <Text style={styles.introductionTextStyle}>
+            {/* <Text style={styles.introductionTextStyle}>
               {mainScreenData.introduction}
-            </Text>
+            </Text> */}
           </View>
         }
         data={mainScreenData.levels}
@@ -115,7 +133,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
   },
   loadingContainer: {
     flex: 1,
@@ -135,11 +153,11 @@ const styles = StyleSheet.create({
   },
   screenTitleText: {
     fontSize: 24,
-    color: 'lightblue',
-    fontFamily: 'Montserrat-Bold',
+    color: 'blue',
+    fontFamily: 'Roboto-Bold',
   },
   introductionView: {
-    marginTop: 10,
+    marginTop: 5,
   },
   introductionTextStyle: {
     color: 'black',
@@ -147,16 +165,21 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Regular',
   },
   levelContainer: {
+    borderRadius: 10,
+    elevation: 5,
+    padding: 5,
     flexDirection: 'column',
-    marginTop: 10,
+    marginTop: 5,
+    backgroundColor: '#ffffff',
   },
   subTopicTitleView: {
     flexDirection: 'row',
   },
   subTopicTitleText: {
     fontSize: 20,
-    color: 'black',
-    fontFamily: 'Montserrat-SemiBold',
+    color: 'orange',
+    fontFamily: 'Roboto-Italic',
+    fontWeight: 'bold',
   },
   thinLineView: {
     marginLeft: 10,
@@ -171,7 +194,7 @@ const styles = StyleSheet.create({
   },
   topicContainer: {
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   topicTitle: {
     fontSize: 18,

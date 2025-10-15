@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Alert,
+  Button,
   Dimensions,
   StatusBar,
   StyleSheet,
@@ -10,6 +11,11 @@ import {
 } from 'react-native';
 import ProgressBar from './ProgressBar';
 import Icon from 'react-native-vector-icons/FontAwesome6';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 
 const {height} = Dimensions.get('window');
 
@@ -28,18 +34,40 @@ const QuizScreen = ({
 }: any) => {
   console.log('hello', disableOption);
 
+  const width = useSharedValue<number>(100);
+  const translateX = useSharedValue<number>(0);
+
+  const handlePress = () => {
+    translateX.value += 50;
+  };
+  // console.log(width.value);
+
+  const handleReset = () => {
+    translateX.value = 0;
+  };
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{translateX: withSpring(translateX.value * 2)}],
+  }));
+
   return (
     <View style={RN_Fluid_Screen_Styles.Container}>
-      <StatusBar backgroundColor={'black'} />
-      <View style={RN_Fluid_Screen_Styles.TitleViewContainer}>
+      <StatusBar />
+      {/* <View style={RN_Fluid_Screen_Styles.TitleViewContainer}>
         <Text style={RN_Fluid_Screen_Styles.screenTitleText}>{QuizTitle}</Text>
-      </View>
+      </View> */}
       {/* X icon, Progress bar and heart icon */}
-      <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>
+      <Animated.View
+        style={[animatedStyle, {width, height: 100, backgroundColor: 'violet'}]}
+      />
+      <Button onPress={handlePress} title="Click me" />
+      <Button onPress={handleReset} title="Reset me" />
+      {/* <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>
+        
         <View style={RN_Fluid_Screen_Styles.X_Icon_View}>
           <Icon
             name="x"
-            color={'black'}
+            color={'grey'}
             size={30}
             onPress={() => Alert.alert('hey!')}
           />
@@ -50,11 +78,11 @@ const QuizScreen = ({
         <View style={RN_Fluid_Screen_Styles.HeartIcon_View}>
           <Icon name="heart" size={30} color={'red'} solid />
         </View>
-      </View>
+      </View> */}
       {/* The question view */}
-      <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
+      {/* <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
         <Text style={RN_Fluid_Screen_Styles.QuestionText}>
-          {questionCount} {quizQuestions[questionCount].question}
+          {quizQuestions[questionCount].question}
         </Text>
         <View style={RN_Fluid_Screen_Styles.OptionsContainer}>
           {quizQuestions[questionCount].options.map((option, index) => (
@@ -113,7 +141,7 @@ const QuizScreen = ({
             </View>
           )}
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -123,6 +151,8 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   TitleViewContainer: {
     justifyContent: 'center',
@@ -145,9 +175,10 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     flex: 1,
   },
   ProgressBar_View: {
-    flex: 10,
+    flex: 8,
     width: 500,
-    marginLeft: 10,
+    marginLeft: 5,
+    marginRight: 5,
   },
   HeartIcon_View: {
     flex: 1,
@@ -161,6 +192,7 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
   },
   QuestionText: {
     fontSize: 16,
+    fontWeight: 'bold',
     color: 'black',
     fontFamily: 'Montserrat-SemiBold',
   },

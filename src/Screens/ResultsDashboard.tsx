@@ -42,7 +42,7 @@ const DashBoard = ({route}: any) => {
     });
     clearOverAllPoints();
     console.log('Cleard the selected options data');
-    Navigation.navigate('Home');
+    Navigation.navigate('QuizzyMainScreen');
   };
 
   const clearOverAllPoints = async () => {

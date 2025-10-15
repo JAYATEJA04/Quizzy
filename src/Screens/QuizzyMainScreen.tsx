@@ -161,12 +161,13 @@ const styles = StyleSheet.create({
   optionButton: {
     margin: 10,
     height: SCREEN_HEIGHT / 10,
+    // height: 200,
     elevation: 5,
     padding: 10,
     borderRadius: 10,
     justifyContent: 'space-evenly',
     backgroundColor: '#ffffff',
-    shadowColor: 'black',
+    // shadowColor: 'black',
   },
   optionText: {
     color: 'black',
