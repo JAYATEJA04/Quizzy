@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   ProgressBar: {
     width: '100%',
-    height: 20,
+    height: 15,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     overflow: 'hidden',

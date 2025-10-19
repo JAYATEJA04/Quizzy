@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'space-evenly',
     backgroundColor: '#ffffff',
-    // shadowColor: 'black',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 0, 0, 0.2)',
   },
   optionText: {
     color: 'black',

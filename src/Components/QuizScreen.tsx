@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useCallback} from 'react';
 import {
   Alert,
   Button,
@@ -8,6 +9,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Linking,
 } from 'react-native';
 import ProgressBar from './ProgressBar';
 import Icon from 'react-native-vector-icons/FontAwesome6';
@@ -16,8 +18,31 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
 const {height} = Dimensions.get('window');
+
+type OpenURLButtonProps = {
+  url: string;
+  children: string;
+};
+
+const OpenURLButton = ({url, children}: OpenURLButtonProps) => {
+  const handlePress = useCallback(async () => {
+    // Checking if the link is supported for links with custom URL scheme.
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+      // by some browser in the mobile
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${url}`);
+    }
+  }, [url]);
+
+  return <Button title={children} onPress={handlePress} />;
+};
 
 const QuizScreen = ({
   QuizTitle,
@@ -34,21 +59,37 @@ const QuizScreen = ({
 }: any) => {
   console.log('hello', disableOption);
 
-  const width = useSharedValue<number>(100);
-  const translateX = useSharedValue<number>(0);
+  const Navigation = useNavigation();
+  const url = 'https://react.dev/';
 
-  const handlePress = () => {
-    translateX.value += 50;
-  };
-  // console.log(width.value);
+  // use the passed in referenceLink (from props). If it's missing, do nothing.
+  const handleLink = useCallback(
+    async referenceLink => {
+      try {
+        if (!referenceLink) {
+          Alert.alert('No reference link provided');
+          return;
+        }
 
-  const handleReset = () => {
-    translateX.value = 0;
-  };
+        // Ensure URL has a scheme. Linking.canOpenURL on Android/iOS requires a scheme like http:// or https://
+        let link = referenceLink.trim();
+        if (!/^https?:\/\//i.test(link)) {
+          link = `https://${link}`;
+        }
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{translateX: withSpring(translateX.value * 2)}],
-  }));
+        const supported = await Linking.canOpenURL(link);
+        if (supported) {
+          await Linking.openURL(link);
+        } else {
+          Alert.alert("Can't open this URL:", link);
+        }
+      } catch (err: any) {
+        // Generic fallback alert
+        Alert.alert('Failed to open link', err?.message ?? String(err));
+      }
+    },
+    [referenceLink],
+  );
 
   return (
     <View style={RN_Fluid_Screen_Styles.Container}>
@@ -57,19 +98,13 @@ const QuizScreen = ({
         <Text style={RN_Fluid_Screen_Styles.screenTitleText}>{QuizTitle}</Text>
       </View> */}
       {/* X icon, Progress bar and heart icon */}
-      <Animated.View
-        style={[animatedStyle, {width, height: 100, backgroundColor: 'violet'}]}
-      />
-      <Button onPress={handlePress} title="Click me" />
-      <Button onPress={handleReset} title="Reset me" />
-      {/* <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>
-        
+      <View style={RN_Fluid_Screen_Styles.X_ProgressBar_Aura_container}>
         <View style={RN_Fluid_Screen_Styles.X_Icon_View}>
           <Icon
             name="x"
             color={'grey'}
             size={30}
-            onPress={() => Alert.alert('hey!')}
+            onPress={() => Navigation.navigate('QuizzyMainScreen')}
           />
         </View>
         <View style={RN_Fluid_Screen_Styles.ProgressBar_View}>
@@ -78,21 +113,15 @@ const QuizScreen = ({
         <View style={RN_Fluid_Screen_Styles.HeartIcon_View}>
           <Icon name="heart" size={30} color={'red'} solid />
         </View>
-      </View> */}
+      </View>
       {/* The question view */}
-      {/* <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
+      <View style={RN_Fluid_Screen_Styles.QuestionContainer}>
         <Text style={RN_Fluid_Screen_Styles.QuestionText}>
           {quizQuestions[questionCount].question}
         </Text>
         <View style={RN_Fluid_Screen_Styles.OptionsContainer}>
           {quizQuestions[questionCount].options.map((option, index) => (
             <View key={index} style={RN_Fluid_Screen_Styles.OptionView}>
-              <View style={RN_Fluid_Screen_Styles.OptionNumberView}>
-                <Text style={RN_Fluid_Screen_Styles.OptionNumberText}>
-                  {index + 1}
-                  {'.)'}
-                </Text>
-              </View>
               <View style={RN_Fluid_Screen_Styles.OptionButtonView}>
                 <TouchableOpacity
                   style={[
@@ -112,36 +141,43 @@ const QuizScreen = ({
               </View>
             </View>
           ))}
-          {result && (
-            <View style={RN_Fluid_Screen_Styles.ResultExplanationContainer}>
-              <View
-                style={
-                  optionSelected === correctAnswer
-                    ? RN_Fluid_Screen_Styles.CorrectAnswerExplanation
-                    : RN_Fluid_Screen_Styles.WrongAnserExplanation
-                }>
-                <Text style={RN_Fluid_Screen_Styles.ExplanationText}>
-                  • {explanation}
-                </Text>
-                <Text style={RN_Fluid_Screen_Styles.ExplanationText}>
-                  • For further reference: {referenceLink}
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={
-                  optionSelected === correctAnswer
-                    ? RN_Fluid_Screen_Styles.ContinueButtonIfCorrect
-                    : RN_Fluid_Screen_Styles.ContinueButtonIfWrong
-                }
-                onPress={() => handleContinueButton()}>
-                <Text style={RN_Fluid_Screen_Styles.ContinueButtonText}>
-                  Continue
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
+          <View style={RN_Fluid_Screen_Styles.ResultExplanationContainer}>
+            {result && (
+              <>
+                <View
+                  style={
+                    optionSelected === correctAnswer
+                      ? RN_Fluid_Screen_Styles.CorrectAnswerExplanation
+                      : RN_Fluid_Screen_Styles.WrongAnserExplanation
+                  }>
+                  <Text style={RN_Fluid_Screen_Styles.ExplanationText}>
+                    • {explanation}
+                  </Text>
+                  <Text style={RN_Fluid_Screen_Styles.ExplanationText}>
+                    • For further reference:{' '}
+                    <Text
+                      onPress={() => handleLink(referenceLink)}
+                      style={RN_Fluid_Screen_Styles.LinkText}>
+                      {referenceLink}
+                    </Text>
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  style={
+                    optionSelected === correctAnswer
+                      ? RN_Fluid_Screen_Styles.ContinueButtonIfCorrect
+                      : RN_Fluid_Screen_Styles.ContinueButtonIfWrong
+                  }
+                  onPress={() => handleContinueButton()}>
+                  <Text style={RN_Fluid_Screen_Styles.ContinueButtonText}>
+                    Continue
+                  </Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </View>
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -151,8 +187,6 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   TitleViewContainer: {
     justifyContent: 'center',
@@ -192,36 +226,29 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
   },
   QuestionText: {
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',/
     color: 'black',
-    fontFamily: 'Montserrat-SemiBold',
+    fontFamily: 'Roboto-Bold',
   },
   OptionsContainer: {
     flex: 1,
   },
   OptionView: {
+    flex: 1,
     height: height / 14,
     marginTop: 10,
-    flexDirection: 'row',
-  },
-  OptionNumberView: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  OptionNumberText: {
-    fontSize: 16,
-    color: 'black',
-    fontFamily: 'Montserrat-SemiBold',
+    // borderWidth: 1,
   },
   OptionButtonView: {
-    flex: 7,
+    flex: 1,
+    // borderWidth: 1,
+    justifyContent: 'center',
   },
   DefaultOptionButtonStyle: {
     height: height / 14,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
     borderRadius: 8,
     backgroundColor: 'white',
     elevation: 3,
@@ -240,7 +267,7 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
   },
   ResultExplanationContainer: {
-    flex: 1,
+    flex: 6,
     height: height / 2,
     borderRadius: 8,
     marginTop: 10,
@@ -266,6 +293,11 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.6)',
     fontFamily: 'Montserrat-SemiBold',
   },
+  LinkText: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    elevation: 3,
+  },
   ContinueButtonIfCorrect: {
     height: height / 14,
     borderRadius: 8,
@@ -275,6 +307,7 @@ const RN_Fluid_Screen_Styles = StyleSheet.create({
     backgroundColor: '#6FE427',
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: 'rgba(0, 0, 0, 0.2)',
   },
   ContinueButtonIfWrong: {
     height: height / 14,

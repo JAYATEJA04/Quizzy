@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -171,6 +172,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: 5,
     backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 0, 0, 0.2)',
   },
   subTopicTitleView: {
     flexDirection: 'row',
