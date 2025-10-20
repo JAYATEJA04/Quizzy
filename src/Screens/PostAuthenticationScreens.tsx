@@ -2,7 +2,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, StyleSheet, Text, Button, TouchableOpacity} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+} from '@react-navigation/native';
 import MainScreen from '../Components/MainScreenComponent';
 import {supabase} from '../../lib/supabase';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
@@ -60,8 +63,13 @@ const PostAuthenticationScreens = () => {
       <BottomTab.Screen
         name="Home"
         component={MainScreenStack}
-        options={{
-          tabBarIcon: renderIcons('Home'),
+        options={({route}) => {
+          const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+          console.log(routeName);
+          if (routeName !== 'QuizzyMainScreen') {
+            return {tabBarStyle: {display: 'none'}};
+          }
+          return {tabBarStyle: {display: 'flex'}};
         }}
       />
       <BottomTab.Screen
