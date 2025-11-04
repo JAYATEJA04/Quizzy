@@ -95,7 +95,7 @@ const TopicMainScreen = ({route, navigation}) => {
         <TouchableOpacity
           style={styles.startTheQuizButton}
           onPress={() => Navigation.navigate(item.ScreenName)}>
-          <Text style={styles.startTheQuizButtonText}>
+          <Text style={[styles.startTheQuizButtonText]}>
             {item.QuizButtonText}
           </Text>
           <Icon name="arrow-right" color={'#3178C6'} size={30} />
@@ -111,7 +111,8 @@ const TopicMainScreen = ({route, navigation}) => {
       </View>
       <FlatList
         contentContainerStyle={{
-          padding: 5,
+          // padding: 5,
+          // flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -133,7 +134,7 @@ const TopicMainScreen = ({route, navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 5,
     backgroundColor: '#ffffff',
   },
   loadingContainer: {
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Bold',
   },
   introductionView: {
-    marginTop: 5,
+    // marginTop: 5,
   },
   introductionTextStyle: {
     color: 'black',
@@ -166,23 +167,25 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Regular',
   },
   levelContainer: {
-    borderRadius: 10,
-    elevation: 5,
+    // borderRadius: 10,
+    // elevation: 5,
     padding: 5,
     flexDirection: 'column',
     marginTop: 5,
     backgroundColor: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)',
+    // borderWidth: 1,
+    // borderColor: 'rgba(0, 0, 0, 0.2)',
+    borderBottomWidth: 2,
+    borderBottomColor: 'black',
   },
   subTopicTitleView: {
     flexDirection: 'row',
   },
   subTopicTitleText: {
     fontSize: 20,
-    color: 'orange',
+    color: 'black',
     fontFamily: 'Roboto-Italic',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   thinLineView: {
     marginLeft: 10,
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
   },
   thinLine: {
     height: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
     width: '100%',
   },
   topicContainer: {
