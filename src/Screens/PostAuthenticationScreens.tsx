@@ -65,11 +65,15 @@ const PostAuthenticationScreens = () => {
         component={MainScreenStack}
         options={({route}) => {
           const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-          console.log(routeName);
-          if (routeName !== 'QuizzyMainScreen') {
+          console.log('route name: ', routeName);
+          if (routeName === 'QuizzyMainScreen') {
+            return {
+              tabBarIcon: renderIcons('Home'),
+              tabBarStyle: {display: 'flex'},
+            };
+          } else {
             return {tabBarStyle: {display: 'none'}};
           }
-          return {tabBarStyle: {display: 'flex'}};
         }}
       />
       <BottomTab.Screen
