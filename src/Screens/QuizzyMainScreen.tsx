@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Image,
+  StatusBar,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
@@ -51,6 +52,11 @@ const QuizzyMainScreen: React.FC<QuizzyMainScreenProps> = ({
 
   return (
     <ScrollView style={styles.parentContainer}>
+      <StatusBar
+        animated={true}
+        backgroundColor="white"
+        barStyle="dark-content"
+      />
       <View style={styles.TitleContainer1}>
         <Text style={styles.textCC1}>{title}</Text>
         <Text style={{fontSize: 20}}>

@@ -64,7 +64,8 @@ const PostAuthenticationScreens = () => {
         name="Home"
         component={MainScreenStack}
         options={({route}) => {
-          const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+          const routeName =
+            getFocusedRouteNameFromRoute(route) ?? 'QuizzyMainScreen';
           console.log('route name: ', routeName);
           if (routeName === 'QuizzyMainScreen') {
             return {

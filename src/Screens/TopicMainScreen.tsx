@@ -96,7 +96,7 @@ const TopicMainScreen = ({route, navigation}) => {
           style={styles.startTheQuizButton}
           onPress={() => Navigation.navigate(item.ScreenName)}>
           <Text style={[styles.startTheQuizButtonText]}>
-            {item.QuizButtonText}
+            {item.QuizButtonText}{' '}
           </Text>
           <Icon name="arrow-right" color={'#3178C6'} size={30} />
         </TouchableOpacity>
@@ -215,6 +215,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   startTheQuizButton: {
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: 'lightblue',
+    borderColor: 'rgba(0, 0, 0, 0.2)',
+    elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -222,8 +228,7 @@ const styles = StyleSheet.create({
   startTheQuizButtonText: {
     color: '#3178C6',
     fontSize: 20,
-    fontFamily: 'OpenSans-Bold',
-    textDecorationLine: 'underline',
+    // textDecorationLine: 'underline',
   },
   BulletPointText: {
     fontSize: 14,
