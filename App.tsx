@@ -14,6 +14,7 @@ import {store} from './redux store/store/store';
 import {AuthProvider, useAuth} from './src/Screens/AuthContext';
 import AuthenticationScreens from './src/Screens/AuthScreen';
 import PostAuthenticationScreens from './src/Screens/PostAuthenticationScreens';
+import {Text} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ const App = () => {
       <Provider store={store}>
         <AuthProvider>
           <NavigationContainer>
+            <Text>No point of this project anymore.</Text>
             <RootNavigator />
           </NavigationContainer>
         </AuthProvider>
